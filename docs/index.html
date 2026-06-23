@@ -36,7 +36,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--off); color: var(--text); font-size: 14px; line-height: 1.6; }
-
+ 
 /* ── NAV ── */
 .top-bar {
   background: var(--navy);
@@ -62,7 +62,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .nav-link:hover { background: rgba(200,151,58,0.15); color: var(--gold-l); }
 .nav-link.active { background: rgba(200,151,58,0.2); color: var(--gold-l); }
-
+ 
 /* ── SCROLL ANCHORS — offset for sticky nav ── */
 .scroll-anchor {
   display: block;
@@ -71,7 +71,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   visibility: hidden;
   pointer-events: none;
 }
-
+ 
 /* ── HERO ── */
 .hero {
   background: var(--navy); padding: 56px 40px 48px; position: relative; overflow: hidden;
@@ -96,10 +96,10 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .stat { display: flex; flex-direction: column; gap: 2px; }
 .stat-value { font-family: var(--font-display); font-size: 28px; color: var(--gold); line-height: 1; }
 .stat-label { font-size: 11px; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.08em; }
-
+ 
 /* ── MAIN ── */
 .main { max-width: 1400px; margin: 0 auto; padding: 48px 40px; }
-
+ 
 .section-header {
   display: flex; align-items: flex-end; justify-content: space-between;
   margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1.5px solid var(--gray1);
@@ -107,7 +107,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
 .section-title   { font-family: var(--font-display); font-size: 24px; color: var(--navy); line-height: 1.2; }
 .section-desc    { font-size: 12px; color: var(--gray3); max-width: 400px; text-align: right; line-height: 1.6; }
-
+ 
 /* ── TIMELINE TOGGLE ── */
 .toggle-bar {
   display: flex; gap: 4px; background: var(--white); padding: 5px;
@@ -120,7 +120,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .toggle-btn.active { background: var(--navy); color: var(--white); }
 .toggle-btn:hover:not(.active) { background: var(--off); color: var(--navy); }
-
+ 
 /* ── LEGEND ── */
 .legend {
   display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;
@@ -129,14 +129,14 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--gray3); font-weight: 500; }
 .legend-dot  { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
-
+ 
 /* ── TIMELINE ── */
 .timeline-wrapper { overflow-x: auto; padding-bottom: 12px; border-radius: var(--radius); }
 .timeline-wrapper::-webkit-scrollbar { height: 5px; }
 .timeline-wrapper::-webkit-scrollbar-track { background: var(--gray1); border-radius: 3px; }
 .timeline-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 .timeline-container { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-
+ 
 .tl-header-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
 .tl-label-col  {
   min-width: 210px; width: 210px; padding: 10px 14px;
@@ -159,7 +159,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   font-family: var(--font-mono);
 }
 .month-cell.divider-cell { border-right: 2px solid rgba(200,151,58,0.5); color: var(--gold-l); font-weight: 700; }
-
+ 
 .tl-row {
   display: flex; align-items: stretch; border-bottom: 1px solid var(--gray1); min-height: 44px;
   transition: background 0.1s;
@@ -167,7 +167,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .tl-row:last-child { border-bottom: none; }
 .tl-row:hover { background: rgba(27,42,74,0.02); }
 .tl-row.group-row { background: var(--off); min-height: 34px; }
-
+ 
 .row-label {
   min-width: 210px; width: 210px; padding: 8px 14px;
   border-right: 1px solid var(--gray1); display: flex; flex-direction: column;
@@ -177,12 +177,12 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .row-name { font-size: 11px; font-weight: 600; color: var(--navy); line-height: 1.3; }
 .row-sub  { font-size: 10px; color: var(--gray3); }
 .group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy2); }
-
+ 
 .row-grid { flex: 1; position: relative; display: flex; align-items: center; min-height: inherit; }
 .grid-bg  { position: absolute; inset: 0; display: flex; pointer-events: none; }
 .grid-col { flex: 1; border-right: 1px solid var(--gray1); }
 .grid-col.divider-col { border-right: 2px dashed rgba(200,151,58,0.35); }
-
+ 
 .bar {
   position: absolute; height: 24px; border-radius: 4px;
   display: flex; align-items: center; padding: 0 7px;
@@ -192,7 +192,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   transition: opacity 0.15s, transform 0.15s;
 }
 .bar:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.25); }
-
+ 
 /* ── TOOLTIP ── */
 .tooltip {
   display: none; position: fixed; background: var(--navy); color: var(--white);
@@ -204,7 +204,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .tooltip-title { font-weight: 700; margin-bottom: 4px; color: var(--gold); font-size: 12px; }
 .tooltip-sub   { font-size: 10px; color: var(--gray2); margin-bottom: 6px; }
 .tooltip-body  { font-size: 11px; color: #c8d0e0; line-height: 1.55; }
-
+ 
 /* ── PHASE CARDS ── */
 .phases-strip {
   display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 32px;
@@ -221,11 +221,11 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   padding-top: 10px; border-top: 1px solid var(--gray1);
 }
 .phase-gate strong { color: var(--navy); font-size: 10px; display: block; margin-bottom: 3px; }
-
+ 
 /* ── WBS ── */
 .wbs-section { margin-top: 64px; }
 .wp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 18px; }
-
+ 
 .wp-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--gray1); }
 .wp-header {
   padding: 14px 18px; display: flex; align-items: center; gap: 12px;
@@ -247,10 +247,10 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .wp-count  { font-size: 11px; font-weight: 600; color: var(--gray3); }
 .chevron   { font-size: 14px; color: var(--gray2); transition: transform 0.2s; }
 .chevron.open { transform: rotate(180deg); }
-
+ 
 .del-list { display: none; }
 .del-list.open { display: block; }
-
+ 
 .deliverable {
   display: flex; align-items: flex-start; gap: 10px;
   padding: 9px 18px; border-bottom: 1px solid var(--gray1); transition: background 0.1s;
@@ -266,7 +266,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   font-size: 10px; font-weight: 600; color: var(--navy2);
   background: var(--off); padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;
 }
-
+ 
 /* ── RISKS ── */
 .risk-section { margin-top: 64px; }
 .risk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 14px; }
@@ -292,13 +292,13 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .low      .risk-badge { background: #E9F5EE; color: var(--green); }
 .risk-scores { display: flex; gap: 12px; font-size: 10px; color: var(--gray3); font-weight: 500; }
 .risk-mit { font-size: 11px; color: var(--gray3); line-height: 1.55; padding-top: 8px; border-top: 1px solid var(--gray1); }
-
+ 
 /* ── UTIL ── */
 .mt-64 { margin-top: 64px; }
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav class="top-bar">
   <div class="top-bar-brand">
@@ -314,9 +314,9 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     <a class="nav-link" href="#risk-anchor">Risks</a>
   </div>
 </nav>
-
+ 
 <div class="tooltip" id="tooltip"></div>
-
+ 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
@@ -337,10 +337,10 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     </div>
   </div>
 </div>
-
+ 
 <!-- MAIN -->
 <main class="main">
-
+ 
   <!-- TIMELINE SECTION -->
   <span class="scroll-anchor" id="timeline-anchor"></span>
   <div class="section-header">
@@ -350,13 +350,13 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     </div>
     <div class="section-desc">Toggle between the short-term view (months 0–6) and full 36-month view. Hover any bar for details.</div>
   </div>
-
+ 
   <div class="toggle-bar">
     <button class="toggle-btn active" id="btn-st" onclick="setView('st')">Short-term (0–6 months)</button>
     <button class="toggle-btn" id="btn-mt" onclick="setView('mt')">Medium to long-term (6–36 months)</button>
     <button class="toggle-btn" id="btn-full" onclick="setView('full')">Full programme (0–36 months)</button>
   </div>
-
+ 
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:#1A5276"></div>Phase 0 · Stabilisation</div>
     <div class="legend-item"><div class="legend-dot" style="background:#117A65"></div>Phase 1 · Foundation</div>
@@ -368,11 +368,11 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
       ST / MT boundary = Month 6
     </div>
   </div>
-
+ 
   <div class="timeline-wrapper">
     <div class="timeline-container" id="timeline-container"></div>
   </div>
-
+ 
   <!-- WBS SECTION -->
   <div class="wbs-section">
     <span class="scroll-anchor" id="wbs-anchor"></span>
@@ -383,11 +383,11 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
       </div>
       <div class="section-desc">Click any work package to expand its deliverables.</div>
     </div>
-
+ 
     <div class="phases-strip" id="phases-strip"></div>
     <div class="wp-grid" id="wbs-grid"></div>
   </div>
-
+ 
   <!-- RISK SECTION -->
   <div class="risk-section">
     <span class="scroll-anchor" id="risk-anchor"></span>
@@ -400,13 +400,13 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     </div>
     <div class="risk-grid" id="risk-grid"></div>
   </div>
-
+ 
 </main>
-
+ 
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────────
 const LABEL_W = 210;
-
+ 
 // Each row: { group } for dividers, or { category, name, sub, bar:[startM, endM, label, color, tip] }
 const ROWS = [
   { group:'SHORT-TERM · Crisis Actions (Waves 0–4)' },
@@ -420,7 +420,7 @@ const ROWS = [
     bar:[1,1.5,'Segmented client comms','#1A5276','Differentiated service protocol by segment: printing houses get direct sales engineer escalation; companies get SLA confirmation; stationers get self-service onboarding to PAPCAR Connect.'] },
   { category:'Wave 4', name:'ERP vendor selection (RFP)', sub:'Months 2–6',
     bar:[2,6,'ERP RFP & vendor selection','#117A65','Issue RFP for ERP package. Evaluate SAP Business One, Sage X3, Microsoft Dynamics 365 Business Central. Select integrator. Define data migration scope from ADV, WMS, and MRP2.'] },
-
+ 
   { group:'GOVERNANCE & TEAM BUILD' },
   { category:'WP2', name:'CIO hire & IS governance', sub:'Months 1–3',
     bar:[1,3,'CIO hire','#1A5276','Critical-path hire. CIO reports to General Management. IS Steering Committee constituted. First SteerCo meeting by month 2. Blocks all downstream governance decisions.'] },
@@ -428,7 +428,7 @@ const ROWS = [
     bar:[3,5,'PM + Change Management Lead','#117A65','IS Programme Manager and Change Management Lead recruited or engaged. Programme management tooling deployed. Enterprise Architect search begins.'] },
   { category:'WP2', name:'Data Governance setup', sub:'Months 4–6',
     bar:[4,6,'Data Governance + MDM','#117A65','Data Governance Committee active. MDM tool selected. Master data cleansing begins across 5 incompatible legacy systems before ERP migration.'] },
-
+ 
   { group:'PAPCAR CONNECT (MVP → EXTENDED)' },
   { category:'WP3', name:'Knowledge transfer + pilot', sub:'Months 1–2',
     bar:[1,2,'PC knowledge transfer','#C8973A','Codebase handed to internal developer or maintenance partner. Pilot deployment in 3 volunteer SUs before national rollout. Lessons learned documented.'] },
@@ -436,13 +436,13 @@ const ROWS = [
     bar:[2,4,'PC national rollout','#C8973A','All 20 sales units live on PAPCAR Connect. Failed-sales logging active. Production dashboard showing Le Havre (34%) vs Bordeaux (98%) imbalance in real time.'] },
   { category:'WP3', name:'B2B portal extension', sub:'Months 9–12',
     bar:[9,12,'EDI + SLA extension','#C8973A','EDI-based automated replenishment for stationers. Client portal extended with invoice download and contractual SLA tracking for companies.'] },
-
+ 
   { group:'CATALOGUE & PLM' },
   { category:'WP4', name:'SKU freeze + withdrawal', sub:'Months 1–8',
     bar:[1,8,'Catalogue clean-up','#1A5276','Immediate SKU introduction freeze. ABC-XYZ analysis complete by month 6. ~3,500–4,000 slow-movers withdrawn from active stock by month 8. Made-to-order terms published.'] },
   { category:'WP4', name:'PLM tool selection + deploy', sub:'Months 9–15',
     bar:[9,15,'PLM deployment (Akeneo)','#6C3483','PLM tool selected and deployed (Akeneo PIM or equivalent). Lifecycle stages activated: introduction, growth, maturity, sunset. Prevents catalogue bloat from recurring.'] },
-
+ 
   { group:'ERP DEPLOYMENT' },
   { category:'WP5', name:'ERP Phase 1 — 20 Sales Units', sub:'Months 6–18',
     bar:[6,18,'ERP Phase 1 (20 SUs)','#117A65','ERP order management and inventory for all 20 SUs. Replaces ADV + WMS. Single stock model. Automated availability check and delivery commitment. Gate: data cleansing complete.'] },
@@ -454,7 +454,7 @@ const ROWS = [
     bar:[18,24,'SCM module','#6C3483','SCM configured on ERP. Algorithmic reorder signals per SKU per SU. Trained on 12+ months of PAPCAR Connect failed-sales data accumulated since month 3.'] },
   { category:'WP5', name:'Legacy decommission', sub:'Months 24–26',
     bar:[24,26,'ADV/WMS/MRP2 retired','#C0392B','ADV (1995), WMS (1990 Unix), and MRP2 (1990 AS/400) decommissioned. 50 on-premises servers progressively retired. Final migration to ERP confirmed complete.'] },
-
+ 
   { group:'DATA PLATFORM & ADVANCED CAPABILITIES' },
   { category:'WP6', name:'Cloud infrastructure migration', sub:'Months 12–18',
     bar:[12,18,'Cloud migration (Azure/AWS)','#6C3483','Replace 50 ageing on-premises servers with cloud infrastructure. Managed by cloud MSP. Eliminates single-point-of-failure risk. Enables AI and digital twin in later phases.'] },
@@ -467,7 +467,7 @@ const ROWS = [
   { category:'WP6', name:'Digital twin prototype', sub:'Months 28–34',
     bar:[28,34,'Digital twin (supply chain)','#C0392B','Supply chain simulation model enabling scenario planning: SU closure, production failure, demand spike. Requires cloud + unified platform as infrastructure.'] },
 ];
-
+ 
 const PHASES = [
   { num:'0', title:'Stabilisation', range:'Months 0–3', color:'#1A5276',
     gate:'Order fulfilment rate above 80%, CIO in post, PAPCAR Connect live in pilot units.' },
@@ -480,7 +480,7 @@ const PHASES = [
   { num:'4', title:'Strategic Capability', range:'Months 30–36', color:'#C0392B',
     gate:'Full IS governance maturity, algorithmic demand planning operational.' },
 ];
-
+ 
 const WPS = [
   { id:'WP1', title:'Consulting Engagement', color:'#1A5276', deliverables:[
     { id:'1.1', title:'Situation analysis (7 perspectives)', output:'Section 2 of the report', owner:'Leopold + Alexandre', time:'Complete' },
@@ -537,7 +537,7 @@ const WPS = [
     { id:'6.6', title:'B2B portal: SLA tracking + self-service', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
   ]},
 ];
-
+ 
 const RISKS = [
   { title:'Poor master data quality blocks ERP migration', l:3, i:3, score:'9', level:'critical',
     mit:'Data governance and MDM cleansing starts at month 3, well before ERP go-live. Data Governance Officer accountable for migration readiness gate.' },
@@ -560,10 +560,10 @@ const RISKS = [
   { title:'Competitors accelerate IS investment in response', l:1, i:2, score:'2', level:'low',
     mit:'Transformation is not public-facing. Speed of Phase 0 and 1 execution minimises the vulnerability window.' },
 ];
-
+ 
 // ── TIMELINE ────────────────────────────────────────────────────────
 let currentView = 'st';
-
+ 
 const PHASE_DEFS = [
   { label:'Phase 0 · Stabilisation', start:0,  end:6,  color:'#1A5276' },
   { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
@@ -571,7 +571,7 @@ const PHASE_DEFS = [
   { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
   { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
 ];
-
+ 
 function setView(v) {
   currentView = v;
   document.getElementById('btn-st').classList.toggle('active', v === 'st');
@@ -579,25 +579,25 @@ function setView(v) {
   document.getElementById('btn-full').classList.toggle('active', v === 'full');
   buildTimeline();
 }
-
+ 
 function buildTimeline() {
   const container = document.getElementById('timeline-container');
   const wrapper   = container.parentElement;
   const wrapW     = wrapper.clientWidth || 900;
   const gridW     = wrapW - LABEL_W - 2;
-
+ 
   const isST   = currentView === 'st';
   const isMT   = currentView === 'mt';
   const isFull = currentView === 'full';
-
+ 
   // Define month window
   const startM = isMT ? 6  : 0;
   const endM   = isST ? 7  : 37;   // exclusive upper bound
   const totalM = endM - startM;
   const ST_M   = 6;
-
+ 
   const cellW = gridW / totalM;
-
+ 
   // Filter rows
   const visRows = ROWS.filter(r => {
     if (r.group !== undefined) return true;
@@ -606,7 +606,7 @@ function buildTimeline() {
     if (isMT)   return e > ST_M;           // ends after month 6
     return true;                            // full: show all
   });
-
+ 
   // Phase header blocks
   const visPhases = isST
     ? [{ label:'SHORT-TERM CRISIS ACTIONS (0–6 months)', start:0, end:7, color:'#1A5276' }]
@@ -618,9 +618,9 @@ function buildTimeline() {
         { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
       ]
     : PHASE_DEFS;
-
+ 
   let html = '';
-
+ 
   // Phase header row
   html += `<div class="tl-header-row">
     <div class="tl-label-col">${isST ? 'SHORT-TERM' : isMT ? 'MEDIUM TO LONG-TERM' : 'FULL PROGRAMME'}</div>
@@ -633,7 +633,7 @@ function buildTimeline() {
     html += `<div class="phase-block" style="width:${w}px;min-width:${w}px;background:${p.color}22;color:${p.color};border-right:1px solid ${p.color}33;">${p.label}</div>`;
   });
   html += `</div></div>`;
-
+ 
   // Month labels
   html += `<div class="months-row">
     <div class="tl-label-col" style="font-size:9px;color:rgba(200,151,58,0.5);">Month →</div>
@@ -643,7 +643,7 @@ function buildTimeline() {
     html += `<div class="month-cell${isDivider ? ' divider-cell' : ''}" style="min-width:${cellW}px;width:${cellW}px;">${m}</div>`;
   }
   html += `</div></div>`;
-
+ 
   // Data rows
   visRows.forEach(r => {
     if (r.group !== undefined) {
@@ -658,22 +658,22 @@ function buildTimeline() {
       </div>`;
       return;
     }
-
+ 
     const [s, e, label, color, tip] = r.bar;
-
+ 
     // Clip bar to visible window
     const visS = Math.max(s, startM);
     const visE = Math.min(e, endM);
     if (visE <= visS) return;
-
+ 
     const barL = (visS - startM) * cellW;
     const barW = Math.max((visE - visS) * cellW - 2, 8);
     const showLabel = barW > 50;
-
+ 
     const safeLabel = label.replace(/'/g,"\\'").replace(/"/g,'&quot;');
     const safeTip   = tip.replace(/'/g,"\\'").replace(/"/g,'&quot;');
     const safeSub   = r.sub.replace(/'/g,"\\'");
-
+ 
     html += `<div class="tl-row">
       <div class="row-label">
         <div class="row-cat">${r.category}</div>
@@ -691,10 +691,10 @@ function buildTimeline() {
       </div>
     </div>`;
   });
-
+ 
   container.innerHTML = html;
 }
-
+ 
 // ── TOOLTIP ──────────────────────────────────────────────────────────
 function showTip(e, title, sub, desc) {
   const t = document.getElementById('tooltip');
@@ -714,7 +714,7 @@ function hideTip() { document.getElementById('tooltip').classList.remove('show')
 document.addEventListener('mousemove', e => {
   if (document.getElementById('tooltip').classList.contains('show')) posTip(e);
 });
-
+ 
 // ── WBS ──────────────────────────────────────────────────────────────
 function buildWBS() {
   // Phase cards
@@ -725,7 +725,7 @@ function buildWBS() {
       <div class="phase-range" style="color:${p.color}">${p.range}</div>
       <div class="phase-gate"><strong>Gate condition</strong>${p.gate}</div>
     </div>`).join('');
-
+ 
   // WP cards — collapsed by default
   document.getElementById('wbs-grid').innerHTML = WPS.map((wp,idx) => `
     <div class="wp-card">
@@ -754,7 +754,7 @@ function buildWBS() {
       </div>
     </div>`).join('');
 }
-
+ 
 function toggleWP(idx) {
   const list = document.getElementById(`del-${idx}`);
   const hdr  = document.getElementById(`wph-${idx}`);
@@ -763,7 +763,7 @@ function toggleWP(idx) {
   hdr.classList.toggle('open', open);
   chev.classList.toggle('open', open);
 }
-
+ 
 // ── RISKS ─────────────────────────────────────────────────────────────
 function buildRisks() {
   document.getElementById('risk-grid').innerHTML = RISKS.map(r => `
@@ -779,7 +779,7 @@ function buildRisks() {
       <div class="risk-mit"><strong>Mitigation: </strong>${r.mit}</div>
     </div>`).join('');
 }
-
+ 
 // ── NAV ACTIVE STATE ON SCROLL ─────────────────────────────────────────
 function updateActiveNav() {
   const anchors = ['timeline-anchor','wbs-anchor','risk-anchor'];
@@ -793,7 +793,7 @@ function updateActiveNav() {
   links.forEach((l, i) => l.classList.toggle('active', i === current));
 }
 window.addEventListener('scroll', updateActiveNav, { passive: true });
-
+ 
 // ── INIT ────────────────────────────────────────────────────────────────
 window.addEventListener('load', () => {
   buildTimeline();
