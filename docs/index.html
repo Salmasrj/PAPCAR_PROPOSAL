@@ -730,59 +730,128 @@
 
     <div class="risk-layout">
 
-      <!-- Matrix visual -->
+      <!-- Matrix visual — pure SVG, no CSS grid confusion -->
       <div class="risk-matrix-grid">
         <div class="risk-matrix-title">Risk Heat Map</div>
-        <div style="display:flex; gap:12px; align-items:center">
-          <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:11px; font-weight:700; color:var(--grey3); text-transform:uppercase; letter-spacing:1px">Impact →</div>
-          <div>
-            <div style="display:grid; grid-template-columns: 40px repeat(3,1fr); gap:4px;">
-              <!-- Row: Impact 3 -->
-              <div class="axis-tick" style="font-weight:700; color:var(--navy)">3</div>
-              <div class="matrix-cell cell-med" data-risks="3,5" title="L=1,I=3 · Medium">
-                <div class="matrix-dot" onclick="highlightRisk(3)">3</div>
-                <div class="matrix-dot" onclick="highlightRisk(5)" style="background:#8E44AD">5</div>
-              </div>
-              <div class="matrix-cell cell-high" data-risks="1,2" title="L=2,I=3 · High">
-                <div class="matrix-dot" onclick="highlightRisk(1)">1</div>
-                <div class="matrix-dot" onclick="highlightRisk(2)" style="background:#8E44AD">2</div>
-              </div>
-              <div class="matrix-cell cell-crit" data-risks="R1R2" title="L=3,I=3 · Critical">
-                <div class="matrix-dot" onclick="highlightRisk('R1')">R1</div>
-                <div class="matrix-dot" onclick="highlightRisk('R2')" style="background:#C0392B">R2</div>
-              </div>
-              <!-- Row: Impact 2 -->
-              <div class="axis-tick" style="font-weight:700; color:var(--navy)">2</div>
-              <div class="matrix-cell cell-low" title="L=1,I=2 · Low">
-                <div class="matrix-dot" onclick="highlightRisk(10)" style="background:#6B7280">10</div>
-              </div>
-              <div class="matrix-cell cell-med" title="L=2,I=2 · Medium">
-                <div class="matrix-dot" onclick="highlightRisk(6)">6</div>
-                <div class="matrix-dot" onclick="highlightRisk(7)" style="background:#D97706">7</div>
-                <div class="matrix-dot" onclick="highlightRisk(8)" style="background:#2E7D52">8</div>
-              </div>
-              <div class="matrix-cell cell-high" title="L=3,I=2 · High"></div>
-              <!-- Row: Impact 1 -->
-              <div class="axis-tick" style="font-weight:700; color:var(--navy)">1</div>
-              <div class="matrix-cell cell-low"></div>
-              <div class="matrix-cell cell-low" title="L=2,I=1">
-                <div class="matrix-dot" onclick="highlightRisk(9)" style="background:#2E7D52; width:22px;height:22px;font-size:9px">9</div>
-              </div>
-              <div class="matrix-cell cell-med" title="L=3,I=1"></div>
-              <!-- X-axis labels -->
-              <div></div>
-              <div class="axis-tick">1</div>
-              <div class="axis-tick">2</div>
-              <div class="axis-tick">3</div>
-            </div>
-            <div style="text-align:center; font-size:11px; font-weight:700; color:var(--grey3); text-transform:uppercase; letter-spacing:1px; margin-top:8px">← Likelihood →</div>
-          </div>
-        </div>
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
-          <div class="legend-item"><div class="legend-dot" style="background:#F5C6CB"></div>Critical (score 9)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#F8D7DA"></div>High (score 6)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#FFF3CD"></div>Medium (score 3–4)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#D4EDDA"></div>Low (score 1–2)</div>
+
+        <!--
+          3×3 grid. Columns = Likelihood 1,2,3. Rows (top→bottom) = Impact 3,2,1.
+          Cell size 90×80. Origin of grid: x=50, y=20.
+          Cell centres: col1 cx=95, col2 cx=185, col3 cx=275
+                        row1 cy=60, row2 cy=140, row3 cy=220
+
+          Score per cell:
+            (L1,I3)=3 med  | (L2,I3)=6 high  | (L3,I3)=9 crit
+            (L1,I2)=2 low  | (L2,I2)=4 high  | (L3,I2)=6 high
+            (L1,I1)=1 low  | (L2,I1)=2 low   | (L3,I1)=3 med
+
+          Risk placement by (L,I):
+            Risk 3  → L=1, I=3  col1 row1
+            Risk 4  → L=2, I=3  col2 row1
+            Risk 5  → L=2, I=3  col2 row1
+            Risk 6  → L=2, I=2  col2 row2
+            Risk 7  → L=2, I=2  col2 row2
+            Risk 8  → L=2, I=2  col2 row2
+            Risk 9  → L=1, I=3  col1 row1
+            Risk 10 → L=1, I=2  col1 row2
+            R1      → L=3, I=3  col3 row1
+            R2      → L=3, I=3  col3 row1
+        -->
+        <svg viewBox="0 0 340 305" width="100%" style="max-width:360px; display:block; overflow:visible;">
+
+          <!-- ── Cell backgrounds ── -->
+          <!-- Row 1 (Impact=3, y=20..100) -->
+          <rect x="50"  y="20" width="90" height="80" fill="#FEF9C3" rx="4" stroke="#e5e7eb"/><!-- L1I3 score3 med -->
+          <rect x="140" y="20" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L2I3 score6 high -->
+          <rect x="230" y="20" width="90" height="80" fill="#FECACA" rx="4" stroke="#e5e7eb"/><!-- L3I3 score9 crit -->
+          <!-- Row 2 (Impact=2, y=100..180) -->
+          <rect x="50"  y="100" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L1I2 score2 low -->
+          <rect x="140" y="100" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L2I2 score4 high -->
+          <rect x="230" y="100" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L3I2 score6 high -->
+          <!-- Row 3 (Impact=1, y=180..260) -->
+          <rect x="50"  y="180" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L1I1 score1 low -->
+          <rect x="140" y="180" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L2I1 score2 low -->
+          <rect x="230" y="180" width="90" height="80" fill="#FEF9C3" rx="4" stroke="#e5e7eb"/><!-- L3I1 score3 med -->
+
+          <!-- ── Y-axis (Impact) ── -->
+          <text x="38" y="65"  text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">3</text>
+          <text x="38" y="145" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">2</text>
+          <text x="38" y="225" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">1</text>
+          <text transform="rotate(-90,12,140)" x="12" y="140" text-anchor="middle"
+                font-size="9" font-weight="700" fill="#8891A0" letter-spacing="1.2">IMPACT</text>
+
+          <!-- ── X-axis (Likelihood) ── -->
+          <text x="95"  y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">1</text>
+          <text x="185" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">2</text>
+          <text x="275" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">3</text>
+          <text x="185" y="295" text-anchor="middle" font-size="9" font-weight="700" fill="#8891A0" letter-spacing="1.2">LIKELIHOOD</text>
+
+          <!-- ══ DOTS ══ -->
+
+          <!-- col1 row1 (L1,I3): Risk 3 and Risk 9 — side by side within cell -->
+          <g onclick="highlightRisk(3)" style="cursor:pointer" title="Risk 3 — CIO hire delayed">
+            <circle cx="75" cy="60" r="17" fill="#1F3864" filter="url(#sh)"/>
+            <text x="75" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">3</text>
+          </g>
+          <g onclick="highlightRisk(9)" style="cursor:pointer" title="Risk 9 — Pulp supply disruption">
+            <circle cx="115" cy="60" r="17" fill="#2E7D52"/>
+            <text x="115" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">9</text>
+          </g>
+
+          <!-- col2 row1 (L2,I3): Risk 4 and Risk 5 — side by side -->
+          <g onclick="highlightRisk(4)" style="cursor:pointer" title="Risk 4 — ERP integrator failure">
+            <circle cx="165" cy="60" r="17" fill="#D97706"/>
+            <text x="165" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">4</text>
+          </g>
+          <g onclick="highlightRisk(5)" style="cursor:pointer" title="Risk 5 — IS budget insufficient">
+            <circle cx="205" cy="60" r="17" fill="#D97706"/>
+            <text x="205" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">5</text>
+          </g>
+
+          <!-- col3 row1 (L3,I3): R1 and R2 — side by side -->
+          <g onclick="highlightRisk('R1')" style="cursor:pointer" title="R1 — Master data quality / ERP delay">
+            <circle cx="252" cy="60" r="17" fill="#B91C1C"/>
+            <text x="252" y="65" text-anchor="middle" font-size="10" font-weight="800" fill="white">R1</text>
+          </g>
+          <g onclick="highlightRisk('R2')" style="cursor:pointer" title="R2 — Sales unit resistance">
+            <circle cx="296" cy="60" r="17" fill="#B91C1C"/>
+            <text x="296" y="65" text-anchor="middle" font-size="10" font-weight="800" fill="white">R2</text>
+          </g>
+
+          <!-- col1 row2 (L1,I2): Risk 10 — centred -->
+          <g onclick="highlightRisk(10)" style="cursor:pointer" title="Risk 10 — Competitive response">
+            <circle cx="95" cy="140" r="17" fill="#6B7280"/>
+            <text x="95" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">10</text>
+          </g>
+
+          <!-- col2 row2 (L2,I2): Risks 6, 7, 8 — three dots, tight spacing -->
+          <g onclick="highlightRisk(6)" style="cursor:pointer" title="Risk 6 — PAPCAR Connect tech debt">
+            <circle cx="158" cy="140" r="15" fill="#1F3864"/>
+            <text x="158" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">6</text>
+          </g>
+          <g onclick="highlightRisk(7)" style="cursor:pointer" title="Risk 7 — Catalogue rationalisation pushback">
+            <circle cx="185" cy="140" r="15" fill="#1F3864"/>
+            <text x="185" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">7</text>
+          </g>
+          <g onclick="highlightRisk(8)" style="cursor:pointer" title="Risk 8 — Key person dependency">
+            <circle cx="212" cy="140" r="15" fill="#1F3864"/>
+            <text x="212" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">8</text>
+          </g>
+
+          <!-- Drop shadow filter -->
+          <defs>
+            <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.2"/>
+            </filter>
+          </defs>
+
+        </svg>
+
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+          <div class="legend-item"><div class="legend-dot" style="background:#FECACA; border:1px solid #FCA5A5"></div>Critical (9)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FDE68A; border:1px solid #FCD34D"></div>High (4–6)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FEF9C3; border:1px solid #FDE68A"></div>Medium (3)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#DCFCE7; border:1px solid #A7F3D0"></div>Low (1–2)</div>
         </div>
       </div>
 
