@@ -353,6 +353,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 
   <div class="toggle-bar">
     <button class="toggle-btn active" id="btn-st" onclick="setView('st')">Short-term (0–6 months)</button>
+    <button class="toggle-btn" id="btn-mt" onclick="setView('mt')">Medium to long-term (6–36 months)</button>
     <button class="toggle-btn" id="btn-full" onclick="setView('full')">Full programme (0–36 months)</button>
   </div>
 
@@ -574,6 +575,7 @@ const PHASE_DEFS = [
 function setView(v) {
   currentView = v;
   document.getElementById('btn-st').classList.toggle('active', v === 'st');
+  document.getElementById('btn-mt').classList.toggle('active', v === 'mt');
   document.getElementById('btn-full').classList.toggle('active', v === 'full');
   buildTimeline();
 }
@@ -584,30 +586,48 @@ function buildTimeline() {
   const wrapW     = wrapper.clientWidth || 900;
   const gridW     = wrapW - LABEL_W - 2;
 
-  const isST    = currentView === 'st';
-  const totalM  = isST ? 7 : 37;   // 0..6 (ST) or 0..36 (full)
-  const ST_M    = 6;
-  const cellW   = gridW / totalM;
+  const isST   = currentView === 'st';
+  const isMT   = currentView === 'mt';
+  const isFull = currentView === 'full';
 
-  // Filter rows: in ST view show only items that START within months 0–6
-  const visRows = isST
-    ? ROWS.filter(r => r.group !== undefined || (r.bar && r.bar[0] < ST_M))
-    : ROWS;
+  // Define month window
+  const startM = isMT ? 6  : 0;
+  const endM   = isST ? 7  : 37;   // exclusive upper bound
+  const totalM = endM - startM;
+  const ST_M   = 6;
 
-  // Phase blocks for header
+  const cellW = gridW / totalM;
+
+  // Filter rows
+  const visRows = ROWS.filter(r => {
+    if (r.group !== undefined) return true;
+    const [s, e] = r.bar;
+    if (isST)   return s < ST_M;           // starts before month 6
+    if (isMT)   return e > ST_M;           // ends after month 6
+    return true;                            // full: show all
+  });
+
+  // Phase header blocks
   const visPhases = isST
-    ? [{ label:'SHORT-TERM CRISIS ACTIONS', start:0, end:totalM, color:'#1A5276' }]
+    ? [{ label:'SHORT-TERM CRISIS ACTIONS (0–6 months)', start:0, end:7, color:'#1A5276' }]
+    : isMT
+    ? [
+        { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
+        { label:'Phase 2 · Core IS',       start:12, end:24, color:'#1E8449' },
+        { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
+        { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
+      ]
     : PHASE_DEFS;
 
   let html = '';
 
-  // Phase row
+  // Phase header row
   html += `<div class="tl-header-row">
-    <div class="tl-label-col">${isST ? 'SHORT-TERM VIEW' : 'FULL PROGRAMME'}</div>
+    <div class="tl-label-col">${isST ? 'SHORT-TERM' : isMT ? 'MEDIUM TO LONG-TERM' : 'FULL PROGRAMME'}</div>
     <div class="tl-grid-area" style="width:${gridW}px;overflow:hidden;">`;
   visPhases.forEach(p => {
-    const s = Math.max(p.start, 0);
-    const e = Math.min(p.end, totalM);
+    const s = Math.max(p.start, startM);
+    const e = Math.min(p.end, endM);
     if (e <= s) return;
     const w = (e - s) * cellW;
     html += `<div class="phase-block" style="width:${w}px;min-width:${w}px;background:${p.color}22;color:${p.color};border-right:1px solid ${p.color}33;">${p.label}</div>`;
@@ -618,8 +638,8 @@ function buildTimeline() {
   html += `<div class="months-row">
     <div class="tl-label-col" style="font-size:9px;color:rgba(200,151,58,0.5);">Month →</div>
     <div style="display:flex;width:${gridW}px;overflow:hidden;">`;
-  for (let m = 0; m < totalM; m++) {
-    const isDivider = !isST && m === ST_M;
+  for (let m = startM; m < endM; m++) {
+    const isDivider = isFull && m === ST_M;
     html += `<div class="month-cell${isDivider ? ' divider-cell' : ''}" style="min-width:${cellW}px;width:${cellW}px;">${m}</div>`;
   }
   html += `</div></div>`;
@@ -630,19 +650,23 @@ function buildTimeline() {
       html += `<div class="tl-row group-row">
         <div class="row-label"><div class="group-label">${r.group}</div></div>
         <div class="row-grid" style="width:${gridW}px;">
-          <div class="grid-bg">${Array.from({length:totalM},(_,i)=>`<div class="grid-col${!isST&&i===ST_M?' divider-col':''}"></div>`).join('')}</div>
+          <div class="grid-bg">${Array.from({length:totalM},(_,i)=>{
+            const m = startM + i;
+            return `<div class="grid-col${isFull&&m===ST_M?' divider-col':''}"></div>`;
+          }).join('')}</div>
         </div>
       </div>`;
       return;
     }
 
     const [s, e, label, color, tip] = r.bar;
-    // In ST view clip bars at month 6
-    const visS = Math.max(s, 0);
-    const visE = isST ? Math.min(e, ST_M) : e;
-    if (visE <= visS && isST && s >= ST_M) return; // skip MT-only items in ST view
 
-    const barL = visS * cellW;
+    // Clip bar to visible window
+    const visS = Math.max(s, startM);
+    const visE = Math.min(e, endM);
+    if (visE <= visS) return;
+
+    const barL = (visS - startM) * cellW;
     const barW = Math.max((visE - visS) * cellW - 2, 8);
     const showLabel = barW > 50;
 
@@ -657,7 +681,10 @@ function buildTimeline() {
         <div class="row-sub">${r.sub}</div>
       </div>
       <div class="row-grid" style="width:${gridW}px;">
-        <div class="grid-bg">${Array.from({length:totalM},(_,i)=>`<div class="grid-col${!isST&&i===ST_M?' divider-col':''}"></div>`).join('')}</div>
+        <div class="grid-bg">${Array.from({length:totalM},(_,i)=>{
+          const m = startM + i;
+          return `<div class="grid-col${isFull&&m===ST_M?' divider-col':''}"></div>`;
+        }).join('')}</div>
         <div class="bar" style="left:${barL}px;width:${barW}px;background:${color};"
              onmouseenter="showTip(event,'${safeLabel}','${safeSub}','${safeTip}')"
              onmouseleave="hideTip()">${showLabel ? label : ''}</div>
