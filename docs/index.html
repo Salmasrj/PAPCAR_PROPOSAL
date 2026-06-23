@@ -36,7 +36,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--off); color: var(--text); font-size: 14px; line-height: 1.6; }
- 
+
 /* ── NAV ── */
 .top-bar {
   background: var(--navy);
@@ -62,7 +62,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .nav-link:hover { background: rgba(200,151,58,0.15); color: var(--gold-l); }
 .nav-link.active { background: rgba(200,151,58,0.2); color: var(--gold-l); }
- 
+
 /* ── SCROLL ANCHORS — offset for sticky nav ── */
 .scroll-anchor {
   display: block;
@@ -71,7 +71,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   visibility: hidden;
   pointer-events: none;
 }
- 
+
 /* ── HERO ── */
 .hero {
   background: var(--navy); padding: 56px 40px 48px; position: relative; overflow: hidden;
@@ -96,10 +96,10 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .stat { display: flex; flex-direction: column; gap: 2px; }
 .stat-value { font-family: var(--font-display); font-size: 28px; color: var(--gold); line-height: 1; }
 .stat-label { font-size: 11px; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.08em; }
- 
+
 /* ── MAIN ── */
 .main { max-width: 1400px; margin: 0 auto; padding: 48px 40px; }
- 
+
 .section-header {
   display: flex; align-items: flex-end; justify-content: space-between;
   margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1.5px solid var(--gray1);
@@ -107,7 +107,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
 .section-title   { font-family: var(--font-display); font-size: 24px; color: var(--navy); line-height: 1.2; }
 .section-desc    { font-size: 12px; color: var(--gray3); max-width: 400px; text-align: right; line-height: 1.6; }
- 
+
 /* ── TIMELINE TOGGLE ── */
 .toggle-bar {
   display: flex; gap: 4px; background: var(--white); padding: 5px;
@@ -120,7 +120,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .toggle-btn.active { background: var(--navy); color: var(--white); }
 .toggle-btn:hover:not(.active) { background: var(--off); color: var(--navy); }
- 
+
 /* ── LEGEND ── */
 .legend {
   display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;
@@ -129,14 +129,14 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 }
 .legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--gray3); font-weight: 500; }
 .legend-dot  { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
- 
+
 /* ── TIMELINE ── */
 .timeline-wrapper { overflow-x: auto; padding-bottom: 12px; border-radius: var(--radius); }
 .timeline-wrapper::-webkit-scrollbar { height: 5px; }
 .timeline-wrapper::-webkit-scrollbar-track { background: var(--gray1); border-radius: 3px; }
 .timeline-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 .timeline-container { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
- 
+
 .tl-header-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
 .tl-label-col  {
   min-width: 210px; width: 210px; padding: 10px 14px;
@@ -159,7 +159,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   font-family: var(--font-mono);
 }
 .month-cell.divider-cell { border-right: 2px solid rgba(200,151,58,0.5); color: var(--gold-l); font-weight: 700; }
- 
+
 .tl-row {
   display: flex; align-items: stretch; border-bottom: 1px solid var(--gray1); min-height: 44px;
   transition: background 0.1s;
@@ -167,7 +167,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .tl-row:last-child { border-bottom: none; }
 .tl-row:hover { background: rgba(27,42,74,0.02); }
 .tl-row.group-row { background: var(--off); min-height: 34px; }
- 
+
 .row-label {
   min-width: 210px; width: 210px; padding: 8px 14px;
   border-right: 1px solid var(--gray1); display: flex; flex-direction: column;
@@ -177,12 +177,12 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .row-name { font-size: 11px; font-weight: 600; color: var(--navy); line-height: 1.3; }
 .row-sub  { font-size: 10px; color: var(--gray3); }
 .group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy2); }
- 
+
 .row-grid { flex: 1; position: relative; display: flex; align-items: center; min-height: inherit; }
 .grid-bg  { position: absolute; inset: 0; display: flex; pointer-events: none; }
 .grid-col { flex: 1; border-right: 1px solid var(--gray1); }
 .grid-col.divider-col { border-right: 2px dashed rgba(200,151,58,0.35); }
- 
+
 .bar {
   position: absolute; height: 24px; border-radius: 4px;
   display: flex; align-items: center; padding: 0 7px;
@@ -192,7 +192,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   transition: opacity 0.15s, transform 0.15s;
 }
 .bar:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.25); }
- 
+
 /* ── TOOLTIP ── */
 .tooltip {
   display: none; position: fixed; background: var(--navy); color: var(--white);
@@ -204,7 +204,7 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
 .tooltip-title { font-weight: 700; margin-bottom: 4px; color: var(--gold); font-size: 12px; }
 .tooltip-sub   { font-size: 10px; color: var(--gray2); margin-bottom: 6px; }
 .tooltip-body  { font-size: 11px; color: #c8d0e0; line-height: 1.55; }
- 
+
 /* ── PHASE CARDS ── */
 .phases-strip {
   display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 32px;
@@ -221,84 +221,172 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
   padding-top: 10px; border-top: 1px solid var(--gray1);
 }
 .phase-gate strong { color: var(--navy); font-size: 10px; display: block; margin-bottom: 3px; }
- 
-/* ── WBS ── */
+
+/* ── WBS TREE ── */
 .wbs-section { margin-top: 64px; }
-.wp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 18px; }
- 
-.wp-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--gray1); }
-.wp-header {
-  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
-  cursor: pointer; user-select: none; transition: background 0.1s;
-  border-bottom: 1px solid transparent;
-}
-.wp-header:hover { background: var(--off); }
-.wp-header.open  { border-bottom-color: var(--gray1); }
-.wp-badge {
-  width: 34px; height: 34px; border-radius: 7px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  color: var(--white); flex-shrink: 0;
-}
-.wp-info { flex: 1; }
-.wp-number { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray3); margin-bottom: 2px; }
-.wp-title  { font-size: 13px; font-weight: 700; color: var(--navy); }
-.wp-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-.wp-count  { font-size: 11px; font-weight: 600; color: var(--gray3); }
-.chevron   { font-size: 14px; color: var(--gray2); transition: transform 0.2s; }
-.chevron.open { transform: rotate(180deg); }
- 
-.del-list { display: none; }
-.del-list.open { display: block; }
- 
-.deliverable {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 9px 18px; border-bottom: 1px solid var(--gray1); transition: background 0.1s;
-}
-.deliverable:last-child { border-bottom: none; }
-.deliverable:hover { background: var(--off); }
-.del-id     { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--gold); min-width: 30px; padding-top: 1px; flex-shrink: 0; }
-.del-body   { flex: 1; }
-.del-title  { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 2px; line-height: 1.35; }
-.del-output { font-size: 10px; color: var(--gray3); line-height: 1.4; }
-.del-owner  { font-size: 10px; color: var(--gray2); font-style: italic; margin-top: 2px; }
-.del-time   {
-  font-size: 10px; font-weight: 600; color: var(--navy2);
-  background: var(--off); padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;
-}
- 
-/* ── RISKS ── */
-.risk-section { margin-top: 64px; }
-.risk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 14px; }
-.risk-card {
+.wbs-tree-wrap {
   background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 14px 18px; border-left: 4px solid var(--gray2);
-  border-top: 1px solid var(--gray1); border-right: 1px solid var(--gray1); border-bottom: 1px solid var(--gray1);
-  display: flex; flex-direction: column; gap: 8px;
+  border: 1px solid var(--gray1); overflow-x: auto; padding: 32px 16px 24px;
 }
-.risk-card.critical { border-left-color: var(--red); }
-.risk-card.high     { border-left-color: var(--amber); }
-.risk-card.medium   { border-left-color: var(--blue); }
-.risk-card.low      { border-left-color: var(--green); }
-.risk-top  { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-.risk-title { font-size: 12px; font-weight: 700; color: var(--navy); line-height: 1.35; }
-.risk-badge {
-  padding: 2px 9px; border-radius: 10px; font-size: 10px; font-weight: 700;
-  white-space: nowrap; flex-shrink: 0;
+.wbs-tree-wrap::-webkit-scrollbar { height: 5px; }
+.wbs-tree-wrap::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* tree built with CSS flexbox — root at top, branches downward */
+.tree { display: flex; flex-direction: column; align-items: center; min-width: 1200px; }
+
+/* Level 0: root */
+.tree-root {
+  background: var(--navy); color: var(--white); border-radius: 8px;
+  padding: 10px 28px; font-family: var(--font-display); font-size: 16px;
+  box-shadow: var(--shadow2); position: relative; z-index: 2;
+  border: 2px solid var(--gold);
 }
-.critical .risk-badge { background: #FDE8E8; color: var(--red); }
-.high     .risk-badge { background: #FEF3D0; color: var(--amber); }
-.medium   .risk-badge { background: #E8F1FA; color: var(--blue); }
-.low      .risk-badge { background: #E9F5EE; color: var(--green); }
-.risk-scores { display: flex; gap: 12px; font-size: 10px; color: var(--gray3); font-weight: 500; }
-.risk-mit { font-size: 11px; color: var(--gray3); line-height: 1.55; padding-top: 8px; border-top: 1px solid var(--gray1); }
- 
+
+/* vertical connector root → WPs */
+.tree-v-root {
+  width: 2px; height: 28px; background: var(--gold); flex-shrink: 0;
+}
+
+/* row of WP nodes */
+.tree-wp-row {
+  display: flex; align-items: flex-start; justify-content: center;
+  position: relative; gap: 0;
+}
+/* horizontal line spanning all WP nodes */
+.tree-wp-row::before {
+  content: ''; position: absolute; top: 0; left: 50px; right: 50px;
+  height: 2px; background: var(--gold); z-index: 0;
+}
+
+/* one WP column: vertical connector + node + vertical connector + deliverables */
+.tree-wp-col {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1; min-width: 160px; max-width: 220px; padding: 0 6px;
+  position: relative;
+}
+.tree-v-wp-top { width: 2px; height: 24px; flex-shrink: 0; }
+
+.tree-wp-node {
+  border-radius: 7px; padding: 8px 10px; text-align: center;
+  cursor: pointer; user-select: none; position: relative; z-index: 1;
+  transition: opacity 0.15s, transform 0.15s; width: 100%;
+  box-shadow: var(--shadow);
+}
+.tree-wp-node:hover { opacity: 0.85; transform: translateY(-1px); }
+.tree-wp-id   { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
+.tree-wp-name { font-size: 11px; font-weight: 700; color: var(--white); line-height: 1.3; }
+.tree-wp-cnt  { font-size: 10px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+
+.tree-v-wp-bot { width: 2px; height: 20px; flex-shrink: 0; }
+
+/* deliverable nodes column */
+.tree-del-col {
+  display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%;
+}
+.tree-del-item {
+  display: flex; flex-direction: column; align-items: center; width: 100%;
+}
+.tree-del-v { width: 2px; height: 12px; flex-shrink: 0; }
+.tree-del-node {
+  background: var(--off); border: 1px solid var(--gray1); border-radius: 6px;
+  padding: 5px 8px; width: 100%; cursor: default;
+  transition: background 0.1s, box-shadow 0.1s; position: relative;
+}
+.tree-del-node:hover { background: var(--white); box-shadow: var(--shadow); }
+.tree-del-id   { font-family: var(--font-mono); font-size: 9px; font-weight: 700; margin-bottom: 2px; }
+.tree-del-title{ font-size: 10px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.tree-del-time { font-size: 9px; color: var(--gray3); margin-top: 2px; }
+
+/* collapsed state — hide deliverable columns */
+.tree-del-col.collapsed { display: none; }
+.tree-v-wp-bot.collapsed { display: none; }
+
+/* ── RISK MATRIX ── */
+.risk-section { margin-top: 64px; }
+.risk-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: start;
+}
+.risk-matrix-wrap {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  border: 1px solid var(--gray1); padding: 24px;
+}
+.risk-matrix-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold); margin-bottom: 16px;
+}
+.matrix-outer { display: flex; gap: 8px; align-items: flex-end; }
+.matrix-y-label {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 10px; font-weight: 700; color: var(--gray3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  white-space: nowrap; padding-bottom: 24px;
+}
+.matrix-inner { flex: 1; }
+.matrix-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr); gap: 4px;
+}
+.matrix-cell {
+  border-radius: 6px; min-height: 100px; padding: 8px;
+  display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start;
+  position: relative;
+}
+.matrix-cell-label {
+  position: absolute; bottom: 5px; right: 7px;
+  font-size: 9px; font-weight: 700; opacity: 0.45; text-transform: uppercase; letter-spacing: 0.08em;
+}
+/* row 3 (impact=3) top, row 1 bottom — CSS grid row 1 = top visually */
+/* col 1 = likelihood 1, col 3 = likelihood 3 */
+.cell-11 { background: #E9F5EE; } /* low */
+.cell-12 { background: #E9F5EE; }
+.cell-13 { background: #FEF3D0; } /* high */
+.cell-21 { background: #E9F5EE; }
+.cell-22 { background: #FEF3D0; }
+.cell-23 { background: #FDE8E8; } /* critical */
+.cell-31 { background: #FEF3D0; }
+.cell-32 { background: #FDE8E8; }
+.cell-33 { background: #FDE8E8; }
+
+.matrix-x-labels { display: flex; margin-top: 8px; padding-left: 0; gap: 4px; }
+.matrix-x-label  { flex: 1; text-align: center; font-size: 10px; font-weight: 600; color: var(--gray3); }
+.matrix-x-title  { text-align: center; font-size: 10px; font-weight: 700; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.matrix-y-labels { display: flex; flex-direction: column; gap: 4px; margin-bottom: 0; justify-content: space-around; padding-bottom: 24px; }
+.matrix-y-label-item { font-size: 10px; font-weight: 600; color: var(--gray3); min-height: 100px; display: flex; align-items: center; }
+
+.risk-bubble {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  color: var(--white); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.risk-bubble:hover { transform: scale(1.15); box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
+
+/* selected risk detail panel */
+.risk-detail {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  border: 1px solid var(--gray1); padding: 20px; position: sticky; top: 72px;
+}
+.risk-detail-hint { font-size: 12px; color: var(--gray3); font-style: italic; text-align: center; margin-top: 40px; }
+.risk-detail-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700; margin-bottom: 12px;
+}
+.risk-detail-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+.risk-detail-scores { display: flex; gap: 16px; font-size: 11px; color: var(--gray3); margin-bottom: 12px; font-weight: 500; }
+.risk-detail-mit { font-size: 12px; color: var(--gray3); line-height: 1.65; border-top: 1px solid var(--gray1); padding-top: 12px; }
+.risk-detail-mit strong { color: var(--navy); }
+
 /* ── UTIL ── */
 .mt-64 { margin-top: 64px; }
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav class="top-bar">
   <div class="top-bar-brand">
@@ -314,9 +402,9 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     <a class="nav-link" href="#risk-anchor">Risks</a>
   </div>
 </nav>
- 
+
 <div class="tooltip" id="tooltip"></div>
- 
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
@@ -337,10 +425,10 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     </div>
   </div>
 </div>
- 
+
 <!-- MAIN -->
 <main class="main">
- 
+
   <!-- TIMELINE SECTION -->
   <span class="scroll-anchor" id="timeline-anchor"></span>
   <div class="section-header">
@@ -350,13 +438,13 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
     </div>
     <div class="section-desc">Toggle between the short-term view (months 0–6) and full 36-month view. Hover any bar for details.</div>
   </div>
- 
+
   <div class="toggle-bar">
     <button class="toggle-btn active" id="btn-st" onclick="setView('st')">Short-term (0–6 months)</button>
     <button class="toggle-btn" id="btn-mt" onclick="setView('mt')">Medium to long-term (6–36 months)</button>
     <button class="toggle-btn" id="btn-full" onclick="setView('full')">Full programme (0–36 months)</button>
   </div>
- 
+
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:#1A5276"></div>Phase 0 · Stabilisation</div>
     <div class="legend-item"><div class="legend-dot" style="background:#117A65"></div>Phase 1 · Foundation</div>
@@ -368,11 +456,11 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
       ST / MT boundary = Month 6
     </div>
   </div>
- 
+
   <div class="timeline-wrapper">
     <div class="timeline-container" id="timeline-container"></div>
   </div>
- 
+
   <!-- WBS SECTION -->
   <div class="wbs-section">
     <span class="scroll-anchor" id="wbs-anchor"></span>
@@ -381,32 +469,67 @@ body { font-family: var(--font-body); background: var(--off); color: var(--text)
         <div class="section-eyebrow">Work breakdown structure</div>
         <div class="section-title">Six Work Packages · 41 Deliverables</div>
       </div>
-      <div class="section-desc">Click any work package to expand its deliverables.</div>
+      <div class="section-desc">Click any work package node to expand or collapse its deliverables.</div>
     </div>
- 
     <div class="phases-strip" id="phases-strip"></div>
-    <div class="wp-grid" id="wbs-grid"></div>
+    <div class="wbs-tree-wrap">
+      <div class="tree" id="wbs-tree"></div>
+    </div>
   </div>
- 
+
   <!-- RISK SECTION -->
   <div class="risk-section">
     <span class="scroll-anchor" id="risk-anchor"></span>
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Risk analysis</div>
-        <div class="section-title">10 Programme Risks</div>
+        <div class="section-title">10 Programme Risks · Likelihood × Impact Matrix</div>
       </div>
-      <div class="section-desc">Scored on likelihood × impact (1–3). Score ≥ 6 = Critical.</div>
+      <div class="section-desc">Click any bubble to see the full risk description and mitigation. Score = Likelihood × Impact (max 9).</div>
     </div>
-    <div class="risk-grid" id="risk-grid"></div>
+    <div class="risk-layout">
+      <div class="risk-matrix-wrap">
+        <div class="risk-matrix-title">Risk Matrix — Likelihood (horizontal) × Impact (vertical)</div>
+        <div class="matrix-outer">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-right:4px;">
+            <div class="matrix-y-labels">
+              <div class="matrix-y-label-item">3 · High</div>
+              <div class="matrix-y-label-item">2 · Med</div>
+              <div class="matrix-y-label-item">1 · Low</div>
+            </div>
+          </div>
+          <div class="matrix-inner">
+            <div class="matrix-grid" id="risk-matrix-grid"></div>
+            <div class="matrix-x-labels">
+              <div class="matrix-x-label">1 · Low</div>
+              <div class="matrix-x-label">2 · Med</div>
+              <div class="matrix-x-label">3 · High</div>
+            </div>
+            <div class="matrix-x-title">Likelihood →</div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;padding-left:8px;padding-bottom:40px;">
+            <div class="matrix-y-label">Impact ↑</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#FDE8E8;border:1px solid #e8a0a0"></div>Critical (score ≥ 6)</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#FEF3D0;border:1px solid #e8c87a"></div>High (score 4–5)</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#E9F5EE;border:1px solid #90c8a0"></div>Low–Medium (score 1–3)</div>
+        </div>
+      </div>
+      <div class="risk-detail" id="risk-detail">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:12px;">Selected Risk</div>
+        <div class="risk-detail-hint">Click any numbered bubble on the matrix to see details and mitigation.</div>
+      </div>
+    </div>
   </div>
- 
+
 </main>
- 
+
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────────
 const LABEL_W = 210;
- 
+
 // Each row: { group } for dividers, or { category, name, sub, bar:[startM, endM, label, color, tip] }
 const ROWS = [
   { group:'SHORT-TERM · Crisis Actions (Waves 0–4)' },
@@ -420,7 +543,7 @@ const ROWS = [
     bar:[1,1.5,'Segmented client comms','#1A5276','Differentiated service protocol by segment: printing houses get direct sales engineer escalation; companies get SLA confirmation; stationers get self-service onboarding to PAPCAR Connect.'] },
   { category:'Wave 4', name:'ERP vendor selection (RFP)', sub:'Months 2–6',
     bar:[2,6,'ERP RFP & vendor selection','#117A65','Issue RFP for ERP package. Evaluate SAP Business One, Sage X3, Microsoft Dynamics 365 Business Central. Select integrator. Define data migration scope from ADV, WMS, and MRP2.'] },
- 
+
   { group:'GOVERNANCE & TEAM BUILD' },
   { category:'WP2', name:'CIO hire & IS governance', sub:'Months 1–3',
     bar:[1,3,'CIO hire','#1A5276','Critical-path hire. CIO reports to General Management. IS Steering Committee constituted. First SteerCo meeting by month 2. Blocks all downstream governance decisions.'] },
@@ -428,7 +551,7 @@ const ROWS = [
     bar:[3,5,'PM + Change Management Lead','#117A65','IS Programme Manager and Change Management Lead recruited or engaged. Programme management tooling deployed. Enterprise Architect search begins.'] },
   { category:'WP2', name:'Data Governance setup', sub:'Months 4–6',
     bar:[4,6,'Data Governance + MDM','#117A65','Data Governance Committee active. MDM tool selected. Master data cleansing begins across 5 incompatible legacy systems before ERP migration.'] },
- 
+
   { group:'PAPCAR CONNECT (MVP → EXTENDED)' },
   { category:'WP3', name:'Knowledge transfer + pilot', sub:'Months 1–2',
     bar:[1,2,'PC knowledge transfer','#C8973A','Codebase handed to internal developer or maintenance partner. Pilot deployment in 3 volunteer SUs before national rollout. Lessons learned documented.'] },
@@ -436,13 +559,13 @@ const ROWS = [
     bar:[2,4,'PC national rollout','#C8973A','All 20 sales units live on PAPCAR Connect. Failed-sales logging active. Production dashboard showing Le Havre (34%) vs Bordeaux (98%) imbalance in real time.'] },
   { category:'WP3', name:'B2B portal extension', sub:'Months 9–12',
     bar:[9,12,'EDI + SLA extension','#C8973A','EDI-based automated replenishment for stationers. Client portal extended with invoice download and contractual SLA tracking for companies.'] },
- 
+
   { group:'CATALOGUE & PLM' },
   { category:'WP4', name:'SKU freeze + withdrawal', sub:'Months 1–8',
     bar:[1,8,'Catalogue clean-up','#1A5276','Immediate SKU introduction freeze. ABC-XYZ analysis complete by month 6. ~3,500–4,000 slow-movers withdrawn from active stock by month 8. Made-to-order terms published.'] },
   { category:'WP4', name:'PLM tool selection + deploy', sub:'Months 9–15',
     bar:[9,15,'PLM deployment (Akeneo)','#6C3483','PLM tool selected and deployed (Akeneo PIM or equivalent). Lifecycle stages activated: introduction, growth, maturity, sunset. Prevents catalogue bloat from recurring.'] },
- 
+
   { group:'ERP DEPLOYMENT' },
   { category:'WP5', name:'ERP Phase 1 — 20 Sales Units', sub:'Months 6–18',
     bar:[6,18,'ERP Phase 1 (20 SUs)','#117A65','ERP order management and inventory for all 20 SUs. Replaces ADV + WMS. Single stock model. Automated availability check and delivery commitment. Gate: data cleansing complete.'] },
@@ -454,7 +577,7 @@ const ROWS = [
     bar:[18,24,'SCM module','#6C3483','SCM configured on ERP. Algorithmic reorder signals per SKU per SU. Trained on 12+ months of PAPCAR Connect failed-sales data accumulated since month 3.'] },
   { category:'WP5', name:'Legacy decommission', sub:'Months 24–26',
     bar:[24,26,'ADV/WMS/MRP2 retired','#C0392B','ADV (1995), WMS (1990 Unix), and MRP2 (1990 AS/400) decommissioned. 50 on-premises servers progressively retired. Final migration to ERP confirmed complete.'] },
- 
+
   { group:'DATA PLATFORM & ADVANCED CAPABILITIES' },
   { category:'WP6', name:'Cloud infrastructure migration', sub:'Months 12–18',
     bar:[12,18,'Cloud migration (Azure/AWS)','#6C3483','Replace 50 ageing on-premises servers with cloud infrastructure. Managed by cloud MSP. Eliminates single-point-of-failure risk. Enables AI and digital twin in later phases.'] },
@@ -467,7 +590,7 @@ const ROWS = [
   { category:'WP6', name:'Digital twin prototype', sub:'Months 28–34',
     bar:[28,34,'Digital twin (supply chain)','#C0392B','Supply chain simulation model enabling scenario planning: SU closure, production failure, demand spike. Requires cloud + unified platform as infrastructure.'] },
 ];
- 
+
 const PHASES = [
   { num:'0', title:'Stabilisation', range:'Months 0–3', color:'#1A5276',
     gate:'Order fulfilment rate above 80%, CIO in post, PAPCAR Connect live in pilot units.' },
@@ -480,7 +603,7 @@ const PHASES = [
   { num:'4', title:'Strategic Capability', range:'Months 30–36', color:'#C0392B',
     gate:'Full IS governance maturity, algorithmic demand planning operational.' },
 ];
- 
+
 const WPS = [
   { id:'WP1', title:'Consulting Engagement', color:'#1A5276', deliverables:[
     { id:'1.1', title:'Situation analysis (7 perspectives)', output:'Section 2 of the report', owner:'Leopold + Alexandre', time:'Complete' },
@@ -537,7 +660,7 @@ const WPS = [
     { id:'6.6', title:'B2B portal: SLA tracking + self-service', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
   ]},
 ];
- 
+
 const RISKS = [
   { title:'Poor master data quality blocks ERP migration', l:3, i:3, score:'9', level:'critical',
     mit:'Data governance and MDM cleansing starts at month 3, well before ERP go-live. Data Governance Officer accountable for migration readiness gate.' },
@@ -560,10 +683,10 @@ const RISKS = [
   { title:'Competitors accelerate IS investment in response', l:1, i:2, score:'2', level:'low',
     mit:'Transformation is not public-facing. Speed of Phase 0 and 1 execution minimises the vulnerability window.' },
 ];
- 
+
 // ── TIMELINE ────────────────────────────────────────────────────────
 let currentView = 'st';
- 
+
 const PHASE_DEFS = [
   { label:'Phase 0 · Stabilisation', start:0,  end:6,  color:'#1A5276' },
   { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
@@ -571,7 +694,7 @@ const PHASE_DEFS = [
   { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
   { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
 ];
- 
+
 function setView(v) {
   currentView = v;
   document.getElementById('btn-st').classList.toggle('active', v === 'st');
@@ -579,25 +702,25 @@ function setView(v) {
   document.getElementById('btn-full').classList.toggle('active', v === 'full');
   buildTimeline();
 }
- 
+
 function buildTimeline() {
   const container = document.getElementById('timeline-container');
   const wrapper   = container.parentElement;
   const wrapW     = wrapper.clientWidth || 900;
   const gridW     = wrapW - LABEL_W - 2;
- 
+
   const isST   = currentView === 'st';
   const isMT   = currentView === 'mt';
   const isFull = currentView === 'full';
- 
+
   // Define month window
   const startM = isMT ? 6  : 0;
   const endM   = isST ? 7  : 37;   // exclusive upper bound
   const totalM = endM - startM;
   const ST_M   = 6;
- 
+
   const cellW = gridW / totalM;
- 
+
   // Filter rows
   const visRows = ROWS.filter(r => {
     if (r.group !== undefined) return true;
@@ -606,7 +729,7 @@ function buildTimeline() {
     if (isMT)   return e > ST_M;           // ends after month 6
     return true;                            // full: show all
   });
- 
+
   // Phase header blocks
   const visPhases = isST
     ? [{ label:'SHORT-TERM CRISIS ACTIONS (0–6 months)', start:0, end:7, color:'#1A5276' }]
@@ -618,9 +741,9 @@ function buildTimeline() {
         { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
       ]
     : PHASE_DEFS;
- 
+
   let html = '';
- 
+
   // Phase header row
   html += `<div class="tl-header-row">
     <div class="tl-label-col">${isST ? 'SHORT-TERM' : isMT ? 'MEDIUM TO LONG-TERM' : 'FULL PROGRAMME'}</div>
@@ -633,7 +756,7 @@ function buildTimeline() {
     html += `<div class="phase-block" style="width:${w}px;min-width:${w}px;background:${p.color}22;color:${p.color};border-right:1px solid ${p.color}33;">${p.label}</div>`;
   });
   html += `</div></div>`;
- 
+
   // Month labels
   html += `<div class="months-row">
     <div class="tl-label-col" style="font-size:9px;color:rgba(200,151,58,0.5);">Month →</div>
@@ -643,7 +766,7 @@ function buildTimeline() {
     html += `<div class="month-cell${isDivider ? ' divider-cell' : ''}" style="min-width:${cellW}px;width:${cellW}px;">${m}</div>`;
   }
   html += `</div></div>`;
- 
+
   // Data rows
   visRows.forEach(r => {
     if (r.group !== undefined) {
@@ -658,22 +781,22 @@ function buildTimeline() {
       </div>`;
       return;
     }
- 
+
     const [s, e, label, color, tip] = r.bar;
- 
+
     // Clip bar to visible window
     const visS = Math.max(s, startM);
     const visE = Math.min(e, endM);
     if (visE <= visS) return;
- 
+
     const barL = (visS - startM) * cellW;
     const barW = Math.max((visE - visS) * cellW - 2, 8);
     const showLabel = barW > 50;
- 
+
     const safeLabel = label.replace(/'/g,"\\'").replace(/"/g,'&quot;');
     const safeTip   = tip.replace(/'/g,"\\'").replace(/"/g,'&quot;');
     const safeSub   = r.sub.replace(/'/g,"\\'");
- 
+
     html += `<div class="tl-row">
       <div class="row-label">
         <div class="row-cat">${r.category}</div>
@@ -691,10 +814,10 @@ function buildTimeline() {
       </div>
     </div>`;
   });
- 
+
   container.innerHTML = html;
 }
- 
+
 // ── TOOLTIP ──────────────────────────────────────────────────────────
 function showTip(e, title, sub, desc) {
   const t = document.getElementById('tooltip');
@@ -714,8 +837,9 @@ function hideTip() { document.getElementById('tooltip').classList.remove('show')
 document.addEventListener('mousemove', e => {
   if (document.getElementById('tooltip').classList.contains('show')) posTip(e);
 });
- 
+
 // ── WBS ──────────────────────────────────────────────────────────────
+// ── WBS TREE ──────────────────────────────────────────────────────────
 function buildWBS() {
   // Phase cards
   document.getElementById('phases-strip').innerHTML = PHASES.map(p => `
@@ -725,61 +849,128 @@ function buildWBS() {
       <div class="phase-range" style="color:${p.color}">${p.range}</div>
       <div class="phase-gate"><strong>Gate condition</strong>${p.gate}</div>
     </div>`).join('');
- 
-  // WP cards — collapsed by default
-  document.getElementById('wbs-grid').innerHTML = WPS.map((wp,idx) => `
-    <div class="wp-card">
-      <div class="wp-header" id="wph-${idx}" onclick="toggleWP(${idx})">
-        <div class="wp-badge" style="background:${wp.color}">${wp.id}</div>
-        <div class="wp-info">
-          <div class="wp-number">Work Package</div>
-          <div class="wp-title">${wp.title}</div>
-        </div>
-        <div class="wp-meta">
-          <div class="wp-count">${wp.deliverables.length} deliverables</div>
-          <div class="chevron" id="chev-${idx}">▾</div>
-        </div>
+
+  // Build top-down tree: root → WP nodes → deliverable nodes
+  const tree = document.getElementById('wbs-tree');
+
+  // Root node
+  tree.innerHTML = `
+    <div class="tree-root">PAPCAR IS Transformation Programme</div>
+    <div class="tree-v-root" style="background:var(--gold)"></div>
+    <div class="tree-wp-row" id="tree-wp-row"></div>`;
+
+  const wpRow = document.getElementById('tree-wp-row');
+
+  WPS.forEach((wp, idx) => {
+    const col = document.createElement('div');
+    col.className = 'tree-wp-col';
+    col.innerHTML = `
+      <div class="tree-v-wp-top" style="background:${wp.color}"></div>
+      <div class="tree-wp-node" id="wpnode-${idx}" onclick="toggleTreeWP(${idx})"
+           style="background:${wp.color}">
+        <div class="tree-wp-id">${wp.id}</div>
+        <div class="tree-wp-name">${wp.title}</div>
+        <div class="tree-wp-cnt">${wp.deliverables.length} deliverables ▾</div>
       </div>
-      <div class="del-list" id="del-${idx}">
+      <div class="tree-v-wp-bot" id="wpvbot-${idx}" style="background:${wp.color}"></div>
+      <div class="tree-del-col collapsed" id="wpdel-${idx}">
         ${wp.deliverables.map(d => `
-          <div class="deliverable">
-            <div class="del-id">${d.id}</div>
-            <div class="del-body">
-              <div class="del-title">${d.title}</div>
-              <div class="del-output">${d.output}</div>
-              <div class="del-owner">${d.owner}</div>
+          <div class="tree-del-item">
+            <div class="tree-del-v" style="background:${wp.color}88"></div>
+            <div class="tree-del-node" style="border-top:2px solid ${wp.color}44">
+              <div class="tree-del-id" style="color:${wp.color}">${d.id}</div>
+              <div class="tree-del-title">${d.title}</div>
+              <div class="tree-del-time">${d.time}</div>
             </div>
-            <div class="del-time">${d.time}</div>
           </div>`).join('')}
-      </div>
-    </div>`).join('');
+      </div>`;
+    wpRow.appendChild(col);
+  });
 }
- 
-function toggleWP(idx) {
-  const list = document.getElementById(`del-${idx}`);
-  const hdr  = document.getElementById(`wph-${idx}`);
-  const chev = document.getElementById(`chev-${idx}`);
-  const open = list.classList.toggle('open');
-  hdr.classList.toggle('open', open);
-  chev.classList.toggle('open', open);
+
+function toggleTreeWP(idx) {
+  const delCol = document.getElementById(`wpdel-${idx}`);
+  const vbot   = document.getElementById(`wpvbot-${idx}`);
+  const node   = document.getElementById(`wpnode-${idx}`);
+  const open   = delCol.classList.toggle('collapsed');
+  vbot.classList.toggle('collapsed', open);
+  // update chevron text
+  const cnt = node.querySelector('.tree-wp-cnt');
+  const wp  = WPS[idx];
+  cnt.textContent = `${wp.deliverables.length} deliverables ${open ? '▾' : '▴'}`;
 }
- 
-// ── RISKS ─────────────────────────────────────────────────────────────
+
+// ── RISK MATRIX ────────────────────────────────────────────────────────
+const CELL_COLORS = {
+  '1-3': '#FDE8E8', '2-3': '#FDE8E8', '3-3': '#FDE8E8',
+  '1-2': '#E9F5EE', '2-2': '#FEF3D0', '3-2': '#FDE8E8',
+  '1-1': '#E9F5EE', '2-1': '#E9F5EE', '3-1': '#FEF3D0',
+};
+const BUBBLE_COLORS = {
+  critical: '#C0392B', high: '#D68910', medium: '#1A5276', low: '#1E8449'
+};
+
 function buildRisks() {
-  document.getElementById('risk-grid').innerHTML = RISKS.map(r => `
-    <div class="risk-card ${r.level}">
-      <div class="risk-top">
-        <div class="risk-title">${r.title}</div>
-        <div class="risk-badge">Score ${r.score} · ${r.level.charAt(0).toUpperCase()+r.level.slice(1)}</div>
-      </div>
-      <div class="risk-scores">
-        <span>Likelihood ${r.l}/3</span>
-        <span>Impact ${r.i}/3</span>
-      </div>
-      <div class="risk-mit"><strong>Mitigation: </strong>${r.mit}</div>
-    </div>`).join('');
+  const grid = document.getElementById('risk-matrix-grid');
+
+  // Build 3×3 grid: rows = impact (3 top, 1 bottom), cols = likelihood (1 left, 3 right)
+  // CSS grid: row 1 = top (impact 3), row 3 = bottom (impact 1)
+  let cells = {};
+  for (let impact = 3; impact >= 1; impact--) {
+    for (let likelihood = 1; likelihood <= 3; likelihood++) {
+      const key = `${likelihood}-${impact}`;
+      const cell = document.createElement('div');
+      cell.className = 'matrix-cell';
+      cell.style.background = CELL_COLORS[key] || '#f5f5f5';
+      // label
+      const score = likelihood * impact;
+      cell.innerHTML = `<div class="matrix-cell-label">${score}</div>`;
+      cell.id = `cell-${key}`;
+      cells[key] = cell;
+      grid.appendChild(cell);
+    }
+  }
+
+  // Place risk bubbles
+  RISKS.forEach((r, i) => {
+    const key = `${r.l}-${r.i}`;
+    const bubble = document.createElement('div');
+    bubble.className = 'risk-bubble';
+    bubble.style.background = BUBBLE_COLORS[r.level];
+    bubble.textContent = i + 1;
+    bubble.title = r.title;
+    bubble.onclick = () => selectRisk(i);
+    if (cells[key]) cells[key].appendChild(bubble);
+  });
 }
- 
+
+function selectRisk(idx) {
+  const r = RISKS[idx];
+  const colors = {
+    critical: { bg: '#FDE8E8', fg: '#C0392B', label: 'Critical' },
+    high:     { bg: '#FEF3D0', fg: '#D68910', label: 'High' },
+    medium:   { bg: '#E8F1FA', fg: '#1A5276', label: 'Medium' },
+    low:      { bg: '#E9F5EE', fg: '#1E8449', label: 'Low' },
+  };
+  const c = colors[r.level];
+  document.getElementById('risk-detail').innerHTML = `
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:12px;">Risk #${idx+1}</div>
+    <div class="risk-detail-badge" style="background:${c.bg};color:${c.fg}">Score ${r.score} · ${c.label}</div>
+    <div class="risk-detail-title">${r.title}</div>
+    <div class="risk-detail-scores">
+      <span>Likelihood: ${r.l}/3</span>
+      <span>Impact: ${r.i}/3</span>
+      <span>Score: ${r.score}/9</span>
+    </div>
+    <div class="risk-detail-mit"><strong>Mitigation: </strong>${r.mit}</div>`;
+
+  // highlight selected bubble
+  document.querySelectorAll('.risk-bubble').forEach((b, i) => {
+    b.style.transform = i === idx ? 'scale(1.2)' : '';
+    b.style.boxShadow = i === idx ? '0 0 0 3px white, 0 0 0 5px ' + BUBBLE_COLORS[RISKS[i].level] : '';
+  });
+}
+
 // ── NAV ACTIVE STATE ON SCROLL ─────────────────────────────────────────
 function updateActiveNav() {
   const anchors = ['timeline-anchor','wbs-anchor','risk-anchor'];
@@ -793,7 +984,7 @@ function updateActiveNav() {
   links.forEach((l, i) => l.classList.toggle('active', i === current));
 }
 window.addEventListener('scroll', updateActiveNav, { passive: true });
- 
+
 // ── INIT ────────────────────────────────────────────────────────────────
 window.addEventListener('load', () => {
   buildTimeline();
