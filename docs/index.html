@@ -3,1000 +3,1004 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAPCAR — IS Transformation Programme</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>PAPCAR IS Transformation — Croissant Corp</title>
 <style>
-:root {
-  --navy:   #1B2A4A;
-  --navy2:  #243660;
-  --gold:   #C8973A;
-  --gold-l: #E8B86D;
-  --gold-bg:#FDF5E6;
-  --white:  #FFFFFF;
-  --off:    #F7F8FA;
-  --gray1:  #E8EAF0;
-  --gray2:  #B0B8CC;
-  --gray3:  #6B7694;
-  --text:   #1A1F35;
-  --red:    #C0392B;
-  --amber:  #D68910;
-  --green:  #1E8449;
-  --blue:   #1A5276;
-  --teal:   #117A65;
-  --purple: #6C3483;
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body:    'Inter', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
-  --radius: 8px;
-  --shadow: 0 2px 16px rgba(27,42,74,0.10);
-  --shadow2:0 4px 32px rgba(27,42,74,0.16);
-  --nav-h:  56px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); background: var(--off); color: var(--text); font-size: 14px; line-height: 1.6; }
- 
-/* ── NAV ── */
-.top-bar {
-  background: var(--navy);
-  padding: 0 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: var(--nav-h);
-  position: sticky; top: 0; z-index: 200;
-  border-bottom: 2px solid var(--gold);
-}
-.top-bar-brand { display: flex; align-items: center; gap: 14px; }
-.logo-mark {
-  width: 32px; height: 32px; background: var(--gold); border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-size: 16px; color: var(--navy); font-weight: 700;
-}
-.brand-name  { font-family: var(--font-display); font-size: 17px; color: var(--white); }
-.brand-sub   { font-size: 11px; color: var(--gold-l); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
-.nav-links   { display: flex; gap: 4px; }
-.nav-link {
-  padding: 6px 18px; border-radius: 6px; font-size: 13px; font-weight: 500;
-  color: var(--gray2); cursor: pointer; border: none; background: none;
-  text-decoration: none; transition: all 0.15s; display: inline-block;
-}
-.nav-link:hover { background: rgba(200,151,58,0.15); color: var(--gold-l); }
-.nav-link.active { background: rgba(200,151,58,0.2); color: var(--gold-l); }
- 
-/* ── SCROLL ANCHORS — offset for sticky nav ── */
-.scroll-anchor {
-  display: block;
-  height: var(--nav-h);
-  margin-top: calc(-1 * var(--nav-h));
-  visibility: hidden;
-  pointer-events: none;
-}
- 
-/* ── HERO ── */
-.hero {
-  background: var(--navy); padding: 56px 40px 48px; position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,151,58,0.04) 40px, rgba(200,151,58,0.04) 41px),
-    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,151,58,0.03) 40px, rgba(200,151,58,0.03) 41px);
-}
-.hero-content { position: relative; max-width: 1400px; margin: 0 auto; }
-.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.hero-title   { font-family: var(--font-display); font-size: clamp(26px,3.5vw,42px); color: var(--white); line-height: 1.15; margin-bottom: 16px; max-width: 680px; }
-.hero-title em { color: var(--gold); font-style: italic; }
-.hero-crisis {
-  background: rgba(200,151,58,0.12); border-left: 3px solid var(--gold);
-  padding: 14px 18px; border-radius: 0 6px 6px 0; margin-bottom: 28px; max-width: 660px;
-}
-.hero-crisis p { font-size: 13px; color: var(--gray2); line-height: 1.65; }
-.hero-crisis strong { color: var(--gold-l); }
-.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; gap: 2px; }
-.stat-value { font-family: var(--font-display); font-size: 28px; color: var(--gold); line-height: 1; }
-.stat-label { font-size: 11px; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.08em; }
- 
-/* ── MAIN ── */
-.main { max-width: 1400px; margin: 0 auto; padding: 48px 40px; }
- 
-.section-header {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1.5px solid var(--gray1);
-}
-.section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-.section-title   { font-family: var(--font-display); font-size: 24px; color: var(--navy); line-height: 1.2; }
-.section-desc    { font-size: 12px; color: var(--gray3); max-width: 400px; text-align: right; line-height: 1.6; }
- 
-/* ── TIMELINE TOGGLE ── */
-.toggle-bar {
-  display: flex; gap: 4px; background: var(--white); padding: 5px;
-  border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 20px;
-  width: fit-content; border: 1px solid var(--gray1);
-}
-.toggle-btn {
-  padding: 7px 20px; border-radius: 5px; font-size: 12px; font-weight: 600;
-  color: var(--gray3); cursor: pointer; border: none; background: none; transition: all 0.15s;
-}
-.toggle-btn.active { background: var(--navy); color: var(--white); }
-.toggle-btn:hover:not(.active) { background: var(--off); color: var(--navy); }
- 
-/* ── LEGEND ── */
-.legend {
-  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;
-  padding: 12px 18px; background: var(--white); border-radius: var(--radius);
-  border: 1px solid var(--gray1);
-}
-.legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--gray3); font-weight: 500; }
-.legend-dot  { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
- 
-/* ── TIMELINE ── */
-.timeline-wrapper { overflow-x: auto; padding-bottom: 12px; border-radius: var(--radius); }
-.timeline-wrapper::-webkit-scrollbar { height: 5px; }
-.timeline-wrapper::-webkit-scrollbar-track { background: var(--gray1); border-radius: 3px; }
-.timeline-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-.timeline-container { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
- 
-.tl-header-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
-.tl-label-col  {
-  min-width: 210px; width: 210px; padding: 10px 14px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--gold); border-right: 1px solid rgba(255,255,255,0.10);
-  display: flex; align-items: center; flex-shrink: 0;
-}
-.tl-grid-area  { flex: 1; display: flex; position: relative; overflow: hidden; }
-.phase-block   {
-  display: flex; align-items: center; justify-content: center;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 8px 4px; border-right: 1px solid rgba(255,255,255,0.08);
-  text-align: center; color: rgba(255,255,255,0.85); white-space: nowrap; overflow: hidden;
-}
-.months-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.month-cell {
-  flex: 1; padding: 5px 2px; text-align: center;
-  font-size: 9px; font-weight: 600; color: var(--gray3);
-  border-right: 1px solid rgba(255,255,255,0.04);
-  font-family: var(--font-mono);
-}
-.month-cell.divider-cell { border-right: 2px solid rgba(200,151,58,0.5); color: var(--gold-l); font-weight: 700; }
- 
-.tl-row {
-  display: flex; align-items: stretch; border-bottom: 1px solid var(--gray1); min-height: 44px;
-  transition: background 0.1s;
-}
-.tl-row:last-child { border-bottom: none; }
-.tl-row:hover { background: rgba(27,42,74,0.02); }
-.tl-row.group-row { background: var(--off); min-height: 34px; }
- 
-.row-label {
-  min-width: 210px; width: 210px; padding: 8px 14px;
-  border-right: 1px solid var(--gray1); display: flex; flex-direction: column;
-  justify-content: center; gap: 1px; background: inherit; flex-shrink: 0;
-}
-.row-cat  { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--gray2); }
-.row-name { font-size: 11px; font-weight: 600; color: var(--navy); line-height: 1.3; }
-.row-sub  { font-size: 10px; color: var(--gray3); }
-.group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy2); }
- 
-.row-grid { flex: 1; position: relative; display: flex; align-items: center; min-height: inherit; }
-.grid-bg  { position: absolute; inset: 0; display: flex; pointer-events: none; }
-.grid-col { flex: 1; border-right: 1px solid var(--gray1); }
-.grid-col.divider-col { border-right: 2px dashed rgba(200,151,58,0.35); }
- 
-.bar {
-  position: absolute; height: 24px; border-radius: 4px;
-  display: flex; align-items: center; padding: 0 7px;
-  font-size: 9px; font-weight: 600; color: white;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  cursor: default; z-index: 2; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: opacity 0.15s, transform 0.15s;
-}
-.bar:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.25); }
- 
-/* ── TOOLTIP ── */
-.tooltip {
-  display: none; position: fixed; background: var(--navy); color: var(--white);
-  border-radius: 6px; padding: 10px 14px; font-size: 12px; max-width: 260px;
-  line-height: 1.5; z-index: 999; box-shadow: var(--shadow2);
-  border: 1px solid var(--navy2); pointer-events: none;
-}
-.tooltip.show { display: block; }
-.tooltip-title { font-weight: 700; margin-bottom: 4px; color: var(--gold); font-size: 12px; }
-.tooltip-sub   { font-size: 10px; color: var(--gray2); margin-bottom: 6px; }
-.tooltip-body  { font-size: 11px; color: #c8d0e0; line-height: 1.55; }
- 
-/* ── PHASE CARDS ── */
-.phases-strip {
-  display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 32px;
-}
-.phase-card {
-  background: var(--white); border-radius: var(--radius); border: 1px solid var(--gray1);
-  padding: 16px; box-shadow: var(--shadow); border-top: 3px solid var(--gray2);
-}
-.phase-num   { font-family: var(--font-display); font-size: 20px; line-height: 1; margin-bottom: 4px; }
-.phase-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-.phase-range { font-size: 11px; font-weight: 600; margin-bottom: 10px; }
-.phase-gate  {
-  font-size: 10px; color: var(--gray3); line-height: 1.5;
-  padding-top: 10px; border-top: 1px solid var(--gray1);
-}
-.phase-gate strong { color: var(--navy); font-size: 10px; display: block; margin-bottom: 3px; }
- 
-/* ── WBS TREE ── */
-.wbs-section { margin-top: 64px; }
-.wbs-tree-wrap {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  border: 1px solid var(--gray1); overflow-x: auto; padding: 32px 16px 24px;
-}
-.wbs-tree-wrap::-webkit-scrollbar { height: 5px; }
-.wbs-tree-wrap::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
- 
-/* tree built with CSS flexbox — root at top, branches downward */
-.tree { display: flex; flex-direction: column; align-items: center; min-width: 1200px; }
- 
-/* Level 0: root */
-.tree-root {
-  background: var(--navy); color: var(--white); border-radius: 8px;
-  padding: 10px 28px; font-family: var(--font-display); font-size: 16px;
-  box-shadow: var(--shadow2); position: relative; z-index: 2;
-  border: 2px solid var(--gold);
-}
- 
-/* vertical connector root → WPs */
-.tree-v-root {
-  width: 2px; height: 28px; background: var(--gold); flex-shrink: 0;
-}
- 
-/* row of WP nodes */
-.tree-wp-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  position: relative; gap: 0;
-}
-/* horizontal line spanning all WP nodes */
-.tree-wp-row::before {
-  content: ''; position: absolute; top: 0; left: 50px; right: 50px;
-  height: 2px; background: var(--gold); z-index: 0;
-}
- 
-/* one WP column: vertical connector + node + vertical connector + deliverables */
-.tree-wp-col {
-  display: flex; flex-direction: column; align-items: center;
-  flex: 1; min-width: 160px; max-width: 220px; padding: 0 6px;
-  position: relative;
-}
-.tree-v-wp-top { width: 2px; height: 24px; flex-shrink: 0; }
- 
-.tree-wp-node {
-  border-radius: 7px; padding: 8px 10px; text-align: center;
-  cursor: pointer; user-select: none; position: relative; z-index: 1;
-  transition: opacity 0.15s, transform 0.15s; width: 100%;
-  box-shadow: var(--shadow);
-}
-.tree-wp-node:hover { opacity: 0.85; transform: translateY(-1px); }
-.tree-wp-id   { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
-.tree-wp-name { font-size: 11px; font-weight: 700; color: var(--white); line-height: 1.3; }
-.tree-wp-cnt  { font-size: 10px; color: rgba(255,255,255,0.65); margin-top: 3px; }
- 
-.tree-v-wp-bot { width: 2px; height: 20px; flex-shrink: 0; }
- 
-/* deliverable nodes column */
-.tree-del-col {
-  display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%;
-}
-.tree-del-item {
-  display: flex; flex-direction: column; align-items: center; width: 100%;
-}
-.tree-del-v { width: 2px; height: 12px; flex-shrink: 0; }
-.tree-del-node {
-  background: var(--off); border: 1px solid var(--gray1); border-radius: 6px;
-  padding: 5px 8px; width: 100%; cursor: default;
-  transition: background 0.1s, box-shadow 0.1s; position: relative;
-}
-.tree-del-node:hover { background: var(--white); box-shadow: var(--shadow); }
-.tree-del-id   { font-family: var(--font-mono); font-size: 9px; font-weight: 700; margin-bottom: 2px; }
-.tree-del-title{ font-size: 10px; font-weight: 600; color: var(--navy); line-height: 1.3; }
-.tree-del-time { font-size: 9px; color: var(--gray3); margin-top: 2px; }
- 
-/* collapsed state — hide deliverable columns */
-.tree-del-col.collapsed { display: none; }
-.tree-v-wp-bot.collapsed { display: none; }
- 
-/* ── RISK MATRIX ── */
-.risk-section { margin-top: 64px; }
-.risk-layout {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 24px;
-  align-items: start;
-}
-.risk-matrix-wrap {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  border: 1px solid var(--gray1); padding: 24px;
-}
-.risk-matrix-title {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: var(--gold); margin-bottom: 16px;
-}
-.matrix-outer { display: flex; gap: 8px; align-items: flex-end; }
-.matrix-y-label {
-  writing-mode: vertical-rl; transform: rotate(180deg);
-  font-size: 10px; font-weight: 700; color: var(--gray3);
-  text-transform: uppercase; letter-spacing: 0.1em;
-  white-space: nowrap; padding-bottom: 24px;
-}
-.matrix-inner { flex: 1; }
-.matrix-grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(3,1fr); gap: 4px;
-}
-.matrix-cell {
-  border-radius: 6px; min-height: 100px; padding: 8px;
-  display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start;
-  position: relative;
-}
-.matrix-cell-label {
-  position: absolute; bottom: 5px; right: 7px;
-  font-size: 9px; font-weight: 700; opacity: 0.45; text-transform: uppercase; letter-spacing: 0.08em;
-}
-/* row 3 (impact=3) top, row 1 bottom — CSS grid row 1 = top visually */
-/* col 1 = likelihood 1, col 3 = likelihood 3 */
-.cell-11 { background: #E9F5EE; } /* low */
-.cell-12 { background: #E9F5EE; }
-.cell-13 { background: #FEF3D0; } /* high */
-.cell-21 { background: #E9F5EE; }
-.cell-22 { background: #FEF3D0; }
-.cell-23 { background: #FDE8E8; } /* critical */
-.cell-31 { background: #FEF3D0; }
-.cell-32 { background: #FDE8E8; }
-.cell-33 { background: #FDE8E8; }
- 
-.matrix-x-labels { display: flex; margin-top: 8px; padding-left: 0; gap: 4px; }
-.matrix-x-label  { flex: 1; text-align: center; font-size: 10px; font-weight: 600; color: var(--gray3); }
-.matrix-x-title  { text-align: center; font-size: 10px; font-weight: 700; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-.matrix-y-labels { display: flex; flex-direction: column; gap: 4px; margin-bottom: 0; justify-content: space-around; padding-bottom: 24px; }
-.matrix-y-label-item { font-size: 10px; font-weight: 600; color: var(--gray3); min-height: 100px; display: flex; align-items: center; }
- 
-.risk-bubble {
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-  color: var(--white); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0;
-  border: 2px solid rgba(255,255,255,0.4);
-}
-.risk-bubble:hover { transform: scale(1.15); box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
- 
-/* selected risk detail panel */
-.risk-detail {
-  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-  border: 1px solid var(--gray1); padding: 20px; position: sticky; top: 72px;
-}
-.risk-detail-hint { font-size: 12px; color: var(--gray3); font-style: italic; text-align: center; margin-top: 40px; }
-.risk-detail-badge {
-  display: inline-block; padding: 3px 10px; border-radius: 10px;
-  font-size: 11px; font-weight: 700; margin-bottom: 12px;
-}
-.risk-detail-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
-.risk-detail-scores { display: flex; gap: 16px; font-size: 11px; color: var(--gray3); margin-bottom: 12px; font-weight: 500; }
-.risk-detail-mit { font-size: 12px; color: var(--gray3); line-height: 1.65; border-top: 1px solid var(--gray1); padding-top: 12px; }
-.risk-detail-mit strong { color: var(--navy); }
- 
-/* ── UTIL ── */
-.mt-64 { margin-top: 64px; }
+  /* ── Tokens ── */
+  :root {
+    --navy:   #1F3864;
+    --navy2:  #162952;
+    --gold:   #C9940A;
+    --gold2:  #E8AA12;
+    --white:  #FFFFFF;
+    --off:    #F7F8FA;
+    --grey1:  #E8EAED;
+    --grey2:  #C4C8D0;
+    --grey3:  #8891A0;
+    --text:   #1A1F2E;
+    --text2:  #4A5568;
+    --green:  #1A7A4A;
+    --amber:  #B45309;
+    --red:    #B91C1C;
+    --font:   'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--off);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy2);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+  .logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: .5px;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: var(--gold2);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    line-height: 1;
+  }
+  .header-right {
+    font-size: 12px;
+    color: var(--grey2);
+    text-align: right;
+  }
+  .header-right strong { color: var(--gold2); }
+
+  /* ── Hero banner ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0D1B35 100%);
+    padding: 48px 40px 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 2px solid rgba(201,148,10,.2);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: 20px; top: 20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 2px solid rgba(201,148,10,.12);
+  }
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .hero p {
+    font-size: 14px;
+    color: rgba(255,255,255,.65);
+    max-width: 560px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .hero-stat { }
+  .hero-stat .val {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold2);
+    line-height: 1;
+  }
+  .hero-stat .lbl {
+    font-size: 11px;
+    color: rgba(255,255,255,.55);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+
+  /* ── Tabs ── */
+  .tabs-bar {
+    background: var(--white);
+    border-bottom: 2px solid var(--grey1);
+    display: flex;
+    padding: 0 40px;
+    gap: 0;
+    position: sticky;
+    top: 64px;
+    z-index: 90;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
+  .tab-btn {
+    padding: 16px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--grey3);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    letter-spacing: .3px;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+  /* ── Main content ── */
+  .content {
+    padding: 36px 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Section headers ── */
+  .sec-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .sec-sub {
+    font-size: 13px;
+    color: var(--grey3);
+    margin-bottom: 28px;
+  }
+
+  /* ────────────────────────────────────────────────
+     GANTT
+  ──────────────────────────────────────────────── */
+  .gantt-wrapper { overflow-x: auto; }
+  .gantt-table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .gantt-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 8px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid var(--navy2);
+    white-space: nowrap;
+  }
+  .gantt-table th.label-col { text-align: left; padding-left: 12px; width: 260px; }
+  .gantt-table td {
+    border: 1px solid var(--grey1);
+    padding: 0;
+    height: 36px;
+  }
+  .gantt-table td.label {
+    padding: 6px 12px;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--white);
+    white-space: nowrap;
+  }
+  .gantt-table td.label.wp {
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .gantt-table td.label.sub {
+    background: var(--off);
+    padding-left: 22px;
+    font-weight: 400;
+    font-size: 11.5px;
+    color: var(--text2);
+  }
+  .gantt-table tr:hover td:not(.label) { background: rgba(201,148,10,.04); }
+  .bar {
+    height: 20px;
+    border-radius: 3px;
+    margin: 8px 3px;
+    opacity: .92;
+    position: relative;
+  }
+  .bar-p0  { background: #4A90D9; }
+  .bar-p1  { background: #2E7D52; }
+  .bar-p2  { background: var(--gold); }
+  .bar-p3  { background: #8E44AD; }
+  .bar-p4  { background: #C0392B; }
+  .bar-milestone {
+    height: 20px;
+    width: 20px;
+    background: var(--navy);
+    transform: rotate(45deg);
+    margin: 8px auto;
+    border-radius: 2px;
+  }
+  .phase-header td {
+    background: rgba(31,56,100,.07);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    padding: 5px 12px;
+  }
+  .month-label { font-size: 10px; text-align: center; color: var(--grey3); padding: 4px 2px; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ────────────────────────────────────────────────
+     WBS
+  ──────────────────────────────────────────────── */
+  .wbs-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+  .wbs-col-header {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px 8px 0 0;
+    padding: 14px 12px 12px;
+    text-align: center;
+  }
+  .wbs-col-header .wp-num {
+    font-size: 11px;
+    color: var(--gold2);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .wbs-col-header .wp-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+  .wbs-col-header .wp-range {
+    font-size: 10px;
+    color: rgba(255,255,255,.55);
+    margin-top: 5px;
+  }
+  .wbs-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .wbs-item {
+    background: var(--white);
+    border: 1px solid var(--grey1);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 12px;
+    font-size: 11.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .wbs-item .item-id {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .wbs-item .item-owner {
+    font-size: 10px;
+    color: var(--grey3);
+    margin-top: 4px;
+  }
+  .wbs-item.critical { border-left-color: #C0392B; }
+  .wbs-item.high { border-left-color: var(--gold); }
+  .wbs-item.medium { border-left-color: #2E7D52; }
+
+  /* ────────────────────────────────────────────────
+     RISK MATRIX
+  ──────────────────────────────────────────────── */
+  .risk-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .risk-matrix-grid {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid var(--grey1);
+  }
+  .risk-matrix-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .matrix-visual {
+    display: grid;
+    grid-template-columns: 28px repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr) 28px;
+    gap: 4px;
+    height: 300px;
+  }
+  .matrix-cell {
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: transform .1s;
+  }
+  .matrix-cell:hover { transform: scale(1.03); z-index: 10; }
+  .cell-low  { background: #D4EDDA; }
+  .cell-med  { background: #FFF3CD; }
+  .cell-high { background: #F8D7DA; }
+  .cell-crit { background: #F5C6CB; }
+  .matrix-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    z-index: 2;
+  }
+  .axis-label {
+    font-size: 10px;
+    color: var(--grey3);
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .axis-label.y {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .axis-tick {
+    font-size: 10px;
+    color: var(--grey3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .risk-table-section { }
+  .risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .risk-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .risk-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--grey1);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  .risk-table tr:nth-child(even) td { background: var(--off); }
+  .risk-table tr:hover td { background: rgba(201,148,10,.05); }
+  .risk-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    white-space: nowrap;
+  }
+  .rb-critical { background: #FEE2E2; color: #991B1B; }
+  .rb-high     { background: #FEF3C7; color: #92400E; }
+  .rb-medium   { background: #D1FAE5; color: #065F46; }
+  .rb-low      { background: #EDE9FE; color: #5B21B6; }
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .sp-9 { background: #B91C1C; }
+  .sp-6 { background: #D97706; }
+  .sp-4 { background: #C9940A; }
+  .sp-3 { background: #2E7D52; }
+  .sp-2 { background: #6B7280; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy2);
+    color: rgba(255,255,255,.45);
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    letter-spacing: .5px;
+  }
+  footer strong { color: var(--gold2); }
+
+  /* ── Tooltip ── */
+  .tooltip {
+    position: absolute;
+    background: var(--navy2);
+    color: var(--white);
+    font-size: 11px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 999;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    header, .hero, .content, .tabs-bar { padding-left: 20px; padding-right: 20px; }
+    .risk-layout { grid-template-columns: 1fr; }
+    .wbs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
- 
-<!-- NAV -->
-<nav class="top-bar">
-  <div class="top-bar-brand">
-    <div class="logo-mark">CC</div>
+
+<!-- ── Header ── -->
+<header>
+  <div class="logo">
+    <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+      <circle cx="22" cy="20" r="14" fill="#C9940A"/>
+      <circle cx="18" cy="20" r="14" fill="#1F3864"/>
+      <circle cx="20" cy="20" r="7" fill="#1F3864"/>
+    </svg>
     <div>
-      <div class="brand-name">Croissant Corp</div>
-      <div class="brand-sub">PAPCAR Transformation</div>
+      <div class="logo-text">CROISSANT CORP</div>
+      <span class="logo-sub">Corporate Transformation Consulting</span>
     </div>
   </div>
-  <div class="nav-links">
-    <a class="nav-link active" href="#timeline-anchor">Timeline</a>
-    <a class="nav-link" href="#wbs-anchor">WBS</a>
-    <a class="nav-link" href="#risk-anchor">Risks</a>
+  <div class="header-right">
+    <strong>PAPCAR IS Transformation</strong><br>
+    Project Dashboard · June 2026
   </div>
-</nav>
- 
-<div class="tooltip" id="tooltip"></div>
- 
-<!-- HERO -->
+</header>
+
+<!-- ── Hero ── -->
 <div class="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">Croissant Corp · Consulting Proposal · June 2026</div>
-    <h1 class="hero-title">PAPCAR <em>IS Transformation</em> Programme</h1>
-    <div class="hero-crisis">
-      <p>
-        PAPCAR is losing <strong>1 in 3 orders</strong> due to stock fragmentation across 20 sales units, a catalogue of 5,000+ SKUs with no lifecycle governance, and five isolated IS with no shared data model.
-        <strong>PAPCAR Connect</strong> resolves the immediate crisis. The 36-month programme rebuilds the IS as a <strong>strategic competitive asset</strong>.
-      </p>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-value">36</div><div class="stat-label">Month programme</div></div>
-      <div class="stat"><div class="stat-value">6</div><div class="stat-label">Work packages</div></div>
-      <div class="stat"><div class="stat-value">41</div><div class="stat-label">Deliverables</div></div>
-      <div class="stat"><div class="stat-value">5</div><div class="stat-label">Phases</div></div>
-      <div class="stat"><div class="stat-value">12</div><div class="stat-label">Requirements</div></div>
-    </div>
+  <div class="hero-label">Strategic Transformation Programme</div>
+  <h1>PAPCAR — IS Transformation<br>Project Dashboard</h1>
+  <p>36-month programme across 6 work packages. Interactive views of the Gantt planning, work breakdown structure, and risk register.</p>
+  <div class="hero-meta">
+    <div class="hero-stat"><div class="val">36</div><div class="lbl">Months</div></div>
+    <div class="hero-stat"><div class="val">6</div><div class="lbl">Work Packages</div></div>
+    <div class="hero-stat"><div class="val">5</div><div class="lbl">Phases</div></div>
+    <div class="hero-stat"><div class="val">10</div><div class="lbl">Key Risks</div></div>
   </div>
 </div>
- 
-<!-- MAIN -->
-<main class="main">
- 
-  <!-- TIMELINE SECTION -->
-  <span class="scroll-anchor" id="timeline-anchor"></span>
-  <div class="section-header">
-    <div>
-      <div class="section-eyebrow">Programme timeline</div>
-      <div class="section-title">Short, Medium &amp; Long-Term Actions</div>
+
+<!-- ── Tabs ── -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('gantt')">📅 Gantt Planning</button>
+  <button class="tab-btn" onclick="switchTab('wbs')">🗂 Work Breakdown Structure</button>
+  <button class="tab-btn" onclick="switchTab('risk')">⚠️ Risk Register</button>
+</div>
+
+<!-- ── Content ── -->
+<div class="content">
+
+  <!-- ═══════════════════════════════════════════
+       GANTT TAB
+  ═══════════════════════════════════════════ -->
+  <div id="tab-gantt" class="tab-panel active">
+    <div class="sec-title">Programme Planning</div>
+    <div class="sec-sub">36-month Gantt across 5 phases. Hover over bars for details.</div>
+
+    <div class="gantt-wrapper">
+      <table class="gantt-table" id="ganttTable">
+        <thead>
+          <tr>
+            <th class="label-col">Deliverable</th>
+            <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+            <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
+            <th>M13</th><th>M14</th><th>M15</th><th>M16</th><th>M17</th><th>M18</th>
+            <th>M19</th><th>M20</th><th>M21</th><th>M22</th><th>M23</th><th>M24</th>
+            <th>M25</th><th>M26</th><th>M27</th><th>M28</th><th>M29</th><th>M30</th>
+            <th>M31</th><th>M32</th><th>M33</th><th>M34</th><th>M35</th><th>M36</th>
+          </tr>
+        </thead>
+        <tbody id="ganttBody">
+        </tbody>
+      </table>
     </div>
-    <div class="section-desc">Toggle between the short-term view (months 0–6) and full 36-month view. Hover any bar for details.</div>
-  </div>
- 
-  <div class="toggle-bar">
-    <button class="toggle-btn active" id="btn-st" onclick="setView('st')">Short-term (0–6 months)</button>
-    <button class="toggle-btn" id="btn-mt" onclick="setView('mt')">Medium to long-term (6–36 months)</button>
-    <button class="toggle-btn" id="btn-full" onclick="setView('full')">Full programme (0–36 months)</button>
-  </div>
- 
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#1A5276"></div>Phase 0 · Stabilisation</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#117A65"></div>Phase 1 · Foundation</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#1E8449"></div>Phase 2 · Core IS</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#6C3483"></div>Phase 3 · Integration</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 · Leadership</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#C8973A"></div>PAPCAR Connect</div>
-    <div class="legend-item" style="padding-left:8px;border-left:2px solid var(--gold);margin-left:4px;color:var(--gold);font-weight:600;font-size:11px;">
-      ST / MT boundary = Month 6
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div>Phase 0 — Stabilisation</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2E7D52"></div>Phase 1 — Foundation</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#C9940A"></div>Phase 2 — Core IS Deployment</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8E44AD"></div>Phase 3 — Integration</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 — Strategic Capability</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1F3864; border-radius:2px; transform:rotate(45deg)"></div>Milestone</div>
     </div>
   </div>
- 
-  <div class="timeline-wrapper">
-    <div class="timeline-container" id="timeline-container"></div>
-  </div>
- 
-  <!-- WBS SECTION -->
-  <div class="wbs-section">
-    <span class="scroll-anchor" id="wbs-anchor"></span>
-    <div class="section-header">
+
+  <!-- ═══════════════════════════════════════════
+       WBS TAB
+  ═══════════════════════════════════════════ -->
+  <div id="tab-wbs" class="tab-panel">
+    <div class="sec-title">Work Breakdown Structure</div>
+    <div class="sec-sub">6 work packages · 40 deliverables · Border colour = priority (red = critical, gold = high, green = medium)</div>
+
+    <div class="wbs-grid">
+
+      <!-- WP1 -->
       <div>
-        <div class="section-eyebrow">Work breakdown structure</div>
-        <div class="section-title">Six Work Packages · 41 Deliverables</div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP1</div>
+          <div class="wp-title">Consulting Engagement</div>
+          <div class="wp-range">Months 1–3 · Complete</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item high"><div class="item-id">1.1</div>Situation analysis (7 perspectives)<div class="item-owner">Leopold + Alexandre</div></div>
+          <div class="wbs-item high"><div class="item-id">1.2</div>Requirements R1–R12 derivation<div class="item-owner">All team</div></div>
+          <div class="wbs-item high"><div class="item-id">1.3</div>Short-term target + PAPCAR Connect<div class="item-owner">Alexandre + Leopold</div></div>
+          <div class="wbs-item high"><div class="item-id">1.4</div>Medium/long-term IS strategy<div class="item-owner">Alexandre + Leopold</div></div>
+          <div class="wbs-item high"><div class="item-id">1.5</div>Value proposition reformulation (3 segments)<div class="item-owner">Salma + Elizaveta</div></div>
+          <div class="wbs-item high"><div class="item-id">1.6</div>Transformation & change management plan<div class="item-owner">Salma</div></div>
+          <div class="wbs-item high"><div class="item-id">1.7</div>Project definition (WBS, planning, risks)<div class="item-owner">Leopold</div></div>
+          <div class="wbs-item medium"><div class="item-id">1.8</div>Oral defence & client presentation<div class="item-owner">All team</div></div>
+        </div>
       </div>
-      <div class="section-desc">Click any work package node to expand or collapse its deliverables.</div>
-    </div>
-    <div class="phases-strip" id="phases-strip"></div>
-    <div class="wbs-tree-wrap">
-      <div class="tree" id="wbs-tree"></div>
+
+      <!-- WP2 -->
+      <div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP2</div>
+          <div class="wp-title">Governance & Org Setup</div>
+          <div class="wp-range">Months 1–6</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item critical"><div class="item-id">2.1</div>CIO recruitment and onboarding<div class="item-owner">General Management</div></div>
+          <div class="wbs-item critical"><div class="item-id">2.2</div>IS Steering Committee constitution<div class="item-owner">CIO + GM</div></div>
+          <div class="wbs-item critical"><div class="item-id">2.3</div>IS Programme Manager recruitment<div class="item-owner">CIO</div></div>
+          <div class="wbs-item high"><div class="item-id">2.4</div>Change Management Lead hire or engage<div class="item-owner">CIO + HR</div></div>
+          <div class="wbs-item high"><div class="item-id">2.5</div>Enterprise Architect recruitment<div class="item-owner">CIO</div></div>
+          <div class="wbs-item high"><div class="item-id">2.6</div>Data Governance Committee + MDM tool<div class="item-owner">CIO + DGO</div></div>
+        </div>
+      </div>
+
+      <!-- WP3 -->
+      <div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP3</div>
+          <div class="wp-title">PAPCAR Connect Deployment</div>
+          <div class="wp-range">Months 1–12</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item critical"><div class="item-id">3.1</div>Knowledge transfer to internal developer<div class="item-owner">Alexandre Machu</div></div>
+          <div class="wbs-item critical"><div class="item-id">3.2</div>Pilot deployment in 3 sales units<div class="item-owner">IS team + CM Lead</div></div>
+          <div class="wbs-item critical"><div class="item-id">3.3</div>Failed-sales logging protocol (all SUs)<div class="item-owner">COO + Sales Mgmt</div></div>
+          <div class="wbs-item high"><div class="item-id">3.4</div>Production dashboard live (Le Havre + Bordeaux)<div class="item-owner">Alexandre + Works</div></div>
+          <div class="wbs-item high"><div class="item-id">3.5</div>Supplier dashboard: key suppliers onboarded<div class="item-owner">IS team + Supply</div></div>
+          <div class="wbs-item high"><div class="item-id">3.6</div>National rollout to all 20 sales units<div class="item-owner">IS team + CM Lead</div></div>
+          <div class="wbs-item medium"><div class="item-id">3.7</div>EDI integration for stationers (extension)<div class="item-owner">IS team</div></div>
+        </div>
+      </div>
+
+      <!-- WP4 -->
+      <div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP4</div>
+          <div class="wp-title">Catalogue Rationalisation & PLM</div>
+          <div class="wp-range">Months 1–18</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item critical"><div class="item-id">4.1</div>SKU introduction freeze<div class="item-owner">Sales + Works Mgmt</div></div>
+          <div class="wbs-item high"><div class="item-id">4.2</div>ABC-XYZ rotation analysis (DWH Sales data)<div class="item-owner">IS team + Sales</div></div>
+          <div class="wbs-item high"><div class="item-id">4.3</div>Slow-mover withdrawal (~1,500 active SKUs)<div class="item-owner">Works + Sales Mgmt</div></div>
+          <div class="wbs-item high"><div class="item-id">4.4</div>Made-to-order terms defined and communicated<div class="item-owner">Sales Management</div></div>
+          <div class="wbs-item medium"><div class="item-id">4.5</div>PLM tool selection (Akeneo or equivalent)<div class="item-owner">Ent. Architect + Works</div></div>
+          <div class="wbs-item medium"><div class="item-id">4.6</div>PLM deployment and catalogue migration<div class="item-owner">IS team + Works</div></div>
+          <div class="wbs-item medium"><div class="item-id">4.7</div>SKU lifecycle governance process activated<div class="item-owner">Works + BPO Catalogue</div></div>
+        </div>
+      </div>
+
+      <!-- WP5 -->
+      <div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP5</div>
+          <div class="wp-title">ERP Deployment</div>
+          <div class="wp-range">Months 3–26</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item critical"><div class="item-id">5.1</div>ERP vendor selection and RFP<div class="item-owner">CIO + Programme Mgr</div></div>
+          <div class="wbs-item critical"><div class="item-id">5.2</div>ERP integrator selection and contract<div class="item-owner">CIO + GM</div></div>
+          <div class="wbs-item critical"><div class="item-id">5.3</div>Master data cleansing and migration prep<div class="item-owner">Data Governance Officer</div></div>
+          <div class="wbs-item critical"><div class="item-id">5.4</div>ERP Phase 1: inventory + order mgmt (20 SUs)<div class="item-owner">Programme Mgr + Integrator</div></div>
+          <div class="wbs-item high"><div class="item-id">5.5</div>CRM for printing house segment<div class="item-owner">CRM Mgr + Integrator</div></div>
+          <div class="wbs-item critical"><div class="item-id">5.6</div>ERP Phase 2: production plants (Le Havre + Bordeaux)<div class="item-owner">Programme Mgr + Integrator</div></div>
+          <div class="wbs-item high"><div class="item-id">5.7</div>SCM demand planning module activation<div class="item-owner">SCM Mgr + Integrator</div></div>
+          <div class="wbs-item medium"><div class="item-id">5.8</div>Legacy ADV/WMS/MRP2 decommission<div class="item-owner">Ent. Architect + IS</div></div>
+        </div>
+      </div>
+
+      <!-- WP6 -->
+      <div>
+        <div class="wbs-col-header">
+          <div class="wp-num">WP6</div>
+          <div class="wp-title">Data Platform & Advanced Capabilities</div>
+          <div class="wp-range">Months 12–36</div>
+        </div>
+        <div class="wbs-items" style="margin-top:6px">
+          <div class="wbs-item high"><div class="item-id">6.1</div>Cloud migration (50 servers → Azure/AWS)<div class="item-owner">Ent. Architect + Cloud MSP</div></div>
+          <div class="wbs-item high"><div class="item-id">6.2</div>Unified data platform (merge 2 DWHs)<div class="item-owner">DGO + IS team</div></div>
+          <div class="wbs-item medium"><div class="item-id">6.3</div>IS performance dashboard (business KPIs)<div class="item-owner">IS team + BPOs</div></div>
+          <div class="wbs-item medium"><div class="item-id">6.4</div>AI demand forecasting deployment<div class="item-owner">IS team + AI partner</div></div>
+          <div class="wbs-item medium"><div class="item-id">6.5</div>Digital twin supply chain prototype<div class="item-owner">IS team + partner</div></div>
+          <div class="wbs-item medium"><div class="item-id">6.6</div>B2B portal: SLA tracking + self-service<div class="item-owner">IS team</div></div>
+        </div>
+      </div>
+
     </div>
   </div>
- 
-  <!-- RISK SECTION -->
-  <div class="risk-section">
-    <span class="scroll-anchor" id="risk-anchor"></span>
-    <div class="section-header">
-      <div>
-        <div class="section-eyebrow">Risk analysis</div>
-        <div class="section-title">10 Programme Risks · Likelihood × Impact Matrix</div>
-      </div>
-      <div class="section-desc">Click any bubble to see the full risk description and mitigation. Score = Likelihood × Impact (max 9).</div>
-    </div>
+
+  <!-- ═══════════════════════════════════════════
+       RISK TAB
+  ═══════════════════════════════════════════ -->
+  <div id="tab-risk" class="tab-panel">
+    <div class="sec-title">Risk Register</div>
+    <div class="sec-sub">10 key risks · Assessed on Likelihood (1–3) × Impact (1–3). Click a risk number in the matrix to highlight it.</div>
+
     <div class="risk-layout">
-      <div class="risk-matrix-wrap">
-        <div class="risk-matrix-title">Risk Matrix — Likelihood (horizontal) × Impact (vertical)</div>
-        <div class="matrix-outer">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-right:4px;">
-            <div class="matrix-y-labels">
-              <div class="matrix-y-label-item">3 · High</div>
-              <div class="matrix-y-label-item">2 · Med</div>
-              <div class="matrix-y-label-item">1 · Low</div>
+
+      <!-- Matrix visual -->
+      <div class="risk-matrix-grid">
+        <div class="risk-matrix-title">Risk Heat Map</div>
+        <div style="display:flex; gap:12px; align-items:center">
+          <div style="writing-mode:vertical-rl; transform:rotate(180deg); font-size:11px; font-weight:700; color:var(--grey3); text-transform:uppercase; letter-spacing:1px">Impact →</div>
+          <div>
+            <div style="display:grid; grid-template-columns: 40px repeat(3,1fr); gap:4px;">
+              <!-- Row: Impact 3 -->
+              <div class="axis-tick" style="font-weight:700; color:var(--navy)">3</div>
+              <div class="matrix-cell cell-med" data-risks="3,5" title="L=1,I=3 · Medium">
+                <div class="matrix-dot" onclick="highlightRisk(3)">3</div>
+                <div class="matrix-dot" onclick="highlightRisk(5)" style="background:#8E44AD">5</div>
+              </div>
+              <div class="matrix-cell cell-high" data-risks="1,2" title="L=2,I=3 · High">
+                <div class="matrix-dot" onclick="highlightRisk(1)">1</div>
+                <div class="matrix-dot" onclick="highlightRisk(2)" style="background:#8E44AD">2</div>
+              </div>
+              <div class="matrix-cell cell-crit" data-risks="R1R2" title="L=3,I=3 · Critical">
+                <div class="matrix-dot" onclick="highlightRisk('R1')">R1</div>
+                <div class="matrix-dot" onclick="highlightRisk('R2')" style="background:#C0392B">R2</div>
+              </div>
+              <!-- Row: Impact 2 -->
+              <div class="axis-tick" style="font-weight:700; color:var(--navy)">2</div>
+              <div class="matrix-cell cell-low" title="L=1,I=2 · Low">
+                <div class="matrix-dot" onclick="highlightRisk(10)" style="background:#6B7280">10</div>
+              </div>
+              <div class="matrix-cell cell-med" title="L=2,I=2 · Medium">
+                <div class="matrix-dot" onclick="highlightRisk(6)">6</div>
+                <div class="matrix-dot" onclick="highlightRisk(7)" style="background:#D97706">7</div>
+                <div class="matrix-dot" onclick="highlightRisk(8)" style="background:#2E7D52">8</div>
+              </div>
+              <div class="matrix-cell cell-high" title="L=3,I=2 · High"></div>
+              <!-- Row: Impact 1 -->
+              <div class="axis-tick" style="font-weight:700; color:var(--navy)">1</div>
+              <div class="matrix-cell cell-low"></div>
+              <div class="matrix-cell cell-low" title="L=2,I=1">
+                <div class="matrix-dot" onclick="highlightRisk(9)" style="background:#2E7D52; width:22px;height:22px;font-size:9px">9</div>
+              </div>
+              <div class="matrix-cell cell-med" title="L=3,I=1"></div>
+              <!-- X-axis labels -->
+              <div></div>
+              <div class="axis-tick">1</div>
+              <div class="axis-tick">2</div>
+              <div class="axis-tick">3</div>
             </div>
-          </div>
-          <div class="matrix-inner">
-            <div class="matrix-grid" id="risk-matrix-grid"></div>
-            <div class="matrix-x-labels">
-              <div class="matrix-x-label">1 · Low</div>
-              <div class="matrix-x-label">2 · Med</div>
-              <div class="matrix-x-label">3 · High</div>
-            </div>
-            <div class="matrix-x-title">Likelihood →</div>
-          </div>
-          <div style="display:flex;flex-direction:column;justify-content:center;padding-left:8px;padding-bottom:40px;">
-            <div class="matrix-y-label">Impact ↑</div>
+            <div style="text-align:center; font-size:11px; font-weight:700; color:var(--grey3); text-transform:uppercase; letter-spacing:1px; margin-top:8px">← Likelihood →</div>
           </div>
         </div>
-        <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#FDE8E8;border:1px solid #e8a0a0"></div>Critical (score ≥ 6)</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#FEF3D0;border:1px solid #e8c87a"></div>High (score 4–5)</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray3)"><div style="width:14px;height:14px;border-radius:3px;background:#E9F5EE;border:1px solid #90c8a0"></div>Low–Medium (score 1–3)</div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+          <div class="legend-item"><div class="legend-dot" style="background:#F5C6CB"></div>Critical (score 9)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#F8D7DA"></div>High (score 6)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FFF3CD"></div>Medium (score 3–4)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#D4EDDA"></div>Low (score 1–2)</div>
         </div>
       </div>
-      <div class="risk-detail" id="risk-detail">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:12px;">Selected Risk</div>
-        <div class="risk-detail-hint">Click any numbered bubble on the matrix to see details and mitigation.</div>
+
+      <!-- Risk table -->
+      <div class="risk-table-section">
+        <table class="risk-table" id="riskTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Risk</th>
+              <th>L</th><th>I</th>
+              <th>Score</th>
+              <th>Mitigation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-risk="R1" class="risk-row">
+              <td><span class="score-pill sp-9">R1</span></td>
+              <td>ERP delay due to poor master data quality (5 incompatible legacy models)</td>
+              <td>3</td><td>3</td>
+              <td><span class="risk-badge rb-critical">9 · Critical</span></td>
+              <td>Start data governance at M3. Data Governance Officer accountable.</td>
+            </tr>
+            <tr data-risk="R2" class="risk-row">
+              <td><span class="score-pill sp-9">R2</span></td>
+              <td>Sales unit resistance to PAPCAR Connect and ERP (loss of perceived autonomy)</td>
+              <td>3</td><td>3</td>
+              <td><span class="risk-badge rb-critical">9 · Critical</span></td>
+              <td>Early SU manager involvement. Pilot units selected for openness. Super-user network pre-rollout.</td>
+            </tr>
+            <tr data-risk="1" class="risk-row">
+              <td><span class="score-pill sp-6">3</span></td>
+              <td>CIO hire delayed — all subsequent decisions lack ownership</td>
+              <td>2</td><td>3</td>
+              <td><span class="risk-badge rb-critical">6 · Critical</span></td>
+              <td>Executive search at programme launch. Croissant Corp provides interim IS leadership.</td>
+            </tr>
+            <tr data-risk="2" class="risk-row">
+              <td><span class="score-pill sp-6">4</span></td>
+              <td>ERP integrator underperformance (schedule or quality failure)</td>
+              <td>2</td><td>3</td>
+              <td><span class="risk-badge rb-critical">6 · Critical</span></td>
+              <td>Rigorous integrator selection. Milestone-based payment. Weekly PM monitoring + CIO escalation.</td>
+            </tr>
+            <tr data-risk="5" class="risk-row">
+              <td><span class="score-pill sp-6">5</span></td>
+              <td>IS budget insufficient for full programme scope (current €2M/year)</td>
+              <td>2</td><td>3</td>
+              <td><span class="risk-badge rb-critical">6 · Critical</span></td>
+              <td>IS budget reallocation approved by GM before programme launch. Investment phased over 36 months.</td>
+            </tr>
+            <tr data-risk="6" class="risk-row">
+              <td><span class="score-pill sp-4">6</span></td>
+              <td>PAPCAR Connect technical debt at full 20-SU transaction volume</td>
+              <td>2</td><td>2</td>
+              <td><span class="risk-badge rb-high">4 · High</span></td>
+              <td>Load testing before national rollout. Knowledge transfer to internal developer. ERP is long-term replacement.</td>
+            </tr>
+            <tr data-risk="7" class="risk-row">
+              <td><span class="score-pill sp-4">7</span></td>
+              <td>Catalogue rationalisation rejected by printing houses (speciality reference withdrawal)</td>
+              <td>2</td><td>2</td>
+              <td><span class="risk-badge rb-high">4 · High</span></td>
+              <td>Printing houses consulted before withdrawal. Made-to-order terms with defined lead times.</td>
+            </tr>
+            <tr data-risk="8" class="risk-row">
+              <td><span class="score-pill sp-4">8</span></td>
+              <td>Key person dependency (warehouse managers, call centre operators)</td>
+              <td>2</td><td>2</td>
+              <td><span class="risk-badge rb-high">4 · High</span></td>
+              <td>Knowledge capture workshops before ERP go-live. Tacit knowledge formalised in training materials.</td>
+            </tr>
+            <tr data-risk="9" class="risk-row">
+              <td><span class="score-pill sp-3">9</span></td>
+              <td>Pulp supply disruption during transformation (2–4 month lead times)</td>
+              <td>1</td><td>3</td>
+              <td><span class="risk-badge rb-medium">3 · Medium</span></td>
+              <td>Safety stock buffer during transformation. Supplier relationship proactively managed.</td>
+            </tr>
+            <tr data-risk="10" class="risk-row">
+              <td><span class="score-pill sp-2">10</span></td>
+              <td>Competitive response to PAPCAR's transformation signals</td>
+              <td>1</td><td>2</td>
+              <td><span class="risk-badge rb-low">2 · Low</span></td>
+              <td>Transformation not public-facing. Speed of Phase 0 and 1 reduces window of vulnerability.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
- 
-</main>
- 
+
+</div><!-- /content -->
+
+<footer>
+  &copy; 2026 <strong>Croissant Corp</strong> · Corporate Transformation Consulting · PAPCAR IS Transformation Programme · Confidential
+</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
 <script>
-// ── CONFIG ──────────────────────────────────────────────────────────
-const LABEL_W = 210;
- 
-// Each row: { group } for dividers, or { category, name, sub, bar:[startM, endM, label, color, tip] }
-const ROWS = [
-  { group:'SHORT-TERM · Crisis Actions (Waves 0–4)' },
-  { category:'Wave 0', name:'Deploy PAPCAR Connect', sub:'Weeks 1–2',
-    bar:[0,0.5,'Deploy PAPCAR Connect','#C8973A','Deploy PAPCAR Connect to all 20 sales units. Configure 4 demo accounts (employee, client, production, supplier). Training sessions. Live on Netlify + Supabase with RLS.'] },
-  { category:'Wave 1', name:'Organisational quick wins', sub:'Weeks 2–4',
-    bar:[0.5,1,'Org. quick wins','#1A5276','Freeze new SKU introductions. Launch failed-sales logging protocol. Weekly Le Havre / Bordeaux production coordination meeting using PAPCAR Connect production dashboard.'] },
-  { category:'Wave 2', name:'Catalogue rationalisation', sub:'Months 1–2',
-    bar:[1,2,'ABC-XYZ catalogue analysis','#1A5276','ABC-XYZ rotation analysis on existing DWH Sales data. Identify and withdraw ~3,500–4,000 slow-moving references. Frees 30–40% warehouse capacity immediately.'] },
-  { category:'Wave 3', name:'Client comm. protocol', sub:'Months 1–1.5',
-    bar:[1,1.5,'Segmented client comms','#1A5276','Differentiated service protocol by segment: printing houses get direct sales engineer escalation; companies get SLA confirmation; stationers get self-service onboarding to PAPCAR Connect.'] },
-  { category:'Wave 4', name:'ERP vendor selection (RFP)', sub:'Months 2–6',
-    bar:[2,6,'ERP RFP & vendor selection','#117A65','Issue RFP for ERP package. Evaluate SAP Business One, Sage X3, Microsoft Dynamics 365 Business Central. Select integrator. Define data migration scope from ADV, WMS, and MRP2.'] },
- 
-  { group:'GOVERNANCE & TEAM BUILD' },
-  { category:'WP2', name:'CIO hire & IS governance', sub:'Months 1–3',
-    bar:[1,3,'CIO hire','#1A5276','Critical-path hire. CIO reports to General Management. IS Steering Committee constituted. First SteerCo meeting by month 2. Blocks all downstream governance decisions.'] },
-  { category:'WP2', name:'Programme Manager + CM Lead', sub:'Months 3–5',
-    bar:[3,5,'PM + Change Management Lead','#117A65','IS Programme Manager and Change Management Lead recruited or engaged. Programme management tooling deployed. Enterprise Architect search begins.'] },
-  { category:'WP2', name:'Data Governance setup', sub:'Months 4–6',
-    bar:[4,6,'Data Governance + MDM','#117A65','Data Governance Committee active. MDM tool selected. Master data cleansing begins across 5 incompatible legacy systems before ERP migration.'] },
- 
-  { group:'PAPCAR CONNECT (MVP → EXTENDED)' },
-  { category:'WP3', name:'Knowledge transfer + pilot', sub:'Months 1–2',
-    bar:[1,2,'PC knowledge transfer','#C8973A','Codebase handed to internal developer or maintenance partner. Pilot deployment in 3 volunteer SUs before national rollout. Lessons learned documented.'] },
-  { category:'WP3', name:'National rollout (all 20 SUs)', sub:'Months 2–4',
-    bar:[2,4,'PC national rollout','#C8973A','All 20 sales units live on PAPCAR Connect. Failed-sales logging active. Production dashboard showing Le Havre (34%) vs Bordeaux (98%) imbalance in real time.'] },
-  { category:'WP3', name:'B2B portal extension', sub:'Months 9–12',
-    bar:[9,12,'EDI + SLA extension','#C8973A','EDI-based automated replenishment for stationers. Client portal extended with invoice download and contractual SLA tracking for companies.'] },
- 
-  { group:'CATALOGUE & PLM' },
-  { category:'WP4', name:'SKU freeze + withdrawal', sub:'Months 1–8',
-    bar:[1,8,'Catalogue clean-up','#1A5276','Immediate SKU introduction freeze. ABC-XYZ analysis complete by month 6. ~3,500–4,000 slow-movers withdrawn from active stock by month 8. Made-to-order terms published.'] },
-  { category:'WP4', name:'PLM tool selection + deploy', sub:'Months 9–15',
-    bar:[9,15,'PLM deployment (Akeneo)','#6C3483','PLM tool selected and deployed (Akeneo PIM or equivalent). Lifecycle stages activated: introduction, growth, maturity, sunset. Prevents catalogue bloat from recurring.'] },
- 
-  { group:'ERP DEPLOYMENT' },
-  { category:'WP5', name:'ERP Phase 1 — 20 Sales Units', sub:'Months 6–18',
-    bar:[6,18,'ERP Phase 1 (20 SUs)','#117A65','ERP order management and inventory for all 20 SUs. Replaces ADV + WMS. Single stock model. Automated availability check and delivery commitment. Gate: data cleansing complete.'] },
-  { category:'WP5', name:'CRM — Printing houses', sub:'Months 9–15',
-    bar:[9,15,'CRM (printing houses)','#1E8449','Salesforce or HubSpot CRM for the 90%-margin printing house segment. 360° client history, advisory service capability, complaint SLA management, loyalty programme.'] },
-  { category:'WP5', name:'ERP Phase 2 — Production plants', sub:'Months 18–24',
-    bar:[18,24,'ERP Phase 2 (Plants)','#6C3483','ERP integrated with Le Havre and Bordeaux production plants. Demand-driven MRP replaces 4-week blind replenishment cycle. SCM demand forecasting module activated.'] },
-  { category:'WP5', name:'SCM demand planning', sub:'Months 18–24',
-    bar:[18,24,'SCM module','#6C3483','SCM configured on ERP. Algorithmic reorder signals per SKU per SU. Trained on 12+ months of PAPCAR Connect failed-sales data accumulated since month 3.'] },
-  { category:'WP5', name:'Legacy decommission', sub:'Months 24–26',
-    bar:[24,26,'ADV/WMS/MRP2 retired','#C0392B','ADV (1995), WMS (1990 Unix), and MRP2 (1990 AS/400) decommissioned. 50 on-premises servers progressively retired. Final migration to ERP confirmed complete.'] },
- 
-  { group:'DATA PLATFORM & ADVANCED CAPABILITIES' },
-  { category:'WP6', name:'Cloud infrastructure migration', sub:'Months 12–18',
-    bar:[12,18,'Cloud migration (Azure/AWS)','#6C3483','Replace 50 ageing on-premises servers with cloud infrastructure. Managed by cloud MSP. Eliminates single-point-of-failure risk. Enables AI and digital twin in later phases.'] },
-  { category:'WP6', name:'Unified data platform', sub:'Months 18–24',
-    bar:[18,24,'Unified DWH (Sales + Industrial)','#6C3483','DWH Sales and DWH Industrial consolidated into a single analytical platform. Enables cross-functional reporting. Foundation for AI demand forecasting.'] },
-  { category:'WP6', name:'IS performance dashboard', sub:'Months 24–26',
-    bar:[24,26,'IS KPI dashboard','#C0392B','Business KPI dashboard: order fulfilment rate, demand forecast accuracy, stock alert response time, complaint resolution. Built on the unified data platform.'] },
-  { category:'WP6', name:'AI demand forecasting', sub:'Months 24–30',
-    bar:[24,30,'AI demand forecasting','#C0392B','ML model trained on unified platform data. AWS Forecast or Google Vertex AI. Replaces intuitive replenishment with per-SKU-per-SU algorithmic reorder signals.'] },
-  { category:'WP6', name:'Digital twin prototype', sub:'Months 28–34',
-    bar:[28,34,'Digital twin (supply chain)','#C0392B','Supply chain simulation model enabling scenario planning: SU closure, production failure, demand spike. Requires cloud + unified platform as infrastructure.'] },
-];
- 
-const PHASES = [
-  { num:'0', title:'Stabilisation', range:'Months 0–3', color:'#1A5276',
-    gate:'Order fulfilment rate above 80%, CIO in post, PAPCAR Connect live in pilot units.' },
-  { num:'1', title:'Foundation', range:'Months 3–12', color:'#117A65',
-    gate:'ERP vendor selected, all 20 SUs on PAPCAR Connect, failed-sales data flowing.' },
-  { num:'2', title:'Core IS Deployment', range:'Months 12–24', color:'#1E8449',
-    gate:'ERP Phase 1 live across all SUs, CRM live for printing houses, catalogue reduced.' },
-  { num:'3', title:'Integration', range:'Months 24–30', color:'#6C3483',
-    gate:'ERP production modules live, unified data platform operational.' },
-  { num:'4', title:'Strategic Capability', range:'Months 30–36', color:'#C0392B',
-    gate:'Full IS governance maturity, algorithmic demand planning operational.' },
-];
- 
-const WPS = [
-  { id:'WP1', title:'Consulting Engagement', color:'#1A5276', deliverables:[
-    { id:'1.1', title:'Situation analysis (7 perspectives)', output:'Section 2 of the report', owner:'Leopold + Alexandre', time:'Complete' },
-    { id:'1.2', title:'Requirements definition R1–R12', output:'Section 2.7 requirements table', owner:'All', time:'Complete' },
-    { id:'1.3', title:'Short-term target + PAPCAR Connect', output:'Section 3 of the report', owner:'Alexandre + Leopold', time:'Complete' },
-    { id:'1.4', title:'Medium and long-term IS strategy', output:'Section 4 of the report', owner:'Alexandre + Leopold', time:'Complete' },
-    { id:'1.5', title:'Value proposition reformulation', output:'Section 4.1', owner:'Salma + Elizaveta', time:'Complete' },
-    { id:'1.6', title:'Transformation and change management', output:'Section 5 of the report', owner:'Salma', time:'Complete' },
-    { id:'1.7', title:'Project definition (WBS, planning, risks)', output:'Section 6 of the report', owner:'Leopold', time:'Complete' },
-    { id:'1.8', title:'Oral defense and client presentation', output:'Defense session', owner:'All', time:'Defense day' },
-  ]},
-  { id:'WP2', title:'Governance & Org Setup', color:'#117A65', deliverables:[
-    { id:'2.1', title:'CIO recruitment and onboarding', output:'CIO in post by month 3', owner:'General Management', time:'M1–3' },
-    { id:'2.2', title:'IS Steering Committee constitution', output:'First SteerCo by month 2', owner:'CIO + General Management', time:'M1–2' },
-    { id:'2.3', title:'IS Programme Manager recruitment', output:'PM in post by month 4', owner:'CIO', time:'M3–4' },
-    { id:'2.4', title:'Change Management Lead hire', output:'CM lead in post by month 4', owner:'CIO + HR', time:'M3–4' },
-    { id:'2.5', title:'Enterprise Architect recruitment', output:'Architect in post by month 5', owner:'CIO', time:'M3–5' },
-    { id:'2.6', title:'Data Governance Committee + MDM tool', output:'Committee active by month 6', owner:'CIO + DGO', time:'M4–6' },
-  ]},
-  { id:'WP3', title:'PAPCAR Connect', color:'#C8973A', deliverables:[
-    { id:'3.1', title:'Knowledge transfer to internal developer', output:'Internal owner by month 2', owner:'Alexandre Machu', time:'M1–2' },
-    { id:'3.2', title:'Pilot deployment in 3 sales units', output:'Pilot go-live by month 2', owner:'IS team + CM Lead', time:'M1–2' },
-    { id:'3.3', title:'Failed-sales logging protocol (all SUs)', output:'All 20 SUs logging by month 3', owner:'COO + Sales Mgmt', time:'M2–3' },
-    { id:'3.4', title:'Production dashboard live', output:'Le Havre / Bordeaux data by month 2', owner:'Alexandre + Works Mgmt', time:'M1–2' },
-    { id:'3.5', title:'Supplier dashboard: key suppliers onboarded', output:'Live by month 3', owner:'IS team + Supply', time:'M2–3' },
-    { id:'3.6', title:'National rollout to all 20 SUs', output:'All units live by month 4', owner:'IS team + CM Lead', time:'M2–4' },
-    { id:'3.7', title:'EDI integration for stationers', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
-  ]},
-  { id:'WP4', title:'Catalogue Rationalisation & PLM', color:'#1E8449', deliverables:[
-    { id:'4.1', title:'SKU introduction freeze', output:'Decision by month 1', owner:'Sales + Works Management', time:'M1' },
-    { id:'4.2', title:'ABC-XYZ rotation analysis', output:'Analysis complete by month 6', owner:'IS team + Sales Mgmt', time:'M2–6' },
-    { id:'4.3', title:'Slow-mover withdrawal (~1,500 active SKUs)', output:'Implemented by month 8', owner:'Works + Sales Mgmt', time:'M6–8' },
-    { id:'4.4', title:'Made-to-order terms defined + communicated', output:'Client communication by month 8', owner:'Sales Management', time:'M7–8' },
-    { id:'4.5', title:'PLM tool selection (Akeneo or equivalent)', output:'Selected by month 9', owner:'Enterprise Architect', time:'M7–9' },
-    { id:'4.6', title:'PLM deployment and catalogue migration', output:'Live by month 15', owner:'IS team + Works Mgmt', time:'M9–15' },
-    { id:'4.7', title:'SKU lifecycle governance process activated', output:'Embedded by month 18', owner:'Works Mgmt + BPO', time:'M15–18' },
-  ]},
-  { id:'WP5', title:'ERP Deployment', color:'#6C3483', deliverables:[
-    { id:'5.1', title:'ERP vendor selection and RFP', output:'Vendor selected by month 6', owner:'CIO + Programme Manager', time:'M2–6' },
-    { id:'5.2', title:'ERP integrator selection and contract', output:'Contract signed by month 7', owner:'CIO + General Management', time:'M6–7' },
-    { id:'5.3', title:'Master data cleansing and migration prep', output:'Data ready by month 10', owner:'Data Governance Officer', time:'M6–10' },
-    { id:'5.4', title:'ERP Phase 1: order + inventory (20 SUs)', output:'Go-live by month 18', owner:'Programme Manager + Integrator', time:'M7–18' },
-    { id:'5.5', title:'CRM for printing house segment', output:'Go-live by month 15', owner:'CRM Manager + Integrator', time:'M9–15' },
-    { id:'5.6', title:'ERP Phase 2: production plants', output:'Go-live by month 24', owner:'Programme Manager + Integrator', time:'M18–24' },
-    { id:'5.7', title:'SCM demand planning module', output:'Go-live by month 24', owner:'SCM Manager + Integrator', time:'M18–24' },
-    { id:'5.8', title:'Legacy ADV/WMS/MRP2 decommission', output:'Completed by month 26', owner:'Enterprise Architect', time:'M24–26' },
-  ]},
-  { id:'WP6', title:'Data Platform & Advanced Capabilities', color:'#C0392B', deliverables:[
-    { id:'6.1', title:'Cloud migration (50 servers to Azure/AWS)', output:'Migration complete by month 18', owner:'Enterprise Architect + Cloud MSP', time:'M12–18' },
-    { id:'6.2', title:'Unified data platform (DWH Sales + Industrial)', output:'Live by month 24', owner:'DGO + IS team', time:'M18–24' },
-    { id:'6.3', title:'IS performance dashboard (business KPIs)', output:'Live by month 26', owner:'IS team + BPOs', time:'M24–26' },
-    { id:'6.4', title:'AI demand forecasting deployment', output:'Pilot M28, full by M30', owner:'IS team + AI partner', time:'M24–30' },
-    { id:'6.5', title:'Digital twin supply chain prototype', output:'Prototype by month 34', owner:'IS team + partner', time:'M28–34' },
-    { id:'6.6', title:'B2B portal: SLA tracking + self-service', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
-  ]},
-];
- 
-const RISKS = [
-  { title:'Poor master data quality blocks ERP migration', l:3, i:3, score:'9', level:'critical',
-    mit:'Data governance and MDM cleansing starts at month 3, well before ERP go-live. Data Governance Officer accountable for migration readiness gate.' },
-  { title:'Sales unit resistance to PAPCAR Connect and ERP', l:3, i:3, score:'9', level:'critical',
-    mit:'Early SU manager involvement in requirements. Pilot in open units first. Super-user network before rollout. 3-month hypercare post go-live per unit.' },
-  { title:'CIO hire delayed — all downstream decisions stall', l:2, i:3, score:'6', level:'critical',
-    mit:'Executive search firm engaged at programme launch. Croissant Corp provides interim IS leadership during search period.' },
-  { title:'ERP integrator underperforms on schedule or quality', l:2, i:3, score:'6', level:'critical',
-    mit:'Rigorous integrator selection with client references. Milestone-based payment contract. Weekly Programme Manager monitoring with CIO escalation path.' },
-  { title:'IS budget insufficient for full programme scope', l:2, i:3, score:'6', level:'critical',
-    mit:'IS budget reallocation approved by General Management before programme launch. 36-month phasing smooths budget peaks across fiscal years.' },
-  { title:'PAPCAR Connect does not scale to 20 SUs at full load', l:2, i:2, score:'4', level:'high',
-    mit:'Load testing before national rollout. Knowledge transfer to internal developer. ERP is the long-term replacement; PAPCAR Connect is the transitional layer.' },
-  { title:'Printing houses react negatively to slow-mover withdrawal', l:2, i:2, score:'4', level:'high',
-    mit:'Printing houses consulted before withdrawal decisions. Made-to-order terms with defined lead times. Sales engineers briefed for client conversations.' },
-  { title:'Key person dependency — tacit knowledge exits with staff', l:2, i:2, score:'4', level:'high',
-    mit:'Knowledge capture workshops before ERP go-live. Process documentation embedded in ERP training. Super-user roles formalise critical tacit knowledge.' },
-  { title:'Pulp supply disruption during transformation window', l:1, i:3, score:'3', level:'medium',
-    mit:'Safety stock buffer maintained during transformation. Proactive supplier management. Supplier dashboard gives earlier transit visibility.' },
-  { title:'Competitors accelerate IS investment in response', l:1, i:2, score:'2', level:'low',
-    mit:'Transformation is not public-facing. Speed of Phase 0 and 1 execution minimises the vulnerability window.' },
-];
- 
-// ── TIMELINE ────────────────────────────────────────────────────────
-let currentView = 'st';
- 
-const PHASE_DEFS = [
-  { label:'Phase 0 · Stabilisation', start:0,  end:6,  color:'#1A5276' },
-  { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
-  { label:'Phase 2 · Core IS',       start:12, end:24, color:'#1E8449' },
-  { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
-  { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
-];
- 
-function setView(v) {
-  currentView = v;
-  document.getElementById('btn-st').classList.toggle('active', v === 'st');
-  document.getElementById('btn-mt').classList.toggle('active', v === 'mt');
-  document.getElementById('btn-full').classList.toggle('active', v === 'full');
-  buildTimeline();
+// ── Tab switching ──
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
 }
- 
-function buildTimeline() {
-  const container = document.getElementById('timeline-container');
-  const wrapper   = container.parentElement;
-  const wrapW     = wrapper.clientWidth || 900;
-  const gridW     = wrapW - LABEL_W - 2;
- 
-  const isST   = currentView === 'st';
-  const isMT   = currentView === 'mt';
-  const isFull = currentView === 'full';
- 
-  // Define month window
-  const startM = isMT ? 6  : 0;
-  const endM   = isST ? 7  : 37;   // exclusive upper bound
-  const totalM = endM - startM;
-  const ST_M   = 6;
- 
-  const cellW = gridW / totalM;
- 
-  // Filter rows
-  const visRows = ROWS.filter(r => {
-    if (r.group !== undefined) return true;
-    const [s, e] = r.bar;
-    if (isST)   return s < ST_M;           // starts before month 6
-    if (isMT)   return e > ST_M;           // ends after month 6
-    return true;                            // full: show all
+
+// ── Risk highlight ──
+function highlightRisk(id) {
+  document.querySelectorAll('.risk-row').forEach(r => {
+    r.style.background = '';
+    r.style.outline = '';
   });
- 
-  // Phase header blocks
-  const visPhases = isST
-    ? [{ label:'SHORT-TERM CRISIS ACTIONS (0–6 months)', start:0, end:7, color:'#1A5276' }]
-    : isMT
-    ? [
-        { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
-        { label:'Phase 2 · Core IS',       start:12, end:24, color:'#1E8449' },
-        { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
-        { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
-      ]
-    : PHASE_DEFS;
- 
-  let html = '';
- 
-  // Phase header row
-  html += `<div class="tl-header-row">
-    <div class="tl-label-col">${isST ? 'SHORT-TERM' : isMT ? 'MEDIUM TO LONG-TERM' : 'FULL PROGRAMME'}</div>
-    <div class="tl-grid-area" style="width:${gridW}px;overflow:hidden;">`;
-  visPhases.forEach(p => {
-    const s = Math.max(p.start, startM);
-    const e = Math.min(p.end, endM);
-    if (e <= s) return;
-    const w = (e - s) * cellW;
-    html += `<div class="phase-block" style="width:${w}px;min-width:${w}px;background:${p.color}22;color:${p.color};border-right:1px solid ${p.color}33;">${p.label}</div>`;
-  });
-  html += `</div></div>`;
- 
-  // Month labels
-  html += `<div class="months-row">
-    <div class="tl-label-col" style="font-size:9px;color:rgba(200,151,58,0.5);">Month →</div>
-    <div style="display:flex;width:${gridW}px;overflow:hidden;">`;
-  for (let m = startM; m < endM; m++) {
-    const isDivider = isFull && m === ST_M;
-    html += `<div class="month-cell${isDivider ? ' divider-cell' : ''}" style="min-width:${cellW}px;width:${cellW}px;">${m}</div>`;
+  const row = document.querySelector(`[data-risk="${id}"]`);
+  if (row) {
+    row.style.background = 'rgba(201,148,10,.15)';
+    row.style.outline = '2px solid #C9940A';
+    row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
-  html += `</div></div>`;
- 
-  // Data rows
-  visRows.forEach(r => {
-    if (r.group !== undefined) {
-      html += `<div class="tl-row group-row">
-        <div class="row-label"><div class="group-label">${r.group}</div></div>
-        <div class="row-grid" style="width:${gridW}px;">
-          <div class="grid-bg">${Array.from({length:totalM},(_,i)=>{
-            const m = startM + i;
-            return `<div class="grid-col${isFull&&m===ST_M?' divider-col':''}"></div>`;
-          }).join('')}</div>
-        </div>
-      </div>`;
-      return;
-    }
- 
-    const [s, e, label, color, tip] = r.bar;
- 
-    // Clip bar to visible window
-    const visS = Math.max(s, startM);
-    const visE = Math.min(e, endM);
-    if (visE <= visS) return;
- 
-    const barL = (visS - startM) * cellW;
-    const barW = Math.max((visE - visS) * cellW - 2, 8);
-    const showLabel = barW > 50;
- 
-    const safeLabel = label.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-    const safeTip   = tip.replace(/'/g,"\\'").replace(/"/g,'&quot;');
-    const safeSub   = r.sub.replace(/'/g,"\\'");
- 
-    html += `<div class="tl-row">
-      <div class="row-label">
-        <div class="row-cat">${r.category}</div>
-        <div class="row-name">${r.name}</div>
-        <div class="row-sub">${r.sub}</div>
-      </div>
-      <div class="row-grid" style="width:${gridW}px;">
-        <div class="grid-bg">${Array.from({length:totalM},(_,i)=>{
-          const m = startM + i;
-          return `<div class="grid-col${isFull&&m===ST_M?' divider-col':''}"></div>`;
-        }).join('')}</div>
-        <div class="bar" style="left:${barL}px;width:${barW}px;background:${color};"
-             onmouseenter="showTip(event,'${safeLabel}','${safeSub}','${safeTip}')"
-             onmouseleave="hideTip()">${showLabel ? label : ''}</div>
-      </div>
-    </div>`;
-  });
- 
-  container.innerHTML = html;
 }
- 
-// ── TOOLTIP ──────────────────────────────────────────────────────────
-function showTip(e, title, sub, desc) {
-  const t = document.getElementById('tooltip');
-  t.innerHTML = `<div class="tooltip-title">${title}</div><div class="tooltip-sub">${sub}</div><div class="tooltip-body">${desc}</div>`;
-  t.classList.add('show');
-  posTip(e);
-}
-function posTip(e) {
-  const t = document.getElementById('tooltip');
-  let x = e.clientX + 14, y = e.clientY - 10;
-  if (x + 280 > window.innerWidth) x = e.clientX - 290;
-  if (y + t.offsetHeight > window.innerHeight) y = e.clientY - t.offsetHeight - 10;
-  t.style.left = x + 'px';
-  t.style.top  = y + 'px';
-}
-function hideTip() { document.getElementById('tooltip').classList.remove('show'); }
-document.addEventListener('mousemove', e => {
-  if (document.getElementById('tooltip').classList.contains('show')) posTip(e);
-});
- 
-// ── WBS ──────────────────────────────────────────────────────────────
-// ── WBS TREE ──────────────────────────────────────────────────────────
-function buildWBS() {
-  // Phase cards
-  document.getElementById('phases-strip').innerHTML = PHASES.map(p => `
-    <div class="phase-card" style="border-top-color:${p.color}">
-      <div class="phase-num" style="color:${p.color}">Phase ${p.num}</div>
-      <div class="phase-title">${p.title}</div>
-      <div class="phase-range" style="color:${p.color}">${p.range}</div>
-      <div class="phase-gate"><strong>Gate condition</strong>${p.gate}</div>
-    </div>`).join('');
- 
-  // Build top-down tree: root → WP nodes → deliverable nodes
-  const tree = document.getElementById('wbs-tree');
- 
-  // Root node
-  tree.innerHTML = `
-    <div class="tree-root">PAPCAR IS Transformation Programme</div>
-    <div class="tree-v-root" style="background:var(--gold)"></div>
-    <div class="tree-wp-row" id="tree-wp-row"></div>`;
- 
-  const wpRow = document.getElementById('tree-wp-row');
- 
-  WPS.forEach((wp, idx) => {
-    const col = document.createElement('div');
-    col.className = 'tree-wp-col';
-    col.innerHTML = `
-      <div class="tree-v-wp-top" style="background:${wp.color}"></div>
-      <div class="tree-wp-node" id="wpnode-${idx}" onclick="toggleTreeWP(${idx})"
-           style="background:${wp.color}">
-        <div class="tree-wp-id">${wp.id}</div>
-        <div class="tree-wp-name">${wp.title}</div>
-        <div class="tree-wp-cnt">${wp.deliverables.length} deliverables ▾</div>
-      </div>
-      <div class="tree-v-wp-bot" id="wpvbot-${idx}" style="background:${wp.color}"></div>
-      <div class="tree-del-col collapsed" id="wpdel-${idx}">
-        ${wp.deliverables.map(d => `
-          <div class="tree-del-item">
-            <div class="tree-del-v" style="background:${wp.color}88"></div>
-            <div class="tree-del-node" style="border-top:2px solid ${wp.color}44">
-              <div class="tree-del-id" style="color:${wp.color}">${d.id}</div>
-              <div class="tree-del-title">${d.title}</div>
-              <div class="tree-del-time">${d.time}</div>
-            </div>
-          </div>`).join('')}
-      </div>`;
-    wpRow.appendChild(col);
-  });
-}
- 
-function toggleTreeWP(idx) {
-  const delCol = document.getElementById(`wpdel-${idx}`);
-  const vbot   = document.getElementById(`wpvbot-${idx}`);
-  const node   = document.getElementById(`wpnode-${idx}`);
-  const open   = delCol.classList.toggle('collapsed');
-  vbot.classList.toggle('collapsed', open);
-  // update chevron text
-  const cnt = node.querySelector('.tree-wp-cnt');
-  const wp  = WPS[idx];
-  cnt.textContent = `${wp.deliverables.length} deliverables ${open ? '▾' : '▴'}`;
-}
- 
-// ── RISK MATRIX ────────────────────────────────────────────────────────
-const CELL_COLORS = {
-  '1-3': '#FDE8E8', '2-3': '#FDE8E8', '3-3': '#FDE8E8',
-  '1-2': '#E9F5EE', '2-2': '#FEF3D0', '3-2': '#FDE8E8',
-  '1-1': '#E9F5EE', '2-1': '#E9F5EE', '3-1': '#FEF3D0',
+
+// ── Build Gantt ──
+const TOTAL_MONTHS = 36;
+
+// phase colours indexed by phase number
+const phaseColor = {
+  0: '#4A90D9',
+  1: '#2E7D52',
+  2: '#C9940A',
+  3: '#8E44AD',
+  4: '#C0392B',
 };
-const BUBBLE_COLORS = {
-  critical: '#C0392B', high: '#D68910', medium: '#1A5276', low: '#1E8449'
-};
- 
-function buildRisks() {
-  const grid = document.getElementById('risk-matrix-grid');
- 
-  // Build 3×3 grid: rows = impact (3 top, 1 bottom), cols = likelihood (1 left, 3 right)
-  // CSS grid: row 1 = top (impact 3), row 3 = bottom (impact 1)
-  let cells = {};
-  for (let impact = 3; impact >= 1; impact--) {
-    for (let likelihood = 1; likelihood <= 3; likelihood++) {
-      const key = `${likelihood}-${impact}`;
-      const cell = document.createElement('div');
-      cell.className = 'matrix-cell';
-      cell.style.background = CELL_COLORS[key] || '#f5f5f5';
-      // label
-      const score = likelihood * impact;
-      cell.innerHTML = `<div class="matrix-cell-label">${score}</div>`;
-      cell.id = `cell-${key}`;
-      cells[key] = cell;
-      grid.appendChild(cell);
+
+const ganttData = [
+  // Each entry: { label, level, start, end, phase, tooltip }
+  // level: 'wp'=work package header, 'task'=task row, 'milestone'=single diamond
+
+  { label: 'WP2 — Governance & Org Setup', level: 'wp' },
+  { label: '2.1 CIO recruitment and onboarding', level: 'task', start: 1, end: 3, phase: 0, tip: 'CIO in post by M3' },
+  { label: '2.2 IS Steering Committee', level: 'task', start: 2, end: 4, phase: 0, tip: 'First SteerCo by M2' },
+  { label: '2.3 Programme Manager recruitment', level: 'task', start: 3, end: 5, phase: 1, tip: 'PM in post by M4' },
+  { label: '2.4–2.6 CM Lead, Architect, DGC', level: 'task', start: 3, end: 6, phase: 1, tip: 'Full governance team by M6' },
+
+  { label: 'WP3 — PAPCAR Connect Deployment', level: 'wp' },
+  { label: '3.1 Knowledge transfer to dev', level: 'task', start: 1, end: 2, phase: 0, tip: 'Internal owner by M2' },
+  { label: '3.2 Pilot: 3 sales units', level: 'task', start: 1, end: 2, phase: 0, tip: 'Pilot go-live M2' },
+  { label: '3.3 Failed-sales protocol (all SUs)', level: 'task', start: 2, end: 3, phase: 0, tip: 'All 20 SUs logging by M3' },
+  { label: '3.4 Production dashboard live', level: 'task', start: 1, end: 2, phase: 0, tip: 'Live M2' },
+  { label: '3.5 Supplier dashboard onboarded', level: 'task', start: 2, end: 3, phase: 0, tip: 'Live M3' },
+  { label: '3.6 National rollout (all 20 SUs)', level: 'task', start: 3, end: 4, phase: 1, tip: 'All units live M4' },
+  { label: '3.7 EDI integration for stationers', level: 'task', start: 9, end: 12, phase: 2, tip: 'Phase 2 extension' },
+
+  { label: 'WP4 — Catalogue Rationalisation & PLM', level: 'wp' },
+  { label: '4.1 SKU introduction freeze', level: 'task', start: 1, end: 1, phase: 0, tip: 'Decision M1' },
+  { label: '4.2 ABC-XYZ rotation analysis', level: 'task', start: 2, end: 6, phase: 1, tip: 'Analysis complete M6' },
+  { label: '4.3 Slow-mover withdrawal', level: 'task', start: 6, end: 8, phase: 1, tip: 'Implemented M8' },
+  { label: '4.4 Made-to-order terms', level: 'task', start: 7, end: 8, phase: 1, tip: 'Client comms M8' },
+  { label: '4.5 PLM tool selection', level: 'task', start: 7, end: 9, phase: 2, tip: 'Selected M9' },
+  { label: '4.6 PLM deployment', level: 'task', start: 9, end: 15, phase: 2, tip: 'Live M15' },
+  { label: '4.7 SKU lifecycle governance', level: 'task', start: 15, end: 18, phase: 2, tip: 'Process embedded M18' },
+
+  { label: 'WP5 — ERP Deployment', level: 'wp' },
+  { label: '5.1 ERP vendor RFP & selection', level: 'task', start: 3, end: 6, phase: 1, tip: 'Vendor selected M6' },
+  { label: '5.2 Integrator selection & contract', level: 'task', start: 6, end: 7, phase: 1, tip: 'Contract signed M7' },
+  { label: '5.3 Master data cleansing', level: 'task', start: 7, end: 10, phase: 2, tip: 'Data ready M10' },
+  { label: '5.4 ERP Phase 1 (20 SUs)', level: 'task', start: 10, end: 18, phase: 2, tip: 'Go-live M18' },
+  { label: '5.5 CRM (printing houses)', level: 'task', start: 9, end: 15, phase: 2, tip: 'Go-live M15' },
+  { label: '5.6 ERP Phase 2 (production plants)', level: 'task', start: 18, end: 22, phase: 3, tip: 'Go-live M22' },
+  { label: '5.7 SCM demand planning', level: 'task', start: 22, end: 24, phase: 3, tip: 'Go-live M24' },
+  { label: '5.8 Legacy ADV/WMS/MRP2 decommission', level: 'task', start: 24, end: 26, phase: 3, tip: 'Complete M26' },
+
+  { label: 'WP6 — Data Platform & Advanced Capabilities', level: 'wp' },
+  { label: '6.1 Cloud migration (50 servers)', level: 'task', start: 12, end: 18, phase: 2, tip: 'Migration M18' },
+  { label: '6.2 Unified data platform (DWH merge)', level: 'task', start: 18, end: 24, phase: 3, tip: 'Unified platform M24' },
+  { label: '6.3 IS performance dashboard', level: 'task', start: 24, end: 26, phase: 3, tip: 'Live M26' },
+  { label: '6.4 AI demand forecasting', level: 'task', start: 26, end: 30, phase: 4, tip: 'Pilot M28, full M30' },
+  { label: '6.5 Digital twin supply chain prototype', level: 'task', start: 28, end: 30, phase: 4, tip: 'Prototype M30' },
+  { label: '6.6 B2B portal SLA + self-service', level: 'task', start: 12, end: 14, phase: 2, tip: 'Delivered M14' },
+];
+
+const tbody = document.getElementById('ganttBody');
+
+ganttData.forEach(row => {
+  const tr = document.createElement('tr');
+
+  if (row.level === 'wp') {
+    const td = document.createElement('td');
+    td.className = 'label wp';
+    td.colSpan = TOTAL_MONTHS + 1;
+    td.textContent = row.label;
+    tr.appendChild(td);
+  } else {
+    const labelTd = document.createElement('td');
+    labelTd.className = row.level === 'task' ? 'label sub' : 'label';
+    labelTd.textContent = row.label;
+    tr.appendChild(labelTd);
+
+    for (let m = 1; m <= TOTAL_MONTHS; m++) {
+      const td = document.createElement('td');
+      if (m >= row.start && m <= row.end) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.background = phaseColor[row.phase] || '#999';
+        bar.title = row.tip || '';
+        // Round left/right ends
+        if (m === row.start) bar.style.borderRadius = '4px 0 0 4px';
+        if (m === row.end) bar.style.borderRadius = (m === row.start ? '4px' : '0 4px 4px 0');
+        if (m === row.start && m === row.end) bar.style.borderRadius = '4px';
+        td.appendChild(bar);
+      }
+      tr.appendChild(td);
     }
   }
- 
-  // Place risk bubbles
-  RISKS.forEach((r, i) => {
-    const key = `${r.l}-${r.i}`;
-    const bubble = document.createElement('div');
-    bubble.className = 'risk-bubble';
-    bubble.style.background = BUBBLE_COLORS[r.level];
-    bubble.textContent = i + 1;
-    bubble.title = r.title;
-    bubble.dataset.riskIdx = i;
-    bubble.onclick = () => selectRisk(i);
-    if (cells[key]) cells[key].appendChild(bubble);
-  });
-}
- 
-function selectRisk(idx) {
-  const r = RISKS[idx];
-  const colors = {
-    critical: { bg: '#FDE8E8', fg: '#C0392B', label: 'Critical' },
-    high:     { bg: '#FEF3D0', fg: '#D68910', label: 'High' },
-    medium:   { bg: '#E8F1FA', fg: '#1A5276', label: 'Medium' },
-    low:      { bg: '#E9F5EE', fg: '#1E8449', label: 'Low' },
-  };
-  const c = colors[r.level];
-  document.getElementById('risk-detail').innerHTML = `
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:12px;">Risk #${idx+1}</div>
-    <div class="risk-detail-badge" style="background:${c.bg};color:${c.fg}">Score ${r.score} · ${c.label}</div>
-    <div class="risk-detail-title">${r.title}</div>
-    <div class="risk-detail-scores">
-      <span>Likelihood: ${r.l}/3</span>
-      <span>Impact: ${r.i}/3</span>
-      <span>Score: ${r.score}/9</span>
-    </div>
-    <div class="risk-detail-mit"><strong>Mitigation: </strong>${r.mit}</div>`;
- 
-  // highlight using data-risk-idx, not DOM position
-  document.querySelectorAll('.risk-bubble').forEach(b => {
-    const isSelected = parseInt(b.dataset.riskIdx) === idx;
-    b.style.transform  = isSelected ? 'scale(1.2)' : '';
-    b.style.boxShadow  = isSelected
-      ? '0 0 0 3px white, 0 0 0 5px ' + BUBBLE_COLORS[RISKS[parseInt(b.dataset.riskIdx)].level]
-      : '';
-  });
-}
- 
-// ── NAV ACTIVE STATE ON SCROLL ─────────────────────────────────────────
-function updateActiveNav() {
-  const anchors = ['timeline-anchor','wbs-anchor','risk-anchor'];
-  const links   = document.querySelectorAll('.nav-link');
-  const navH    = 56;
-  let current   = 0;
-  anchors.forEach((id, i) => {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top <= navH + 40) current = i;
-  });
-  links.forEach((l, i) => l.classList.toggle('active', i === current));
-}
-window.addEventListener('scroll', updateActiveNav, { passive: true });
- 
-// ── INIT ────────────────────────────────────────────────────────────────
-window.addEventListener('load', () => {
-  buildTimeline();
-  buildWBS();
-  buildRisks();
+
+  tbody.appendChild(tr);
 });
-window.addEventListener('resize', buildTimeline);
 </script>
 </body>
 </html>
- 
