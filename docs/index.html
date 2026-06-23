@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAPCAR Connect — Programme Timeline & WBS</title>
+<title>PAPCAR — IS Transformation Programme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ──────────────────────────────────────────────────── */
 :root {
   --navy:   #1B2A4A;
   --navy2:  #243660;
@@ -20,737 +19,341 @@
   --gray2:  #B0B8CC;
   --gray3:  #6B7694;
   --text:   #1A1F35;
-
   --red:    #C0392B;
   --amber:  #D68910;
   --green:  #1E8449;
   --blue:   #1A5276;
   --teal:   #117A65;
   --purple: #6C3483;
-
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
-
-  --radius:  8px;
-  --shadow:  0 2px 16px rgba(27,42,74,0.10);
-  --shadow2: 0 4px 32px rgba(27,42,74,0.16);
+  --radius: 8px;
+  --shadow: 0 2px 16px rgba(27,42,74,0.10);
+  --shadow2:0 4px 32px rgba(27,42,74,0.16);
+  --nav-h:  56px;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--off); color: var(--text); font-size: 14px; line-height: 1.6; }
 
-body {
-  font-family: var(--font-body);
-  background: var(--off);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* ── NAV ─────────────────────────────────────────────────────── */
+/* ── NAV ── */
 .top-bar {
   background: var(--navy);
   padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--nav-h);
+  position: sticky; top: 0; z-index: 200;
   border-bottom: 2px solid var(--gold);
 }
-.top-bar-brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+.top-bar-brand { display: flex; align-items: center; gap: 14px; }
 .logo-mark {
-  width: 32px; height: 32px;
-  background: var(--gold);
-  border-radius: 4px;
+  width: 32px; height: 32px; background: var(--gold); border-radius: 4px;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display);
-  font-size: 16px;
-  color: var(--navy);
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-family: var(--font-display); font-size: 16px; color: var(--navy); font-weight: 700;
 }
-.brand-name {
-  font-family: var(--font-display);
-  font-size: 17px;
-  color: var(--white);
-  letter-spacing: 0.02em;
-}
-.brand-sub {
-  font-size: 11px;
-  color: var(--gold-l);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.nav-links {
-  display: flex;
-  gap: 4px;
-}
+.brand-name  { font-family: var(--font-display); font-size: 17px; color: var(--white); }
+.brand-sub   { font-size: 11px; color: var(--gold-l); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-links   { display: flex; gap: 4px; }
 .nav-link {
-  padding: 6px 16px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--gray2);
-  cursor: pointer;
-  transition: all 0.15s;
-  border: none;
-  background: none;
-  text-decoration: none;
+  padding: 6px 18px; border-radius: 6px; font-size: 13px; font-weight: 500;
+  color: var(--gray2); cursor: pointer; border: none; background: none;
+  text-decoration: none; transition: all 0.15s; display: inline-block;
 }
-.nav-link:hover, .nav-link.active {
-  background: rgba(200,151,58,0.15);
-  color: var(--gold-l);
+.nav-link:hover { background: rgba(200,151,58,0.15); color: var(--gold-l); }
+.nav-link.active { background: rgba(200,151,58,0.2); color: var(--gold-l); }
+
+/* ── SCROLL ANCHORS — offset for sticky nav ── */
+.scroll-anchor {
+  display: block;
+  height: var(--nav-h);
+  margin-top: calc(-1 * var(--nav-h));
+  visibility: hidden;
+  pointer-events: none;
 }
 
-/* ── HERO ─────────────────────────────────────────────────────── */
+/* ── HERO ── */
 .hero {
-  background: var(--navy);
-  padding: 56px 40px 48px;
-  position: relative;
-  overflow: hidden;
+  background: var(--navy); padding: 56px 40px 48px; position: relative; overflow: hidden;
 }
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(200,151,58,0.04) 40px, rgba(200,151,58,0.04) 41px),
     repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(200,151,58,0.03) 40px, rgba(200,151,58,0.03) 41px);
 }
 .hero-content { position: relative; max-width: 1400px; margin: 0 auto; }
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
+.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.hero-title   { font-family: var(--font-display); font-size: clamp(26px,3.5vw,42px); color: var(--white); line-height: 1.15; margin-bottom: 16px; max-width: 680px; }
+.hero-title em { color: var(--gold); font-style: italic; }
+.hero-crisis {
+  background: rgba(200,151,58,0.12); border-left: 3px solid var(--gold);
+  padding: 14px 18px; border-radius: 0 6px 6px 0; margin-bottom: 28px; max-width: 660px;
 }
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 44px);
-  color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 16px;
-  max-width: 640px;
-}
-.hero-title em {
-  color: var(--gold);
-  font-style: italic;
-}
-.hero-desc {
-  font-size: 15px;
-  color: var(--gray2);
-  max-width: 560px;
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 28px;
-  color: var(--gold);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 11px;
-  color: var(--gray3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+.hero-crisis p { font-size: 13px; color: var(--gray2); line-height: 1.65; }
+.hero-crisis strong { color: var(--gold-l); }
+.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 2px; }
+.stat-value { font-family: var(--font-display); font-size: 28px; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--gray3); text-transform: uppercase; letter-spacing: 0.08em; }
 
-/* ── MAIN CONTENT ────────────────────────────────────────────── */
+/* ── MAIN ── */
 .main { max-width: 1400px; margin: 0 auto; padding: 48px 40px; }
 
 .section-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 1.5px solid var(--gray1);
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1.5px solid var(--gray1);
 }
-.section-eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: 26px;
-  color: var(--navy);
-  line-height: 1.2;
-}
-.section-desc {
-  font-size: 13px;
-  color: var(--gray3);
-  max-width: 480px;
-  text-align: right;
-  line-height: 1.6;
-}
+.section-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.section-title   { font-family: var(--font-display); font-size: 24px; color: var(--navy); line-height: 1.2; }
+.section-desc    { font-size: 12px; color: var(--gray3); max-width: 400px; text-align: right; line-height: 1.6; }
 
-/* ── PHASE LEGEND ────────────────────────────────────────────── */
+/* ── TIMELINE TOGGLE ── */
+.toggle-bar {
+  display: flex; gap: 4px; background: var(--white); padding: 5px;
+  border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 20px;
+  width: fit-content; border: 1px solid var(--gray1);
+}
+.toggle-btn {
+  padding: 7px 20px; border-radius: 5px; font-size: 12px; font-weight: 600;
+  color: var(--gray3); cursor: pointer; border: none; background: none; transition: all 0.15s;
+}
+.toggle-btn.active { background: var(--navy); color: var(--white); }
+.toggle-btn:hover:not(.active) { background: var(--off); color: var(--navy); }
+
+/* ── LEGEND ── */
 .legend {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-  padding: 14px 20px;
-  background: var(--white);
-  border-radius: var(--radius);
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;
+  padding: 12px 18px; background: var(--white); border-radius: var(--radius);
   border: 1px solid var(--gray1);
 }
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--gray3);
-  font-weight: 500;
-}
-.legend-dot {
-  width: 12px; height: 12px;
-  border-radius: 3px;
-  flex-shrink: 0;
-}
+.legend-item { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--gray3); font-weight: 500; }
+.legend-dot  { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
 
-/* ── TIMELINE SECTION ────────────────────────────────────────── */
-.timeline-wrapper {
-  overflow-x: auto;
-  padding-bottom: 16px;
-}
-.timeline-wrapper::-webkit-scrollbar { height: 6px; }
+/* ── TIMELINE ── */
+.timeline-wrapper { overflow-x: auto; padding-bottom: 12px; border-radius: var(--radius); }
+.timeline-wrapper::-webkit-scrollbar { height: 5px; }
 .timeline-wrapper::-webkit-scrollbar-track { background: var(--gray1); border-radius: 3px; }
 .timeline-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+.timeline-container { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
 
-.timeline-container {
-  min-width: 1100px;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
+.tl-header-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.tl-label-col  {
+  min-width: 210px; width: 210px; padding: 10px 14px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); border-right: 1px solid rgba(255,255,255,0.10);
+  display: flex; align-items: center; flex-shrink: 0;
 }
-
-/* Month header */
-.timeline-header {
-  display: grid;
-  background: var(--navy);
-  padding: 0;
-  position: relative;
+.tl-grid-area  { flex: 1; display: flex; position: relative; overflow: hidden; }
+.phase-block   {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 8px 4px; border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center; color: rgba(255,255,255,0.85); white-space: nowrap; overflow: hidden;
 }
-.timeline-header-row {
-  display: flex;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.timeline-label-col {
-  min-width: 220px;
-  width: 220px;
-  padding: 12px 16px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border-right: 1px solid rgba(255,255,255,0.10);
-  display: flex;
-  align-items: center;
-}
-.timeline-grid-area {
-  flex: 1;
-  display: flex;
-  position: relative;
-}
-.phase-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 8px 4px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
-  color: var(--white);
-  opacity: 0.85;
-}
-.months-row {
-  display: flex;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
+.months-row { display: flex; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.05); }
 .month-cell {
-  flex: 1;
-  min-width: 36px;
-  padding: 6px 2px;
-  text-align: center;
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--gray3);
-  letter-spacing: 0.04em;
+  flex: 1; padding: 5px 2px; text-align: center;
+  font-size: 9px; font-weight: 600; color: var(--gray3);
   border-right: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-mono);
 }
-.month-cell.boundary { border-right: 2px solid rgba(200,151,58,0.3); }
+.month-cell.divider-cell { border-right: 2px solid rgba(200,151,58,0.5); color: var(--gold-l); font-weight: 700; }
 
-/* Divider line between ST and MT */
-.st-mt-divider {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: var(--gold);
-  opacity: 0.7;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* Row */
-.timeline-row {
-  display: flex;
-  align-items: stretch;
-  border-bottom: 1px solid var(--gray1);
-  min-height: 48px;
+.tl-row {
+  display: flex; align-items: stretch; border-bottom: 1px solid var(--gray1); min-height: 44px;
   transition: background 0.1s;
 }
-.timeline-row:last-child { border-bottom: none; }
-.timeline-row:hover { background: rgba(27,42,74,0.025); }
+.tl-row:last-child { border-bottom: none; }
+.tl-row:hover { background: rgba(27,42,74,0.02); }
+.tl-row.group-row { background: var(--off); min-height: 34px; }
 
 .row-label {
-  min-width: 220px;
-  width: 220px;
-  padding: 10px 16px;
-  border-right: 1px solid var(--gray1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  background: var(--white);
+  min-width: 210px; width: 210px; padding: 8px 14px;
+  border-right: 1px solid var(--gray1); display: flex; flex-direction: column;
+  justify-content: center; gap: 1px; background: inherit; flex-shrink: 0;
 }
-.row-category {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gray2);
-}
-.row-name {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--navy);
-  line-height: 1.3;
-}
-.row-sub {
-  font-size: 10px;
-  color: var(--gray3);
-}
+.row-cat  { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--gray2); }
+.row-name { font-size: 11px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.row-sub  { font-size: 10px; color: var(--gray3); }
+.group-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy2); }
 
-.row-grid {
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.grid-lines {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  pointer-events: none;
-}
-.grid-line {
-  flex: 1;
-  border-right: 1px solid var(--gray1);
-  min-width: 36px;
-}
-.grid-line.boundary { border-right: 1px dashed var(--gold-l); }
+.row-grid { flex: 1; position: relative; display: flex; align-items: center; min-height: inherit; }
+.grid-bg  { position: absolute; inset: 0; display: flex; pointer-events: none; }
+.grid-col { flex: 1; border-right: 1px solid var(--gray1); }
+.grid-col.divider-col { border-right: 2px dashed rgba(200,151,58,0.35); }
 
 .bar {
-  position: absolute;
-  height: 26px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-  font-size: 10px;
-  font-weight: 600;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: default;
+  position: absolute; height: 24px; border-radius: 4px;
+  display: flex; align-items: center; padding: 0 7px;
+  font-size: 9px; font-weight: 600; color: white;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  cursor: default; z-index: 2; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
   transition: opacity 0.15s, transform 0.15s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
-  z-index: 2;
 }
-.bar:hover { opacity: 0.88; transform: translateY(-1px); }
+.bar:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.25); }
 
-.bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-/* group section rows */
-.group-row {
-  background: var(--off);
-  border-bottom: 1px solid var(--gray1);
-}
-.group-row .row-label {
-  background: var(--off);
-}
-.group-row .row-name {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--navy2);
-}
-
-/* Tooltip */
+/* ── TOOLTIP ── */
 .tooltip {
-  display: none;
-  position: fixed;
-  background: var(--navy);
-  color: var(--white);
-  border-radius: 6px;
-  padding: 10px 14px;
-  font-size: 12px;
-  max-width: 280px;
-  line-height: 1.5;
-  z-index: 999;
-  box-shadow: var(--shadow2);
-  border: 1px solid var(--navy2);
-  pointer-events: none;
+  display: none; position: fixed; background: var(--navy); color: var(--white);
+  border-radius: 6px; padding: 10px 14px; font-size: 12px; max-width: 260px;
+  line-height: 1.5; z-index: 999; box-shadow: var(--shadow2);
+  border: 1px solid var(--navy2); pointer-events: none;
 }
-.tooltip.visible { display: block; }
-.tooltip-title { font-weight: 700; margin-bottom: 4px; color: var(--gold); }
-.tooltip-row { font-size: 11px; color: var(--gray2); }
+.tooltip.show { display: block; }
+.tooltip-title { font-weight: 700; margin-bottom: 4px; color: var(--gold); font-size: 12px; }
+.tooltip-sub   { font-size: 10px; color: var(--gray2); margin-bottom: 6px; }
+.tooltip-body  { font-size: 11px; color: #c8d0e0; line-height: 1.55; }
 
-/* ── WBS ─────────────────────────────────────────────────────── */
-.wbs-section { margin-top: 72px; }
-
-.wp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 20px;
+/* ── PHASE CARDS ── */
+.phases-strip {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 32px;
 }
-
-.wp-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  border: 1px solid var(--gray1);
-  transition: box-shadow 0.2s;
+.phase-card {
+  background: var(--white); border-radius: var(--radius); border: 1px solid var(--gray1);
+  padding: 16px; box-shadow: var(--shadow); border-top: 3px solid var(--gray2);
 }
-.wp-card:hover { box-shadow: var(--shadow2); }
+.phase-num   { font-family: var(--font-display); font-size: 20px; line-height: 1; margin-bottom: 4px; }
+.phase-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.phase-range { font-size: 11px; font-weight: 600; margin-bottom: 10px; }
+.phase-gate  {
+  font-size: 10px; color: var(--gray3); line-height: 1.5;
+  padding-top: 10px; border-top: 1px solid var(--gray1);
+}
+.phase-gate strong { color: var(--navy); font-size: 10px; display: block; margin-bottom: 3px; }
 
+/* ── WBS ── */
+.wbs-section { margin-top: 64px; }
+.wp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 18px; }
+
+.wp-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--gray1); }
 .wp-header {
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border-bottom: 1px solid var(--gray1);
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+  cursor: pointer; user-select: none; transition: background 0.1s;
+  border-bottom: 1px solid transparent;
 }
+.wp-header:hover { background: var(--off); }
+.wp-header.open  { border-bottom-color: var(--gray1); }
 .wp-badge {
-  width: 36px; height: 36px;
-  border-radius: 8px;
+  width: 34px; height: 34px; border-radius: 7px;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  flex-shrink: 0;
-  color: var(--white);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  color: var(--white); flex-shrink: 0;
 }
 .wp-info { flex: 1; }
-.wp-number {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gray3);
-  margin-bottom: 2px;
-}
-.wp-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--navy);
-}
-.wp-count {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--gray3);
-  white-space: nowrap;
-}
+.wp-number { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray3); margin-bottom: 2px; }
+.wp-title  { font-size: 13px; font-weight: 700; color: var(--navy); }
+.wp-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.wp-count  { font-size: 11px; font-weight: 600; color: var(--gray3); }
+.chevron   { font-size: 14px; color: var(--gray2); transition: transform 0.2s; }
+.chevron.open { transform: rotate(180deg); }
 
-.deliverable-list { padding: 4px 0; }
+.del-list { display: none; }
+.del-list.open { display: block; }
+
 .deliverable {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--gray1);
-  transition: background 0.1s;
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 9px 18px; border-bottom: 1px solid var(--gray1); transition: background 0.1s;
 }
 .deliverable:last-child { border-bottom: none; }
 .deliverable:hover { background: var(--off); }
-
-.del-id {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--gold);
-  min-width: 32px;
-  padding-top: 1px;
-  flex-shrink: 0;
-}
-.del-content { flex: 1; }
-.del-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 2px;
-  line-height: 1.35;
-}
-.del-output {
-  font-size: 11px;
-  color: var(--gray3);
-  line-height: 1.4;
-}
-.del-owner {
-  font-size: 10px;
-  color: var(--gray2);
-  font-style: italic;
-  margin-top: 2px;
-}
-.del-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  flex-shrink: 0;
-}
-.del-timeline {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--navy);
-  background: var(--off);
-  padding: 2px 8px;
-  border-radius: 10px;
-  white-space: nowrap;
-}
-.del-phase {
-  font-size: 9px;
-  color: var(--gray3);
-  text-align: right;
+.del-id     { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--gold); min-width: 30px; padding-top: 1px; flex-shrink: 0; }
+.del-body   { flex: 1; }
+.del-title  { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 2px; line-height: 1.35; }
+.del-output { font-size: 10px; color: var(--gray3); line-height: 1.4; }
+.del-owner  { font-size: 10px; color: var(--gray2); font-style: italic; margin-top: 2px; }
+.del-time   {
+  font-size: 10px; font-weight: 600; color: var(--navy2);
+  background: var(--off); padding: 2px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0;
 }
 
-/* ── PHASES SUMMARY ──────────────────────────────────────────── */
-.phases-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
-}
-.phase-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  border: 1px solid var(--gray1);
-  padding: 18px 16px;
-  box-shadow: var(--shadow);
-}
-.phase-card-num {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.phase-card-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.phase-card-range {
-  font-size: 11px;
-  color: var(--gray3);
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-.phase-card-gate {
-  font-size: 10px;
-  color: var(--gray2);
-  line-height: 1.5;
-  padding-top: 10px;
-  border-top: 1px solid var(--gray1);
-}
-
-/* ── RISK MATRIX ─────────────────────────────────────────────── */
-.risk-section { margin-top: 72px; }
-.risk-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 16px;
-}
+/* ── RISKS ── */
+.risk-section { margin-top: 64px; }
+.risk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 14px; }
 .risk-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px 20px;
-  border-left: 4px solid var(--gray2);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-top: 1px solid var(--gray1);
-  border-right: 1px solid var(--gray1);
-  border-bottom: 1px solid var(--gray1);
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 14px 18px; border-left: 4px solid var(--gray2);
+  border-top: 1px solid var(--gray1); border-right: 1px solid var(--gray1); border-bottom: 1px solid var(--gray1);
+  display: flex; flex-direction: column; gap: 8px;
 }
 .risk-card.critical { border-left-color: var(--red); }
 .risk-card.high     { border-left-color: var(--amber); }
 .risk-card.medium   { border-left-color: var(--blue); }
 .risk-card.low      { border-left-color: var(--green); }
+.risk-top  { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.risk-title { font-size: 12px; font-weight: 700; color: var(--navy); line-height: 1.35; }
+.risk-badge {
+  padding: 2px 9px; border-radius: 10px; font-size: 10px; font-weight: 700;
+  white-space: nowrap; flex-shrink: 0;
+}
+.critical .risk-badge { background: #FDE8E8; color: var(--red); }
+.high     .risk-badge { background: #FEF3D0; color: var(--amber); }
+.medium   .risk-badge { background: #E8F1FA; color: var(--blue); }
+.low      .risk-badge { background: #E9F5EE; color: var(--green); }
+.risk-scores { display: flex; gap: 12px; font-size: 10px; color: var(--gray3); font-weight: 500; }
+.risk-mit { font-size: 11px; color: var(--gray3); line-height: 1.55; padding-top: 8px; border-top: 1px solid var(--gray1); }
 
-.risk-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.risk-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.35; }
-.risk-score-badge {
-  padding: 3px 10px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.critical .risk-score-badge { background: #FDE8E8; color: var(--red); }
-.high     .risk-score-badge { background: #FEF3D0; color: var(--amber); }
-.medium   .risk-score-badge { background: #E8F1FA; color: var(--blue); }
-.low      .risk-score-badge { background: #E9F5EE; color: var(--green); }
-
-.risk-scores {
-  display: flex;
-  gap: 12px;
-  font-size: 10px;
-  color: var(--gray3);
-  font-weight: 500;
-}
-.risk-mitigation {
-  font-size: 11px;
-  color: var(--gray3);
-  line-height: 1.55;
-  padding-top: 8px;
-  border-top: 1px solid var(--gray1);
-}
-
-/* ── SECTION TABS ────────────────────────────────────────────── */
-.tab-bar {
-  display: flex;
-  gap: 4px;
-  background: var(--white);
-  padding: 6px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 32px;
-  width: fit-content;
-  border: 1px solid var(--gray1);
-}
-.tab {
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--gray3);
-  cursor: pointer;
-  border: none;
-  background: none;
-  transition: all 0.15s;
-}
-.tab.active {
-  background: var(--navy);
-  color: var(--white);
-}
-.tab:hover:not(.active) { background: var(--off); color: var(--navy); }
-
-.tab-section { display: none; }
-.tab-section.active { display: block; }
-
-/* ── UTILITY ─────────────────────────────────────────────────── */
-.mt-48 { margin-top: 48px; }
-.mb-24 { margin-bottom: 24px; }
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-.tag-st  { background: #E8F1FA; color: var(--blue); }
-.tag-mt  { background: #E9F5EE; color: var(--green); }
-.tag-lt  { background: #F3EBF9; color: var(--purple); }
+/* ── UTIL ── */
+.mt-64 { margin-top: 64px; }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- NAV -->
 <nav class="top-bar">
   <div class="top-bar-brand">
     <div class="logo-mark">CC</div>
     <div>
       <div class="brand-name">Croissant Corp</div>
-      <div class="brand-sub">PAPCAR Transformation Programme</div>
+      <div class="brand-sub">PAPCAR Transformation</div>
     </div>
   </div>
   <div class="nav-links">
-    <a class="nav-link active" onclick="scrollTo("timeline-anchor")">Timeline</a>
-    <a class="nav-link" onclick="scrollTo("wbs-anchor")">WBS</a>
-    <a class="nav-link" onclick="scrollTo("risk-anchor")">Risks</a>
+    <a class="nav-link active" href="#timeline-anchor">Timeline</a>
+    <a class="nav-link" href="#wbs-anchor">WBS</a>
+    <a class="nav-link" href="#risk-anchor">Risks</a>
   </div>
 </nav>
+
+<div class="tooltip" id="tooltip"></div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">Croissant Corp · Consulting Proposal · June 2026</div>
     <h1 class="hero-title">PAPCAR <em>IS Transformation</em> Programme</h1>
-    <p class="hero-desc">A 36-month phased programme to resolve the operational crisis, rebuild the IS architecture, and establish PAPCAR's information system as a strategic driver of competitive advantage.</p>
+    <div class="hero-crisis">
+      <p>
+        PAPCAR is losing <strong>1 in 3 orders</strong> due to stock fragmentation across 20 sales units, a catalogue of 5,000+ SKUs with no lifecycle governance, and five isolated IS with no shared data model.
+        <strong>PAPCAR Connect</strong> resolves the immediate crisis. The 36-month programme rebuilds the IS as a <strong>strategic competitive asset</strong>.
+      </p>
+    </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-value">36</div><div class="stat-label">Month programme</div></div>
       <div class="stat"><div class="stat-value">6</div><div class="stat-label">Work packages</div></div>
       <div class="stat"><div class="stat-value">41</div><div class="stat-label">Deliverables</div></div>
-      <div class="stat"><div class="stat-value">5</div><div class="stat-label">Transformation phases</div></div>
-      <div class="stat"><div class="stat-value">12</div><div class="stat-label">Requirements addressed</div></div>
+      <div class="stat"><div class="stat-value">5</div><div class="stat-label">Phases</div></div>
+      <div class="stat"><div class="stat-value">12</div><div class="stat-label">Requirements</div></div>
     </div>
   </div>
 </div>
 
-<div class="tooltip" id="tooltip"></div>
-
 <!-- MAIN -->
 <main class="main">
 
-  <!-- ── TIMELINE ────────────────────────────────────────────── -->
-  <div id="timeline-anchor"></div>
+  <!-- TIMELINE SECTION -->
+  <span class="scroll-anchor" id="timeline-anchor"></span>
   <div class="section-header">
     <div>
       <div class="section-eyebrow">Programme timeline</div>
       <div class="section-title">Short, Medium &amp; Long-Term Actions</div>
     </div>
-    <div class="section-desc">The gold divider separates short-term crisis actions (0–6 months) from the medium and long-term structural transformation (6–36 months).</div>
+    <div class="section-desc">Toggle between the short-term view (months 0–6) and full 36-month view. Hover any bar for details.</div>
+  </div>
+
+  <div class="toggle-bar">
+    <button class="toggle-btn active" id="btn-st" onclick="setView('st')">Short-term (0–6 months)</button>
+    <button class="toggle-btn" id="btn-full" onclick="setView('full')">Full programme (0–36 months)</button>
   </div>
 
   <div class="legend">
@@ -758,36 +361,41 @@ body {
     <div class="legend-item"><div class="legend-dot" style="background:#117A65"></div>Phase 1 · Foundation</div>
     <div class="legend-item"><div class="legend-dot" style="background:#1E8449"></div>Phase 2 · Core IS</div>
     <div class="legend-item"><div class="legend-dot" style="background:#6C3483"></div>Phase 3 · Integration</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 · Strategic</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 · Leadership</div>
     <div class="legend-item"><div class="legend-dot" style="background:#C8973A"></div>PAPCAR Connect</div>
-    <div class="legend-item" style="border-left:2px solid #C8973A;padding-left:8px;margin-left:4px;font-weight:600;color:#C8973A">◀ ST &nbsp;|&nbsp; MT ▶</div>
+    <div class="legend-item" style="padding-left:8px;border-left:2px solid var(--gold);margin-left:4px;color:var(--gold);font-weight:600;font-size:11px;">
+      ST / MT boundary = Month 6
+    </div>
   </div>
 
   <div class="timeline-wrapper">
     <div class="timeline-container" id="timeline-container"></div>
   </div>
 
-  <!-- ── WBS ────────────────────────────────────────────────── -->
-  <div id="wbs-anchor" class="mt-48"></div>
-  <div class="section-header">
-    <div>
-      <div class="section-eyebrow" id="WBS">Work breakdown structure</div>
-      <div class="section-title">Six Work Packages · 41 Deliverables</div>
+  <!-- WBS SECTION -->
+  <div class="wbs-section">
+    <span class="scroll-anchor" id="wbs-anchor"></span>
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Work breakdown structure</div>
+        <div class="section-title">Six Work Packages · 41 Deliverables</div>
+      </div>
+      <div class="section-desc">Click any work package to expand its deliverables.</div>
     </div>
-    <div class="section-desc">Each work package maps to owners, outputs, and timelines. Click any card to expand its deliverables.</div>
+
+    <div class="phases-strip" id="phases-strip"></div>
+    <div class="wp-grid" id="wbs-grid"></div>
   </div>
 
-  <div class="phases-row" id="phases-summary"></div>
-  <div class="wp-grid" id="wbs-grid"></div>
-
-  <!-- ── RISKS ──────────────────────────────────────────────── -->
-  <div id="risk-anchor" class="risk-section">
+  <!-- RISK SECTION -->
+  <div class="risk-section">
+    <span class="scroll-anchor" id="risk-anchor"></span>
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Risk analysis</div>
-        <div class="section-title">10 Programme Risks · Likelihood × Impact</div>
+        <div class="section-title">10 Programme Risks</div>
       </div>
-      <div class="section-desc">Risks scored 1–3 on likelihood and impact. Score ≥ 6 = Critical.</div>
+      <div class="section-desc">Scored on likelihood × impact (1–3). Score ≥ 6 = Critical.</div>
     </div>
     <div class="risk-grid" id="risk-grid"></div>
   </div>
@@ -795,222 +403,264 @@ body {
 </main>
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────────────
-// months 0-36; ST = months 0-6, MT = months 6-36
-// bar: [startMonth, endMonth, label, color, tooltip]
+// ── CONFIG ──────────────────────────────────────────────────────────
+const LABEL_W = 210;
 
-const TOTAL_MONTHS = 37; // 0..36
-const ST_BOUNDARY  = 6;  // gold divider at month 6
-
+// Each row: { group } for dividers, or { category, name, sub, bar:[startM, endM, label, color, tip] }
 const ROWS = [
-  // ── SHORT TERM WAVE ACTIONS ───────────────────────────────
-  { group: 'SHORT-TERM · Waves 0–4', rows: [] },
-  {
-    category: 'Wave 0', name: 'Deploy PAPCAR Connect', sub: 'Weeks 1–2',
-    bar: [0, 0.5, 'Deploy PC', '#C8973A',
-      'Deploy PAPCAR Connect to all 20 sales units. Configure 4 role accounts. Training sessions. Live on Netlify + Supabase.']
-  },
-  {
-    category: 'Wave 1', name: 'Organisational quick wins', sub: 'Weeks 2–4',
-    bar: [0.5, 1, 'Org quick wins', '#1A5276',
-      'Freeze new SKU introductions. Launch failed-sales logging protocol. Weekly Le Havre / Bordeaux coordination meeting.']
-  },
-  {
-    category: 'Wave 2', name: 'Catalogue rationalisation', sub: 'Months 1–2',
-    bar: [1, 2, 'ABC-XYZ analysis', '#1A5276',
-      'ABC-XYZ rotation analysis on DWH Sales data. Withdraw 3,500–4,000 slow-movers. Define made-to-order terms. Frees 30–40% warehouse capacity.']
-  },
-  {
-    category: 'Wave 3', name: 'Client comm. protocol', sub: 'Months 1–1.5',
-    bar: [1, 1.5, 'Client protocol', '#1A5276',
-      'Differentiated service protocol by segment. Printing houses: direct sales engineer. Companies: SLA escalation. Stationers: self-service onboarding.']
-  },
-  {
-    category: 'Wave 4', name: 'ERP vendor selection (RFP)', sub: 'Months 2–6',
-    bar: [2, 6, 'ERP RFP', '#117A65',
-      'Issue RFP for ERP package. Evaluate SAP Business One, Sage X3, Microsoft Dynamics 365. Select integrator. Define data migration scope.']
-  },
-  // ── GOVERNANCE ────────────────────────────────────────────
-  { group: 'GOVERNANCE & TEAM BUILD', rows: [] },
-  {
-    category: 'WP2', name: 'CIO hire & IS governance', sub: 'Months 1–3',
-    bar: [1, 3, 'CIO hire', '#1A5276',
-      'Critical path hire. CIO reports to General Management. IS Steering Committee constituted. Blocks all downstream governance decisions.']
-  },
-  {
-    category: 'WP2', name: 'Programme Manager + CM Lead', sub: 'Months 3–5',
-    bar: [3, 5, 'PM + CM Lead', '#117A65',
-      'IS Programme Manager and Change Management Lead recruited. Programme management tool deployed. Enterprise Architect search begins.']
-  },
-  {
-    category: 'WP2', name: 'Data Governance setup', sub: 'Months 4–6',
-    bar: [4, 6, 'Data Gov.', '#117A65',
-      'Data Governance Committee active. MDM tool selected. Master data cleansing begins across 5 legacy systems before ERP migration.']
-  },
-  // ── PAPCAR CONNECT ─────────────────────────────────────────
-  { group: 'PAPCAR CONNECT (MVP → EXTENDED)', rows: [] },
-  {
-    category: 'WP3', name: 'Knowledge transfer + pilot', sub: 'Months 1–2',
-    bar: [1, 2, 'PC knowledge transfer', '#C8973A',
-      'PAPCAR Connect transferred to internal developer. Pilot in 3 volunteer SUs. Lessons learned before national rollout.']
-  },
-  {
-    category: 'WP3', name: 'National rollout (20 SUs)', sub: 'Months 2–4',
-    bar: [2, 4, 'PC national rollout', '#C8973A',
-      'All 20 sales units live on PAPCAR Connect. Failed-sales logging active. Production dashboard showing Le Havre (34%) vs Bordeaux (98%) imbalance.']
-  },
-  {
-    category: 'WP3', name: 'B2B portal extension (EDI)', sub: 'Months 9–12',
-    bar: [9, 12, 'EDI for stationers', '#C8973A',
-      'EDI-based automated replenishment for stationers. Self-service portal extended with invoice download, SLA tracking for companies.']
-  },
-  // ── CATALOGUE ─────────────────────────────────────────────
-  { group: 'CATALOGUE & PLM', rows: [] },
-  {
-    category: 'WP4', name: 'SKU freeze + slow-mover withdrawal', sub: 'Months 1–8',
-    bar: [1, 8, 'Catalogue clean', '#1A5276',
-      'Immediate SKU freeze. ABC-XYZ analysis complete by month 6. ~3,500–4,000 slow-movers withdrawn from active stocking by month 8.']
-  },
-  {
-    category: 'WP4', name: 'PLM tool selection + deploy', sub: 'Months 9–15',
-    bar: [9, 15, 'PLM (Akeneo)', '#6C3483',
-      'PLM tool selected (Akeneo PIM or equivalent). Migration of active catalogue. Lifecycle stages (intro / growth / maturity / sunset) activated. Prevents catalogue bloat from recurring.']
-  },
-  // ── ERP ───────────────────────────────────────────────────
-  { group: 'ERP DEPLOYMENT', rows: [] },
-  {
-    category: 'WP5', name: 'ERP Phase 1 – 20 Sales Units', sub: 'Months 6–18',
-    bar: [6, 18, 'ERP Phase 1 (SUs)', '#117A65',
-      'ERP order management + inventory for all 20 SUs. Replaces ADV + WMS. Single stock model. Automated order commitment. Gate: data cleansing complete.']
-  },
-  {
-    category: 'WP5', name: 'CRM – Printing houses', sub: 'Months 9–15',
-    bar: [9, 15, 'CRM', '#1E8449',
-      'Salesforce or HubSpot CRM for printing house segment. 360° client history. Advisory service capability. Complaint SLA management. Loyalty programme.']
-  },
-  {
-    category: 'WP5', name: 'ERP Phase 2 – Production plants', sub: 'Months 18–24',
-    bar: [18, 24, 'ERP Phase 2 (Plants)', '#6C3483',
-      'ERP integrated with Le Havre and Bordeaux. Demand-driven production planning replaces 4-week blind cycle. SCM demand forecasting module.']
-  },
-  {
-    category: 'WP5', name: 'SCM demand planning module', sub: 'Months 18–24',
-    bar: [18, 24, 'SCM', '#6C3483',
-      'SCM module configured on ERP. Algorithmic reorder signals per SKU per SU. Trained on 12+ months of PAPCAR Connect failed-sales data.']
-  },
-  {
-    category: 'WP5', name: 'Legacy decommission (ADV/WMS/MRP2)', sub: 'Months 24–26',
-    bar: [24, 26, 'Legacy retire', '#C0392B',
-      'ADV, WMS, and MRP2 decommissioned. AS/400 and Unix servers retired. Final migration to ERP confirmed complete.']
-  },
-  // ── DATA PLATFORM ─────────────────────────────────────────
-  { group: 'DATA PLATFORM & ADVANCED CAPABILITIES', rows: [] },
-  {
-    category: 'WP6', name: 'Cloud infrastructure migration', sub: 'Months 12–18',
-    bar: [12, 18, 'Cloud migration', '#6C3483',
-      'Replace 50 ageing on-premises servers with Azure or AWS cloud. Managed by cloud MSP. Eliminates single-point-of-failure risk. Enables AI and digital twin.']
-  },
-  {
-    category: 'WP6', name: 'Unified data platform (merge DWHs)', sub: 'Months 18–24',
-    bar: [18, 24, 'Unified DWH', '#6C3483',
-      'DWH Sales + DWH Industrial consolidated into single analytical platform. Enables cross-functional reporting. Foundation for AI forecasting.']
-  },
-  {
-    category: 'WP6', name: 'IS performance dashboard', sub: 'Months 24–26',
-    bar: [24, 26, 'IS Dashboard', '#C0392B',
-      'Business KPI dashboard: order fulfilment rate, demand forecast accuracy, stock alert response time, complaint resolution. Built on unified platform.']
-  },
-  {
-    category: 'WP6', name: 'AI demand forecasting', sub: 'Months 24–30',
-    bar: [24, 30, 'AI forecasting', '#C0392B',
-      'ML model trained on unified platform data. AWS Forecast or Google Vertex AI. Replaces intuitive replenishment with algorithmic precision.']
-  },
-  {
-    category: 'WP6', name: 'Digital twin prototype', sub: 'Months 28–34',
-    bar: [28, 34, 'Digital twin', '#C0392B',
-      'Supply chain simulation model. Enables scenario planning: close a SU, production failure, demand spike. Requires cloud + unified platform as foundation.']
-  },
+  { group:'SHORT-TERM · Crisis Actions (Waves 0–4)' },
+  { category:'Wave 0', name:'Deploy PAPCAR Connect', sub:'Weeks 1–2',
+    bar:[0,0.5,'Deploy PAPCAR Connect','#C8973A','Deploy PAPCAR Connect to all 20 sales units. Configure 4 demo accounts (employee, client, production, supplier). Training sessions. Live on Netlify + Supabase with RLS.'] },
+  { category:'Wave 1', name:'Organisational quick wins', sub:'Weeks 2–4',
+    bar:[0.5,1,'Org. quick wins','#1A5276','Freeze new SKU introductions. Launch failed-sales logging protocol. Weekly Le Havre / Bordeaux production coordination meeting using PAPCAR Connect production dashboard.'] },
+  { category:'Wave 2', name:'Catalogue rationalisation', sub:'Months 1–2',
+    bar:[1,2,'ABC-XYZ catalogue analysis','#1A5276','ABC-XYZ rotation analysis on existing DWH Sales data. Identify and withdraw ~3,500–4,000 slow-moving references. Frees 30–40% warehouse capacity immediately.'] },
+  { category:'Wave 3', name:'Client comm. protocol', sub:'Months 1–1.5',
+    bar:[1,1.5,'Segmented client comms','#1A5276','Differentiated service protocol by segment: printing houses get direct sales engineer escalation; companies get SLA confirmation; stationers get self-service onboarding to PAPCAR Connect.'] },
+  { category:'Wave 4', name:'ERP vendor selection (RFP)', sub:'Months 2–6',
+    bar:[2,6,'ERP RFP & vendor selection','#117A65','Issue RFP for ERP package. Evaluate SAP Business One, Sage X3, Microsoft Dynamics 365 Business Central. Select integrator. Define data migration scope from ADV, WMS, and MRP2.'] },
+
+  { group:'GOVERNANCE & TEAM BUILD' },
+  { category:'WP2', name:'CIO hire & IS governance', sub:'Months 1–3',
+    bar:[1,3,'CIO hire','#1A5276','Critical-path hire. CIO reports to General Management. IS Steering Committee constituted. First SteerCo meeting by month 2. Blocks all downstream governance decisions.'] },
+  { category:'WP2', name:'Programme Manager + CM Lead', sub:'Months 3–5',
+    bar:[3,5,'PM + Change Management Lead','#117A65','IS Programme Manager and Change Management Lead recruited or engaged. Programme management tooling deployed. Enterprise Architect search begins.'] },
+  { category:'WP2', name:'Data Governance setup', sub:'Months 4–6',
+    bar:[4,6,'Data Governance + MDM','#117A65','Data Governance Committee active. MDM tool selected. Master data cleansing begins across 5 incompatible legacy systems before ERP migration.'] },
+
+  { group:'PAPCAR CONNECT (MVP → EXTENDED)' },
+  { category:'WP3', name:'Knowledge transfer + pilot', sub:'Months 1–2',
+    bar:[1,2,'PC knowledge transfer','#C8973A','Codebase handed to internal developer or maintenance partner. Pilot deployment in 3 volunteer SUs before national rollout. Lessons learned documented.'] },
+  { category:'WP3', name:'National rollout (all 20 SUs)', sub:'Months 2–4',
+    bar:[2,4,'PC national rollout','#C8973A','All 20 sales units live on PAPCAR Connect. Failed-sales logging active. Production dashboard showing Le Havre (34%) vs Bordeaux (98%) imbalance in real time.'] },
+  { category:'WP3', name:'B2B portal extension', sub:'Months 9–12',
+    bar:[9,12,'EDI + SLA extension','#C8973A','EDI-based automated replenishment for stationers. Client portal extended with invoice download and contractual SLA tracking for companies.'] },
+
+  { group:'CATALOGUE & PLM' },
+  { category:'WP4', name:'SKU freeze + withdrawal', sub:'Months 1–8',
+    bar:[1,8,'Catalogue clean-up','#1A5276','Immediate SKU introduction freeze. ABC-XYZ analysis complete by month 6. ~3,500–4,000 slow-movers withdrawn from active stock by month 8. Made-to-order terms published.'] },
+  { category:'WP4', name:'PLM tool selection + deploy', sub:'Months 9–15',
+    bar:[9,15,'PLM deployment (Akeneo)','#6C3483','PLM tool selected and deployed (Akeneo PIM or equivalent). Lifecycle stages activated: introduction, growth, maturity, sunset. Prevents catalogue bloat from recurring.'] },
+
+  { group:'ERP DEPLOYMENT' },
+  { category:'WP5', name:'ERP Phase 1 — 20 Sales Units', sub:'Months 6–18',
+    bar:[6,18,'ERP Phase 1 (20 SUs)','#117A65','ERP order management and inventory for all 20 SUs. Replaces ADV + WMS. Single stock model. Automated availability check and delivery commitment. Gate: data cleansing complete.'] },
+  { category:'WP5', name:'CRM — Printing houses', sub:'Months 9–15',
+    bar:[9,15,'CRM (printing houses)','#1E8449','Salesforce or HubSpot CRM for the 90%-margin printing house segment. 360° client history, advisory service capability, complaint SLA management, loyalty programme.'] },
+  { category:'WP5', name:'ERP Phase 2 — Production plants', sub:'Months 18–24',
+    bar:[18,24,'ERP Phase 2 (Plants)','#6C3483','ERP integrated with Le Havre and Bordeaux production plants. Demand-driven MRP replaces 4-week blind replenishment cycle. SCM demand forecasting module activated.'] },
+  { category:'WP5', name:'SCM demand planning', sub:'Months 18–24',
+    bar:[18,24,'SCM module','#6C3483','SCM configured on ERP. Algorithmic reorder signals per SKU per SU. Trained on 12+ months of PAPCAR Connect failed-sales data accumulated since month 3.'] },
+  { category:'WP5', name:'Legacy decommission', sub:'Months 24–26',
+    bar:[24,26,'ADV/WMS/MRP2 retired','#C0392B','ADV (1995), WMS (1990 Unix), and MRP2 (1990 AS/400) decommissioned. 50 on-premises servers progressively retired. Final migration to ERP confirmed complete.'] },
+
+  { group:'DATA PLATFORM & ADVANCED CAPABILITIES' },
+  { category:'WP6', name:'Cloud infrastructure migration', sub:'Months 12–18',
+    bar:[12,18,'Cloud migration (Azure/AWS)','#6C3483','Replace 50 ageing on-premises servers with cloud infrastructure. Managed by cloud MSP. Eliminates single-point-of-failure risk. Enables AI and digital twin in later phases.'] },
+  { category:'WP6', name:'Unified data platform', sub:'Months 18–24',
+    bar:[18,24,'Unified DWH (Sales + Industrial)','#6C3483','DWH Sales and DWH Industrial consolidated into a single analytical platform. Enables cross-functional reporting. Foundation for AI demand forecasting.'] },
+  { category:'WP6', name:'IS performance dashboard', sub:'Months 24–26',
+    bar:[24,26,'IS KPI dashboard','#C0392B','Business KPI dashboard: order fulfilment rate, demand forecast accuracy, stock alert response time, complaint resolution. Built on the unified data platform.'] },
+  { category:'WP6', name:'AI demand forecasting', sub:'Months 24–30',
+    bar:[24,30,'AI demand forecasting','#C0392B','ML model trained on unified platform data. AWS Forecast or Google Vertex AI. Replaces intuitive replenishment with per-SKU-per-SU algorithmic reorder signals.'] },
+  { category:'WP6', name:'Digital twin prototype', sub:'Months 28–34',
+    bar:[28,34,'Digital twin (supply chain)','#C0392B','Supply chain simulation model enabling scenario planning: SU closure, production failure, demand spike. Requires cloud + unified platform as infrastructure.'] },
 ];
 
-// ── BUILD TIMELINE ────────────────────────────────────────────────
+const PHASES = [
+  { num:'0', title:'Stabilisation', range:'Months 0–3', color:'#1A5276',
+    gate:'Order fulfilment rate above 80%, CIO in post, PAPCAR Connect live in pilot units.' },
+  { num:'1', title:'Foundation', range:'Months 3–12', color:'#117A65',
+    gate:'ERP vendor selected, all 20 SUs on PAPCAR Connect, failed-sales data flowing.' },
+  { num:'2', title:'Core IS Deployment', range:'Months 12–24', color:'#1E8449',
+    gate:'ERP Phase 1 live across all SUs, CRM live for printing houses, catalogue reduced.' },
+  { num:'3', title:'Integration', range:'Months 24–30', color:'#6C3483',
+    gate:'ERP production modules live, unified data platform operational.' },
+  { num:'4', title:'Strategic Capability', range:'Months 30–36', color:'#C0392B',
+    gate:'Full IS governance maturity, algorithmic demand planning operational.' },
+];
+
+const WPS = [
+  { id:'WP1', title:'Consulting Engagement', color:'#1A5276', deliverables:[
+    { id:'1.1', title:'Situation analysis (7 perspectives)', output:'Section 2 of the report', owner:'Leopold + Alexandre', time:'Complete' },
+    { id:'1.2', title:'Requirements definition R1–R12', output:'Section 2.7 requirements table', owner:'All', time:'Complete' },
+    { id:'1.3', title:'Short-term target + PAPCAR Connect', output:'Section 3 of the report', owner:'Alexandre + Leopold', time:'Complete' },
+    { id:'1.4', title:'Medium and long-term IS strategy', output:'Section 4 of the report', owner:'Alexandre + Leopold', time:'Complete' },
+    { id:'1.5', title:'Value proposition reformulation', output:'Section 4.1', owner:'Salma + Elizaveta', time:'Complete' },
+    { id:'1.6', title:'Transformation and change management', output:'Section 5 of the report', owner:'Salma', time:'Complete' },
+    { id:'1.7', title:'Project definition (WBS, planning, risks)', output:'Section 6 of the report', owner:'Leopold', time:'Complete' },
+    { id:'1.8', title:'Oral defense and client presentation', output:'Defense session', owner:'All', time:'Defense day' },
+  ]},
+  { id:'WP2', title:'Governance & Org Setup', color:'#117A65', deliverables:[
+    { id:'2.1', title:'CIO recruitment and onboarding', output:'CIO in post by month 3', owner:'General Management', time:'M1–3' },
+    { id:'2.2', title:'IS Steering Committee constitution', output:'First SteerCo by month 2', owner:'CIO + General Management', time:'M1–2' },
+    { id:'2.3', title:'IS Programme Manager recruitment', output:'PM in post by month 4', owner:'CIO', time:'M3–4' },
+    { id:'2.4', title:'Change Management Lead hire', output:'CM lead in post by month 4', owner:'CIO + HR', time:'M3–4' },
+    { id:'2.5', title:'Enterprise Architect recruitment', output:'Architect in post by month 5', owner:'CIO', time:'M3–5' },
+    { id:'2.6', title:'Data Governance Committee + MDM tool', output:'Committee active by month 6', owner:'CIO + DGO', time:'M4–6' },
+  ]},
+  { id:'WP3', title:'PAPCAR Connect', color:'#C8973A', deliverables:[
+    { id:'3.1', title:'Knowledge transfer to internal developer', output:'Internal owner by month 2', owner:'Alexandre Machu', time:'M1–2' },
+    { id:'3.2', title:'Pilot deployment in 3 sales units', output:'Pilot go-live by month 2', owner:'IS team + CM Lead', time:'M1–2' },
+    { id:'3.3', title:'Failed-sales logging protocol (all SUs)', output:'All 20 SUs logging by month 3', owner:'COO + Sales Mgmt', time:'M2–3' },
+    { id:'3.4', title:'Production dashboard live', output:'Le Havre / Bordeaux data by month 2', owner:'Alexandre + Works Mgmt', time:'M1–2' },
+    { id:'3.5', title:'Supplier dashboard: key suppliers onboarded', output:'Live by month 3', owner:'IS team + Supply', time:'M2–3' },
+    { id:'3.6', title:'National rollout to all 20 SUs', output:'All units live by month 4', owner:'IS team + CM Lead', time:'M2–4' },
+    { id:'3.7', title:'EDI integration for stationers', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
+  ]},
+  { id:'WP4', title:'Catalogue Rationalisation & PLM', color:'#1E8449', deliverables:[
+    { id:'4.1', title:'SKU introduction freeze', output:'Decision by month 1', owner:'Sales + Works Management', time:'M1' },
+    { id:'4.2', title:'ABC-XYZ rotation analysis', output:'Analysis complete by month 6', owner:'IS team + Sales Mgmt', time:'M2–6' },
+    { id:'4.3', title:'Slow-mover withdrawal (~1,500 active SKUs)', output:'Implemented by month 8', owner:'Works + Sales Mgmt', time:'M6–8' },
+    { id:'4.4', title:'Made-to-order terms defined + communicated', output:'Client communication by month 8', owner:'Sales Management', time:'M7–8' },
+    { id:'4.5', title:'PLM tool selection (Akeneo or equivalent)', output:'Selected by month 9', owner:'Enterprise Architect', time:'M7–9' },
+    { id:'4.6', title:'PLM deployment and catalogue migration', output:'Live by month 15', owner:'IS team + Works Mgmt', time:'M9–15' },
+    { id:'4.7', title:'SKU lifecycle governance process activated', output:'Embedded by month 18', owner:'Works Mgmt + BPO', time:'M15–18' },
+  ]},
+  { id:'WP5', title:'ERP Deployment', color:'#6C3483', deliverables:[
+    { id:'5.1', title:'ERP vendor selection and RFP', output:'Vendor selected by month 6', owner:'CIO + Programme Manager', time:'M2–6' },
+    { id:'5.2', title:'ERP integrator selection and contract', output:'Contract signed by month 7', owner:'CIO + General Management', time:'M6–7' },
+    { id:'5.3', title:'Master data cleansing and migration prep', output:'Data ready by month 10', owner:'Data Governance Officer', time:'M6–10' },
+    { id:'5.4', title:'ERP Phase 1: order + inventory (20 SUs)', output:'Go-live by month 18', owner:'Programme Manager + Integrator', time:'M7–18' },
+    { id:'5.5', title:'CRM for printing house segment', output:'Go-live by month 15', owner:'CRM Manager + Integrator', time:'M9–15' },
+    { id:'5.6', title:'ERP Phase 2: production plants', output:'Go-live by month 24', owner:'Programme Manager + Integrator', time:'M18–24' },
+    { id:'5.7', title:'SCM demand planning module', output:'Go-live by month 24', owner:'SCM Manager + Integrator', time:'M18–24' },
+    { id:'5.8', title:'Legacy ADV/WMS/MRP2 decommission', output:'Completed by month 26', owner:'Enterprise Architect', time:'M24–26' },
+  ]},
+  { id:'WP6', title:'Data Platform & Advanced Capabilities', color:'#C0392B', deliverables:[
+    { id:'6.1', title:'Cloud migration (50 servers to Azure/AWS)', output:'Migration complete by month 18', owner:'Enterprise Architect + Cloud MSP', time:'M12–18' },
+    { id:'6.2', title:'Unified data platform (DWH Sales + Industrial)', output:'Live by month 24', owner:'DGO + IS team', time:'M18–24' },
+    { id:'6.3', title:'IS performance dashboard (business KPIs)', output:'Live by month 26', owner:'IS team + BPOs', time:'M24–26' },
+    { id:'6.4', title:'AI demand forecasting deployment', output:'Pilot M28, full by M30', owner:'IS team + AI partner', time:'M24–30' },
+    { id:'6.5', title:'Digital twin supply chain prototype', output:'Prototype by month 34', owner:'IS team + partner', time:'M28–34' },
+    { id:'6.6', title:'B2B portal: SLA tracking + self-service', output:'Phase 2 delivery', owner:'IS team', time:'M9–12' },
+  ]},
+];
+
+const RISKS = [
+  { title:'Poor master data quality blocks ERP migration', l:3, i:3, score:'9', level:'critical',
+    mit:'Data governance and MDM cleansing starts at month 3, well before ERP go-live. Data Governance Officer accountable for migration readiness gate.' },
+  { title:'Sales unit resistance to PAPCAR Connect and ERP', l:3, i:3, score:'9', level:'critical',
+    mit:'Early SU manager involvement in requirements. Pilot in open units first. Super-user network before rollout. 3-month hypercare post go-live per unit.' },
+  { title:'CIO hire delayed — all downstream decisions stall', l:2, i:3, score:'6', level:'critical',
+    mit:'Executive search firm engaged at programme launch. Croissant Corp provides interim IS leadership during search period.' },
+  { title:'ERP integrator underperforms on schedule or quality', l:2, i:3, score:'6', level:'critical',
+    mit:'Rigorous integrator selection with client references. Milestone-based payment contract. Weekly Programme Manager monitoring with CIO escalation path.' },
+  { title:'IS budget insufficient for full programme scope', l:2, i:3, score:'6', level:'critical',
+    mit:'IS budget reallocation approved by General Management before programme launch. 36-month phasing smooths budget peaks across fiscal years.' },
+  { title:'PAPCAR Connect does not scale to 20 SUs at full load', l:2, i:2, score:'4', level:'high',
+    mit:'Load testing before national rollout. Knowledge transfer to internal developer. ERP is the long-term replacement; PAPCAR Connect is the transitional layer.' },
+  { title:'Printing houses react negatively to slow-mover withdrawal', l:2, i:2, score:'4', level:'high',
+    mit:'Printing houses consulted before withdrawal decisions. Made-to-order terms with defined lead times. Sales engineers briefed for client conversations.' },
+  { title:'Key person dependency — tacit knowledge exits with staff', l:2, i:2, score:'4', level:'high',
+    mit:'Knowledge capture workshops before ERP go-live. Process documentation embedded in ERP training. Super-user roles formalise critical tacit knowledge.' },
+  { title:'Pulp supply disruption during transformation window', l:1, i:3, score:'3', level:'medium',
+    mit:'Safety stock buffer maintained during transformation. Proactive supplier management. Supplier dashboard gives earlier transit visibility.' },
+  { title:'Competitors accelerate IS investment in response', l:1, i:2, score:'2', level:'low',
+    mit:'Transformation is not public-facing. Speed of Phase 0 and 1 execution minimises the vulnerability window.' },
+];
+
+// ── TIMELINE ────────────────────────────────────────────────────────
+let currentView = 'st';
+
+const PHASE_DEFS = [
+  { label:'Phase 0 · Stabilisation', start:0,  end:6,  color:'#1A5276' },
+  { label:'Phase 1 · Foundation',    start:6,  end:12, color:'#117A65' },
+  { label:'Phase 2 · Core IS',       start:12, end:24, color:'#1E8449' },
+  { label:'Phase 3 · Integration',   start:24, end:30, color:'#6C3483' },
+  { label:'Phase 4 · Leadership',    start:30, end:37, color:'#C0392B' },
+];
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('btn-st').classList.toggle('active', v === 'st');
+  document.getElementById('btn-full').classList.toggle('active', v === 'full');
+  buildTimeline();
+}
+
 function buildTimeline() {
   const container = document.getElementById('timeline-container');
+  const wrapper   = container.parentElement;
+  const wrapW     = wrapper.clientWidth || 900;
+  const gridW     = wrapW - LABEL_W - 2;
 
-  // Calculate cell width
-  const LABEL_W = 220;
-  const GRID_W  = Math.max(container.parentElement.offsetWidth - LABEL_W, 880);
-  const CELL_W  = GRID_W / TOTAL_MONTHS;
+  const isST    = currentView === 'st';
+  const totalM  = isST ? 7 : 37;   // 0..6 (ST) or 0..36 (full)
+  const ST_M    = 6;
+  const cellW   = gridW / totalM;
 
-  const st_x = ST_BOUNDARY * CELL_W; // pixels of divider
+  // Filter rows: in ST view show only items that START within months 0–6
+  const visRows = isST
+    ? ROWS.filter(r => r.group !== undefined || (r.bar && r.bar[0] < ST_M))
+    : ROWS;
 
-  // Phase bar
-  const phases = [
-    { label: 'PHASE 0 · Stabilisation', start: 0,  end: 6,  color: '#1A5276' },
-    { label: 'PHASE 1 · Foundation',    start: 6,  end: 12, color: '#117A65' },
-    { label: 'PHASE 2 · Core IS',       start: 12, end: 24, color: '#1E8449' },
-    { label: 'PHASE 3 · Integration',   start: 24, end: 30, color: '#6C3483' },
-    { label: 'PHASE 4 · Leadership',    start: 30, end: 37, color: '#C0392B' },
-  ];
+  // Phase blocks for header
+  const visPhases = isST
+    ? [{ label:'SHORT-TERM CRISIS ACTIONS', start:0, end:totalM, color:'#1A5276' }]
+    : PHASE_DEFS;
 
-  let html = `
-  <div class="timeline-header">
-    <div class="timeline-header-row">
-      <div class="timeline-label-col">Work stream / Item</div>
-      <div class="timeline-grid-area" style="min-width:${GRID_W}px;position:relative;">
-        ${phases.map(p => `
-          <div class="phase-block"
-               style="width:${(p.end-p.start)*CELL_W}px;background:${p.color}20;color:${p.color};border-right:1px solid ${p.color}30;font-size:10px;">
-            ${p.label}
-          </div>`).join('')}
-        <div class="st-mt-divider" style="left:${st_x}px;"></div>
-      </div>
-    </div>
-    <div class="timeline-header-row">
-      <div class="timeline-label-col" style="font-size:10px;color:rgba(200,151,58,0.6);">Months →</div>
-      <div class="timeline-grid-area" style="min-width:${GRID_W}px;position:relative;">
-        ${Array.from({length: TOTAL_MONTHS}, (_,i) =>
-          `<div class="month-cell${i===ST_BOUNDARY?' boundary':''}">${i}</div>`
-        ).join('')}
-        <div class="st-mt-divider" style="left:${st_x}px;"></div>
-      </div>
-    </div>
-  </div>`;
+  let html = '';
 
-  ROWS.forEach(r => {
+  // Phase row
+  html += `<div class="tl-header-row">
+    <div class="tl-label-col">${isST ? 'SHORT-TERM VIEW' : 'FULL PROGRAMME'}</div>
+    <div class="tl-grid-area" style="width:${gridW}px;overflow:hidden;">`;
+  visPhases.forEach(p => {
+    const s = Math.max(p.start, 0);
+    const e = Math.min(p.end, totalM);
+    if (e <= s) return;
+    const w = (e - s) * cellW;
+    html += `<div class="phase-block" style="width:${w}px;min-width:${w}px;background:${p.color}22;color:${p.color};border-right:1px solid ${p.color}33;">${p.label}</div>`;
+  });
+  html += `</div></div>`;
+
+  // Month labels
+  html += `<div class="months-row">
+    <div class="tl-label-col" style="font-size:9px;color:rgba(200,151,58,0.5);">Month →</div>
+    <div style="display:flex;width:${gridW}px;overflow:hidden;">`;
+  for (let m = 0; m < totalM; m++) {
+    const isDivider = !isST && m === ST_M;
+    html += `<div class="month-cell${isDivider ? ' divider-cell' : ''}" style="min-width:${cellW}px;width:${cellW}px;">${m}</div>`;
+  }
+  html += `</div></div>`;
+
+  // Data rows
+  visRows.forEach(r => {
     if (r.group !== undefined) {
-      html += `
-      <div class="timeline-row group-row">
-        <div class="row-label">
-          <div class="row-name">${r.group}</div>
-        </div>
-        <div class="row-grid" style="min-width:${GRID_W}px;position:relative;">
-          <div class="grid-lines">${Array.from({length:TOTAL_MONTHS},(_,i)=>`<div class="grid-line${i===ST_BOUNDARY?' boundary':''}"></div>`).join('')}</div>
-          <div class="st-mt-divider" style="left:${st_x}px;"></div>
+      html += `<div class="tl-row group-row">
+        <div class="row-label"><div class="group-label">${r.group}</div></div>
+        <div class="row-grid" style="width:${gridW}px;">
+          <div class="grid-bg">${Array.from({length:totalM},(_,i)=>`<div class="grid-col${!isST&&i===ST_M?' divider-col':''}"></div>`).join('')}</div>
         </div>
       </div>`;
       return;
     }
 
     const [s, e, label, color, tip] = r.bar;
-    const barLeft  = s * CELL_W;
-    const barWidth = Math.max((e - s) * CELL_W - 3, 20);
+    // In ST view clip bars at month 6
+    const visS = Math.max(s, 0);
+    const visE = isST ? Math.min(e, ST_M) : e;
+    if (visE <= visS && isST && s >= ST_M) return; // skip MT-only items in ST view
 
-    html += `
-    <div class="timeline-row">
+    const barL = visS * cellW;
+    const barW = Math.max((visE - visS) * cellW - 2, 8);
+    const showLabel = barW > 50;
+
+    const safeLabel = label.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    const safeTip   = tip.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+    const safeSub   = r.sub.replace(/'/g,"\\'");
+
+    html += `<div class="tl-row">
       <div class="row-label">
-        <div class="row-category">${r.category}</div>
+        <div class="row-cat">${r.category}</div>
         <div class="row-name">${r.name}</div>
         <div class="row-sub">${r.sub}</div>
       </div>
-      <div class="row-grid" style="min-width:${GRID_W}px;position:relative;">
-        <div class="grid-lines">${Array.from({length:TOTAL_MONTHS},(_,i)=>`<div class="grid-line${i===ST_BOUNDARY?' boundary':''}"></div>`).join('')}</div>
-        <div class="st-mt-divider" style="left:${st_x}px;"></div>
-        <div class="bar"
-             style="left:${barLeft}px;width:${barWidth}px;background:${color};"
-             onmouseenter="showTip(event,'${label.replace(/'/g,"\\'")}','${r.sub}','${tip.replace(/'/g,"\\'")}')"
-             onmouseleave="hideTip()">
-          <span class="bar-label">${label}</span>
-        </div>
+      <div class="row-grid" style="width:${gridW}px;">
+        <div class="grid-bg">${Array.from({length:totalM},(_,i)=>`<div class="grid-col${!isST&&i===ST_M?' divider-col':''}"></div>`).join('')}</div>
+        <div class="bar" style="left:${barL}px;width:${barW}px;background:${color};"
+             onmouseenter="showTip(event,'${safeLabel}','${safeSub}','${safeTip}')"
+             onmouseleave="hideTip()">${showLabel ? label : ''}</div>
       </div>
     </div>`;
   });
@@ -1018,208 +668,112 @@ function buildTimeline() {
   container.innerHTML = html;
 }
 
+// ── TOOLTIP ──────────────────────────────────────────────────────────
 function showTip(e, title, sub, desc) {
   const t = document.getElementById('tooltip');
-  t.innerHTML = `<div class="tooltip-title">${title}</div><div class="tooltip-row">${sub}</div><div style="margin-top:6px;font-size:11px;line-height:1.55;">${desc}</div>`;
-  t.classList.add('visible');
-  moveTip(e);
+  t.innerHTML = `<div class="tooltip-title">${title}</div><div class="tooltip-sub">${sub}</div><div class="tooltip-body">${desc}</div>`;
+  t.classList.add('show');
+  posTip(e);
 }
-function moveTip(e) {
+function posTip(e) {
   const t = document.getElementById('tooltip');
   let x = e.clientX + 14, y = e.clientY - 10;
-  if (x + 290 > window.innerWidth) x = e.clientX - 300;
+  if (x + 280 > window.innerWidth) x = e.clientX - 290;
+  if (y + t.offsetHeight > window.innerHeight) y = e.clientY - t.offsetHeight - 10;
   t.style.left = x + 'px';
   t.style.top  = y + 'px';
 }
-function hideTip() {
-  document.getElementById('tooltip').classList.remove('visible');
-}
+function hideTip() { document.getElementById('tooltip').classList.remove('show'); }
 document.addEventListener('mousemove', e => {
-  if (document.getElementById('tooltip').classList.contains('visible')) moveTip(e);
+  if (document.getElementById('tooltip').classList.contains('show')) posTip(e);
 });
 
-// ── WBS DATA ─────────────────────────────────────────────────────
-const PHASES = [
-  { num: '0', title: 'Stabilisation', range: 'Months 0–3', color: '#1A5276',
-    gate: 'Order fulfilment rate above 80%, CIO in post, PAPCAR Connect live in pilot units' },
-  { num: '1', title: 'Foundation', range: 'Months 3–12', color: '#117A65',
-    gate: 'ERP vendor selected, all 20 SUs on PAPCAR Connect, failed-sales data flowing' },
-  { num: '2', title: 'Core IS Deployment', range: 'Months 12–24', color: '#1E8449',
-    gate: 'ERP Phase 1 live across all SUs, CRM live for printing houses' },
-  { num: '3', title: 'Integration', range: 'Months 24–30', color: '#6C3483',
-    gate: 'ERP production modules live, unified data platform operational' },
-  { num: '4', title: 'Strategic Capability', range: 'Months 30–36', color: '#C0392B',
-    gate: 'Full IS governance maturity, algorithmic demand planning operational' },
-];
-
-const WPS = [
-  {
-    id: 'WP1', title: 'Consulting Engagement', color: '#1A5276',
-    deliverables: [
-      { id:'1.1', title:'Situation analysis (7 perspectives)', output:'Section 2 of this report', owner:'Leopold + Alexandre', timeline:'Complete' },
-      { id:'1.2', title:'Requirements definition (R1 to R12)', output:'Requirements table in Section 2.7', owner:'All', timeline:'Complete' },
-      { id:'1.3', title:'Short-term target + PAPCAR Connect', output:'Section 3 of this report', owner:'Alexandre + Leopold', timeline:'Complete' },
-      { id:'1.4', title:'Medium and long-term IS strategy', output:'Section 4 of this report', owner:'Alexandre + Leopold', timeline:'Complete' },
-      { id:'1.5', title:'Value proposition reformulation', output:'Section 4.1', owner:'Salma + Elizaveta', timeline:'Complete' },
-      { id:'1.6', title:'Transformation and change management plan', output:'Section 5 of this report', owner:'Salma', timeline:'Complete' },
-      { id:'1.7', title:'Project definition (WBS, planning, risks)', output:'Section 6 of this report', owner:'Leopold', timeline:'Complete' },
-      { id:'1.8', title:'Oral defense and client presentation', output:'Defense session', owner:'All', timeline:'Defense day' },
-    ]
-  },
-  {
-    id: 'WP2', title: 'Governance & Org Setup', color: '#117A65',
-    deliverables: [
-      { id:'2.1', title:'CIO recruitment and onboarding', output:'CIO in post by month 3', owner:'General Management', timeline:'M1–3' },
-      { id:'2.2', title:'IS Steering Committee constitution', output:'First SteerCo by month 2', owner:'CIO + General Management', timeline:'M1–2' },
-      { id:'2.3', title:'IS Programme Manager recruitment', output:'PM in post by month 4', owner:'CIO', timeline:'M3–4' },
-      { id:'2.4', title:'Change Management Lead hire', output:'CM lead in post by month 4', owner:'CIO + HR', timeline:'M3–4' },
-      { id:'2.5', title:'Enterprise Architect recruitment', output:'Architect in post by month 5', owner:'CIO', timeline:'M3–5' },
-      { id:'2.6', title:'Data Governance Committee + MDM tool', output:'Committee active by month 6', owner:'CIO + DGO', timeline:'M4–6' },
-    ]
-  },
-  {
-    id: 'WP3', title: 'PAPCAR Connect', color: '#C8973A',
-    deliverables: [
-      { id:'3.1', title:'Knowledge transfer to internal developer', output:'Internal owner by month 2', owner:'Alexandre Machu', timeline:'M1–2' },
-      { id:'3.2', title:'Pilot in 3 sales units', output:'Pilot go-live by month 2', owner:'IS team + CM Lead', timeline:'M1–2' },
-      { id:'3.3', title:'Failed-sales logging protocol', output:'All 20 SUs logging by month 3', owner:'COO + Sales Mgmt', timeline:'M2–3' },
-      { id:'3.4', title:'Production dashboard: Le Havre / Bordeaux', output:'Live by month 2', owner:'Alexandre + Works Mgmt', timeline:'M1–2' },
-      { id:'3.5', title:'Supplier dashboard: key suppliers onboarded', output:'Live by month 3', owner:'IS team + Supply', timeline:'M2–3' },
-      { id:'3.6', title:'National rollout to all 20 SUs', output:'All units live by month 4', owner:'IS team + CM Lead', timeline:'M2–4' },
-      { id:'3.7', title:'EDI integration for stationers', output:'Phase 2 delivery', owner:'IS team', timeline:'M9–12' },
-    ]
-  },
-  {
-    id: 'WP4', title: 'Catalogue Rationalisation & PLM', color: '#1E8449',
-    deliverables: [
-      { id:'4.1', title:'SKU freeze decision', output:'Decision by month 1', owner:'Sales + Works Management', timeline:'M1' },
-      { id:'4.2', title:'ABC-XYZ rotation analysis (DWH Sales)', output:'Analysis by month 6', owner:'IS team + Sales Mgmt', timeline:'M2–6' },
-      { id:'4.3', title:'Slow-mover withdrawal (~1,500 active SKUs)', output:'Implemented by month 8', owner:'Works + Sales Mgmt', timeline:'M6–8' },
-      { id:'4.4', title:'Made-to-order terms defined and communicated', output:'Client communication by month 8', owner:'Sales Management', timeline:'M7–8' },
-      { id:'4.5', title:'PLM tool selection (Akeneo or equivalent)', output:'Selected by month 9', owner:'Enterprise Architect', timeline:'M7–9' },
-      { id:'4.6', title:'PLM deployment and catalogue migration', output:'Live by month 15', owner:'IS team + Works Mgmt', timeline:'M9–15' },
-      { id:'4.7', title:'SKU lifecycle governance process activated', output:'Embedded by month 18', owner:'Works Mgmt + BPO', timeline:'M15–18' },
-    ]
-  },
-  {
-    id: 'WP5', title: 'ERP Deployment', color: '#6C3483',
-    deliverables: [
-      { id:'5.1', title:'ERP vendor selection and RFP', output:'Vendor selected by month 6', owner:'CIO + Programme Manager', timeline:'M2–6' },
-      { id:'5.2', title:'ERP integrator selection and contract', output:'Contract signed by month 7', owner:'CIO + General Management', timeline:'M6–7' },
-      { id:'5.3', title:'Master data cleansing and migration prep', output:'Data ready by month 10', owner:'Data Governance Officer', timeline:'M6–10' },
-      { id:'5.4', title:'ERP Phase 1: order + inventory (20 SUs)', output:'Go-live by month 18', owner:'Programme Manager + Integrator', timeline:'M7–18' },
-      { id:'5.5', title:'CRM for printing house segment', output:'Go-live by month 15', owner:'CRM Manager + Integrator', timeline:'M9–15' },
-      { id:'5.6', title:'ERP Phase 2: production plants', output:'Go-live by month 24', owner:'Programme Manager + Integrator', timeline:'M18–24' },
-      { id:'5.7', title:'SCM demand planning module', output:'Go-live by month 24', owner:'SCM Manager + Integrator', timeline:'M18–24' },
-      { id:'5.8', title:'Legacy ADV/WMS/MRP2 decommission', output:'Completed by month 26', owner:'Enterprise Architect', timeline:'M24–26' },
-    ]
-  },
-  {
-    id: 'WP6', title: 'Data Platform & Advanced Capabilities', color: '#C0392B',
-    deliverables: [
-      { id:'6.1', title:'Cloud infrastructure migration (50 servers)', output:'Migration complete by month 18', owner:'Enterprise Architect + Cloud MSP', timeline:'M12–18' },
-      { id:'6.2', title:'Unified data platform (merge 2 DWHs)', output:'Live by month 24', owner:'DGO + IS team', timeline:'M18–24' },
-      { id:'6.3', title:'IS performance dashboard (business KPIs)', output:'Live by month 26', owner:'IS team + BPOs', timeline:'M24–26' },
-      { id:'6.4', title:'AI demand forecasting deployment', output:'Pilot M28, full by M30', owner:'IS team + AI partner', timeline:'M24–30' },
-      { id:'6.5', title:'Digital twin supply chain prototype', output:'Prototype by month 34', owner:'IS team + partner', timeline:'M28–34' },
-      { id:'6.6', title:'B2B portal: SLA tracking + self-service', output:'Phase 2 delivery', owner:'IS team', timeline:'M9–12' },
-    ]
-  }
-];
-
+// ── WBS ──────────────────────────────────────────────────────────────
 function buildWBS() {
-  // Phases summary
-  const psum = document.getElementById('phases-summary');
-  psum.innerHTML = PHASES.map(p => `
-    <div class="phase-card">
-      <div class="phase-card-num" style="color:${p.color}">Phase ${p.num}</div>
-      <div class="phase-card-title">${p.title}</div>
-      <div class="phase-card-range" style="color:${p.color}">${p.range}</div>
-      <div class="phase-card-gate"><strong>Gate condition:</strong> ${p.gate}</div>
+  // Phase cards
+  document.getElementById('phases-strip').innerHTML = PHASES.map(p => `
+    <div class="phase-card" style="border-top-color:${p.color}">
+      <div class="phase-num" style="color:${p.color}">Phase ${p.num}</div>
+      <div class="phase-title">${p.title}</div>
+      <div class="phase-range" style="color:${p.color}">${p.range}</div>
+      <div class="phase-gate"><strong>Gate condition</strong>${p.gate}</div>
     </div>`).join('');
 
-  const grid = document.getElementById('wbs-grid');
-  grid.innerHTML = WPS.map(wp => `
+  // WP cards — collapsed by default
+  document.getElementById('wbs-grid').innerHTML = WPS.map((wp,idx) => `
     <div class="wp-card">
-      <div class="wp-header">
+      <div class="wp-header" id="wph-${idx}" onclick="toggleWP(${idx})">
         <div class="wp-badge" style="background:${wp.color}">${wp.id}</div>
         <div class="wp-info">
           <div class="wp-number">Work Package</div>
           <div class="wp-title">${wp.title}</div>
         </div>
-        <div class="wp-count">${wp.deliverables.length} deliverables</div>
+        <div class="wp-meta">
+          <div class="wp-count">${wp.deliverables.length} deliverables</div>
+          <div class="chevron" id="chev-${idx}">▾</div>
+        </div>
       </div>
-      <div class="deliverable-list">
+      <div class="del-list" id="del-${idx}">
         ${wp.deliverables.map(d => `
           <div class="deliverable">
             <div class="del-id">${d.id}</div>
-            <div class="del-content">
+            <div class="del-body">
               <div class="del-title">${d.title}</div>
               <div class="del-output">${d.output}</div>
               <div class="del-owner">${d.owner}</div>
             </div>
-            <div class="del-meta">
-              <div class="del-timeline">${d.timeline}</div>
-            </div>
+            <div class="del-time">${d.time}</div>
           </div>`).join('')}
       </div>
     </div>`).join('');
 }
 
-// ── RISKS ─────────────────────────────────────────────────────────
-const RISKS = [
-  { title:'Poor master data quality blocks ERP migration', l:3, i:3, score:'9 — Critical', level:'critical',
-    mitigation:'Start data governance and MDM cleansing at month 3, well before ERP go-live. Data Governance Officer accountable for migration readiness.' },
-  { title:'Sales unit resistance to PAPCAR Connect and ERP', l:3, i:3, score:'9 — Critical', level:'critical',
-    mitigation:'Early SU manager involvement in requirements. Pilot units selected for openness. Super-user network before rollout. Hypercare 3 months post go-live.' },
-  { title:'CIO hire delayed — all downstream decisions stall', l:2, i:3, score:'6 — Critical', level:'critical',
-    mitigation:'Executive search firm engaged at programme launch. Croissant Corp provides interim IS leadership during CIO search.' },
-  { title:'ERP integrator underperforms on schedule or quality', l:2, i:3, score:'6 — Critical', level:'critical',
-    mitigation:'Rigorous integrator selection with reference checks. Milestone-based payment contract. Programme Manager monitors weekly with CIO escalation path.' },
-  { title:'IS budget insufficient for full programme scope', l:2, i:3, score:'6 — Critical', level:'critical',
-    mitigation:'IS budget reallocation approved by General Management before programme launch. 36-month phasing smooths budget peaks. Financial scope excluded from this proposal.' },
-  { title:'PAPCAR Connect does not scale to 20 SUs at full load', l:2, i:2, score:'4 — High', level:'high',
-    mitigation:'Load testing before national rollout. Knowledge transfer to internal developer. ERP is the long-term replacement — PAPCAR Connect is the transitional layer.' },
-  { title:'Printing houses react to slow-mover withdrawal', l:2, i:2, score:'4 — High', level:'high',
-    mitigation:'Printing houses consulted before withdrawal decisions. Made-to-order terms offered with defined lead times. Sales engineers briefed for client conversations.' },
-  { title:'Key person dependency — tacit knowledge exits', l:2, i:2, score:'4 — High', level:'high',
-    mitigation:'Knowledge capture workshops before ERP go-live. Process documentation in ERP training materials. Super-user roles formalise critical tacit knowledge.' },
-  { title:'Pulp supply disruption during transformation window', l:1, i:3, score:'3 — Medium', level:'medium',
-    mitigation:'Safety stock buffer maintained during transformation phase. Proactive supplier relationship management. Supplier dashboard gives earlier transit visibility.' },
-  { title:'Competitors accelerate IS investment in response', l:1, i:2, score:'2 — Low', level:'low',
-    mitigation:'Transformation is not public-facing. PAPCAR Connect is internal. Speed of Phase 0 and 1 execution minimises the vulnerability window.' },
-];
+function toggleWP(idx) {
+  const list = document.getElementById(`del-${idx}`);
+  const hdr  = document.getElementById(`wph-${idx}`);
+  const chev = document.getElementById(`chev-${idx}`);
+  const open = list.classList.toggle('open');
+  hdr.classList.toggle('open', open);
+  chev.classList.toggle('open', open);
+}
 
+// ── RISKS ─────────────────────────────────────────────────────────────
 function buildRisks() {
-  const grid = document.getElementById('risk-grid');
-  grid.innerHTML = RISKS.map(r => `
+  document.getElementById('risk-grid').innerHTML = RISKS.map(r => `
     <div class="risk-card ${r.level}">
       <div class="risk-top">
         <div class="risk-title">${r.title}</div>
-        <div class="risk-score-badge">${r.score}</div>
+        <div class="risk-badge">Score ${r.score} · ${r.level.charAt(0).toUpperCase()+r.level.slice(1)}</div>
       </div>
       <div class="risk-scores">
-        <span>Likelihood: ${r.l}/3</span>
-        <span>Impact: ${r.i}/3</span>
+        <span>Likelihood ${r.l}/3</span>
+        <span>Impact ${r.i}/3</span>
       </div>
-      <div class="risk-mitigation"><strong>Mitigation:</strong> ${r.mitigation}</div>
+      <div class="risk-mit"><strong>Mitigation: </strong>${r.mit}</div>
     </div>`).join('');
 }
 
-// ── SCROLL NAV ────────────────────────────────────────────────────
-function scrollTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+// ── NAV ACTIVE STATE ON SCROLL ─────────────────────────────────────────
+function updateActiveNav() {
+  const anchors = ['timeline-anchor','wbs-anchor','risk-anchor'];
+  const links   = document.querySelectorAll('.nav-link');
+  const navH    = 56;
+  let current   = 0;
+  anchors.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= navH + 40) current = i;
+  });
+  links.forEach((l, i) => l.classList.toggle('active', i === current));
 }
+window.addEventListener('scroll', updateActiveNav, { passive: true });
 
-// ── INIT ──────────────────────────────────────────────────────────
+// ── INIT ────────────────────────────────────────────────────────────────
 window.addEventListener('load', () => {
   buildTimeline();
   buildWBS();
   buildRisks();
 });
-window.addEventListener('resize', () => {
-  buildTimeline();
-});
+window.addEventListener('resize', buildTimeline);
 </script>
 </body>
 </html>
