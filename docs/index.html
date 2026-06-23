@@ -939,6 +939,7 @@ function buildRisks() {
     bubble.style.background = BUBBLE_COLORS[r.level];
     bubble.textContent = i + 1;
     bubble.title = r.title;
+    bubble.dataset.riskIdx = i;
     bubble.onclick = () => selectRisk(i);
     if (cells[key]) cells[key].appendChild(bubble);
   });
@@ -964,10 +965,13 @@ function selectRisk(idx) {
     </div>
     <div class="risk-detail-mit"><strong>Mitigation: </strong>${r.mit}</div>`;
  
-  // highlight selected bubble
-  document.querySelectorAll('.risk-bubble').forEach((b, i) => {
-    b.style.transform = i === idx ? 'scale(1.2)' : '';
-    b.style.boxShadow = i === idx ? '0 0 0 3px white, 0 0 0 5px ' + BUBBLE_COLORS[RISKS[i].level] : '';
+  // highlight using data-risk-idx, not DOM position
+  document.querySelectorAll('.risk-bubble').forEach(b => {
+    const isSelected = parseInt(b.dataset.riskIdx) === idx;
+    b.style.transform  = isSelected ? 'scale(1.2)' : '';
+    b.style.boxShadow  = isSelected
+      ? '0 0 0 3px white, 0 0 0 5px ' + BUBBLE_COLORS[RISKS[parseInt(b.dataset.riskIdx)].level]
+      : '';
   });
 }
  
@@ -995,3 +999,4 @@ window.addEventListener('resize', buildTimeline);
 </script>
 </body>
 </html>
+ 
