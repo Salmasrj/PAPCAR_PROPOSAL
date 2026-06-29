@@ -46,34 +46,11 @@
     z-index: 100;
     box-shadow: 0 2px 12px rgba(0,0,0,.25);
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .logo-mark {
-    width: 36px;
-    height: 36px;
-  }
-  .logo-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: .5px;
-  }
-  .logo-sub {
-    font-size: 11px;
-    color: var(--gold2);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: block;
-    line-height: 1;
-  }
-  .header-right {
-    font-size: 12px;
-    color: var(--grey2);
-    text-align: right;
-  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-mark { width: 36px; height: 36px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: .5px; }
+  .logo-sub { font-size: 11px; color: var(--gold2); letter-spacing: 1.5px; text-transform: uppercase; display: block; line-height: 1; }
+  .header-right { font-size: 12px; color: var(--grey2); text-align: right; }
   .header-right strong { color: var(--gold2); }
 
   /* ── Hero banner ── */
@@ -84,67 +61,21 @@
     position: relative;
     overflow: hidden;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -60px; top: -60px;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    border: 2px solid rgba(201,148,10,.2);
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    right: 20px; top: 20px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    border: 2px solid rgba(201,148,10,.12);
-  }
-  .hero-label {
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--gold2);
-    margin-bottom: 10px;
-  }
-  .hero h1 {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-  .hero p {
-    font-size: 14px;
-    color: rgba(255,255,255,.65);
-    max-width: 560px;
-  }
-  .hero-meta {
-    display: flex;
-    gap: 32px;
-    margin-top: 28px;
-  }
-  .hero-stat { }
-  .hero-stat .val {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--gold2);
-    line-height: 1;
-  }
-  .hero-stat .lbl {
-    font-size: 11px;
-    color: rgba(255,255,255,.55);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 3px;
-  }
+  .hero::after { content: ''; position: absolute; right: -60px; top: -60px; width: 320px; height: 320px; border-radius: 50%; border: 2px solid rgba(201,148,10,.2); }
+  .hero::before { content: ''; position: absolute; right: 20px; top: 20px; width: 200px; height: 200px; border-radius: 50%; border: 2px solid rgba(201,148,10,.12); }
+  .hero-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold2); margin-bottom: 10px; }
+  .hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+  .hero p { font-size: 14px; color: rgba(255,255,255,.65); max-width: 560px; }
+  .hero-meta { display: flex; gap: 32px; margin-top: 28px; }
+  .hero-stat .val { font-size: 28px; font-weight: 700; color: var(--gold2); line-height: 1; }
+  .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
 
-  /* ── Tabs ── */
+  /* ── Main Tabs ── */
   .tabs-bar {
     background: var(--white);
     border-bottom: 2px solid var(--grey1);
     display: flex;
     padding: 0 40px;
-    gap: 0;
     position: sticky;
     top: 64px;
     z-index: 90;
@@ -167,27 +98,81 @@
   .tab-btn:hover { color: var(--navy); }
   .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
 
-  /* ── Main content ── */
-  .content {
-    padding: 36px 40px 60px;
-    max-width: 1400px;
-    margin: 0 auto;
+  /* ── Planning sub-tabs ── */
+  .sub-tabs-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--grey1);
+    flex-wrap: wrap;
   }
+  .sub-tab-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--grey3);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    letter-spacing: .3px;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .sub-tab-btn:hover { color: var(--navy); }
+  .sub-tab-btn.active { color: var(--navy); border-bottom-color: var(--gold2); }
+  .sub-panel { display: none; }
+  .sub-panel.active { display: block; }
+
+  /* ── Main content ── */
+  .content { padding: 36px 40px 60px; max-width: 1400px; margin: 0 auto; }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 
   /* ── Section headers ── */
-  .sec-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4px;
+  .sec-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .sec-sub { font-size: 13px; color: var(--grey3); margin-bottom: 28px; }
+  .plan-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .plan-sub { font-size: 12px; color: var(--grey3); margin-bottom: 20px; }
+
+  /* ── Phase summary cards ── */
+  .phase-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
   }
-  .sec-sub {
-    font-size: 13px;
-    color: var(--grey3);
-    margin-bottom: 28px;
+  .phase-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    border-top: 4px solid;
+    padding: 14px 16px;
   }
+  .phase-card .pc-phase { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey3); }
+  .phase-card .pc-name { font-size: 13px; font-weight: 700; color: var(--navy); margin: 4px 0 2px; line-height: 1.3; }
+  .phase-card .pc-range { font-size: 11px; color: var(--grey3); }
+  .phase-card .pc-desc { font-size: 11px; color: var(--text2); margin-top: 6px; line-height: 1.4; }
+
+  /* ── WP summary cards ── */
+  .wp-cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .wp-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--grey1);
+    border-top: 4px solid var(--navy);
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .wp-card .wc-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); }
+  .wp-card .wc-name { font-size: 11px; font-weight: 700; color: var(--navy); margin: 4px 0 2px; line-height: 1.3; }
+  .wp-card .wc-range { font-size: 10px; color: var(--grey3); }
 
   /* ────────────────────────────────────────────────
      GANTT
@@ -195,7 +180,6 @@
   .gantt-wrapper { overflow-x: auto; }
   .gantt-table {
     width: 100%;
-    min-width: 1100px;
     border-collapse: collapse;
     font-size: 12px;
   }
@@ -209,148 +193,32 @@
     white-space: nowrap;
   }
   .gantt-table th.label-col { text-align: left; padding-left: 12px; width: 260px; }
-  .gantt-table td {
-    border: 1px solid var(--grey1);
-    padding: 0;
-    height: 36px;
-  }
-  .gantt-table td.label {
-    padding: 6px 12px;
-    font-weight: 600;
-    color: var(--text);
-    background: var(--white);
-    white-space: nowrap;
-  }
-  .gantt-table td.label.wp {
-    background: var(--navy);
-    color: var(--white);
-    font-size: 11px;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-  }
-  .gantt-table td.label.sub {
-    background: var(--off);
-    padding-left: 22px;
-    font-weight: 400;
-    font-size: 11.5px;
-    color: var(--text2);
-  }
+  .gantt-table td { border: 1px solid var(--grey1); padding: 0; height: 36px; }
+  .gantt-table td.label { padding: 6px 12px; font-weight: 600; color: var(--text); background: var(--white); white-space: nowrap; }
+  .gantt-table td.label.wp { background: var(--navy); color: var(--white); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; }
+  .gantt-table td.label.phase-header-row { background: rgba(31,56,100,.10); color: var(--navy); font-size: 11px; letter-spacing: .8px; text-transform: uppercase; font-weight: 800; }
+  .gantt-table td.label.sub { background: var(--off); padding-left: 22px; font-weight: 400; font-size: 11.5px; color: var(--text2); }
   .gantt-table tr:hover td:not(.label) { background: rgba(201,148,10,.04); }
-  .bar {
-    height: 20px;
-    border-radius: 3px;
-    margin: 8px 3px;
-    opacity: .92;
-    position: relative;
-  }
-  .bar-p0  { background: #4A90D9; }
-  .bar-p1  { background: #2E7D52; }
-  .bar-p2  { background: var(--gold); }
-  .bar-p3  { background: #8E44AD; }
-  .bar-p4  { background: #C0392B; }
-  .bar-milestone {
-    height: 20px;
-    width: 20px;
-    background: var(--navy);
-    transform: rotate(45deg);
-    margin: 8px auto;
-    border-radius: 2px;
-  }
-  .phase-header td {
-    background: rgba(31,56,100,.07);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    padding: 5px 12px;
-  }
-  .month-label { font-size: 10px; text-align: center; color: var(--grey3); padding: 4px 2px; }
+  .bar { height: 20px; border-radius: 3px; margin: 8px 3px; opacity: .92; position: relative; }
+  .phase-divider td { border-top: 2px dashed var(--grey2); height: 0; padding: 0; }
 
   /* Legend */
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 20px;
-    padding: 16px 20px;
-    background: var(--white);
-    border-radius: 8px;
-    border: 1px solid var(--grey1);
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--text2);
-  }
-  .legend-dot {
-    width: 14px; height: 14px;
-    border-radius: 3px;
-    flex-shrink: 0;
-  }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; padding: 16px 20px; background: var(--white); border-radius: 8px; border: 1px solid var(--grey1); }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text2); }
+  .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
 
   /* ────────────────────────────────────────────────
      WBS
   ──────────────────────────────────────────────── */
-  .wbs-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    align-items: start;
-  }
-  .wbs-col-header {
-    background: var(--navy);
-    color: var(--white);
-    border-radius: 8px 8px 0 0;
-    padding: 14px 12px 12px;
-    text-align: center;
-  }
-  .wbs-col-header .wp-num {
-    font-size: 11px;
-    color: var(--gold2);
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .wbs-col-header .wp-title {
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 4px;
-    line-height: 1.3;
-  }
-  .wbs-col-header .wp-range {
-    font-size: 10px;
-    color: rgba(255,255,255,.55);
-    margin-top: 5px;
-  }
-  .wbs-items {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .wbs-item {
-    background: var(--white);
-    border: 1px solid var(--grey1);
-    border-left: 3px solid var(--gold);
-    border-radius: 0 6px 6px 0;
-    padding: 10px 12px;
-    font-size: 11.5px;
-    color: var(--text);
-    line-height: 1.4;
-  }
-  .wbs-item .item-id {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 3px;
-  }
-  .wbs-item .item-owner {
-    font-size: 10px;
-    color: var(--grey3);
-    margin-top: 4px;
-  }
+  .wbs-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; align-items: start; }
+  .wbs-col-header { background: var(--navy); color: var(--white); border-radius: 8px 8px 0 0; padding: 14px 12px 12px; text-align: center; }
+  .wbs-col-header .wp-num { font-size: 11px; color: var(--gold2); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .wbs-col-header .wp-title { font-size: 12px; font-weight: 700; margin-top: 4px; line-height: 1.3; }
+  .wbs-col-header .wp-range { font-size: 10px; color: rgba(255,255,255,.55); margin-top: 5px; }
+  .wbs-items { display: flex; flex-direction: column; gap: 6px; }
+  .wbs-item { background: var(--white); border: 1px solid var(--grey1); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 10px 12px; font-size: 11.5px; color: var(--text); line-height: 1.4; }
+  .wbs-item .item-id { font-size: 10px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .wbs-item .item-owner { font-size: 10px; color: var(--grey3); margin-top: 4px; }
   .wbs-item.critical { border-left-color: #C0392B; }
   .wbs-item.high { border-left-color: var(--gold); }
   .wbs-item.medium { border-left-color: #2E7D52; }
@@ -359,6 +227,11 @@
      RISK MATRIX
   ──────────────────────────────────────────────── */
   .risk-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .risk-top-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
@@ -370,119 +243,20 @@
     padding: 24px;
     border: 1px solid var(--grey1);
   }
-  .risk-matrix-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 16px;
-  }
-  .matrix-visual {
-    display: grid;
-    grid-template-columns: 28px repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr) 28px;
-    gap: 4px;
-    height: 300px;
-  }
-  .matrix-cell {
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-    position: relative;
-    transition: transform .1s;
-  }
-  .matrix-cell:hover { transform: scale(1.03); z-index: 10; }
-  .cell-low  { background: #D4EDDA; }
-  .cell-med  { background: #FFF3CD; }
-  .cell-high { background: #F8D7DA; }
-  .cell-crit { background: #F5C6CB; }
-  .matrix-dot {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--navy);
-    color: var(--white);
-    font-size: 10px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,.2);
-    z-index: 2;
-  }
-  .axis-label {
-    font-size: 10px;
-    color: var(--grey3);
-    font-weight: 600;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-  .axis-label.y {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-  }
-  .axis-tick {
-    font-size: 10px;
-    color: var(--grey3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .risk-matrix-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
 
   .risk-table-section { }
-  .risk-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  .risk-table th {
-    background: var(--navy);
-    color: var(--white);
-    padding: 10px 12px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-  .risk-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--grey1);
-    vertical-align: top;
-    line-height: 1.45;
-  }
+  .risk-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .risk-table th { background: var(--navy); color: var(--white); padding: 10px 12px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+  .risk-table td { padding: 10px 12px; border-bottom: 1px solid var(--grey1); vertical-align: top; line-height: 1.45; }
   .risk-table tr:nth-child(even) td { background: var(--off); }
   .risk-table tr:hover td { background: rgba(201,148,10,.05); }
-  .risk-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    white-space: nowrap;
-  }
+  .risk-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; }
   .rb-critical { background: #FEE2E2; color: #991B1B; }
   .rb-high     { background: #FEF3C7; color: #92400E; }
   .rb-medium   { background: #D1FAE5; color: #065F46; }
   .rb-low      { background: #EDE9FE; color: #5B21B6; }
-  .score-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    font-weight: 800;
-    font-size: 13px;
-    color: var(--white);
-  }
+  .score-pill { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; font-weight: 800; font-size: 13px; color: var(--white); }
   .sp-9 { background: #B91C1C; }
   .sp-6 { background: #D97706; }
   .sp-4 { background: #C9940A; }
@@ -490,35 +264,15 @@
   .sp-2 { background: #6B7280; }
 
   /* ── Footer ── */
-  footer {
-    background: var(--navy2);
-    color: rgba(255,255,255,.45);
-    text-align: center;
-    padding: 20px;
-    font-size: 11px;
-    letter-spacing: .5px;
-  }
+  footer { background: var(--navy2); color: rgba(255,255,255,.45); text-align: center; padding: 20px; font-size: 11px; letter-spacing: .5px; }
   footer strong { color: var(--gold2); }
-
-  /* ── Tooltip ── */
-  .tooltip {
-    position: absolute;
-    background: var(--navy2);
-    color: var(--white);
-    font-size: 11px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    pointer-events: none;
-    z-index: 999;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(0,0,0,.3);
-    display: none;
-  }
 
   @media (max-width: 900px) {
     header, .hero, .content, .tabs-bar { padding-left: 20px; padding-right: 20px; }
-    .risk-layout { grid-template-columns: 1fr; }
+    .risk-top-row { grid-template-columns: 1fr; }
     .wbs-grid { grid-template-columns: repeat(2, 1fr); }
+    .phase-cards { grid-template-columns: repeat(2, 1fr); }
+    .wp-cards { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -558,48 +312,186 @@
 
 <!-- ── Tabs ── -->
 <div class="tabs-bar">
-  <button class="tab-btn active" onclick="switchTab('gantt')">📅 Gantt Planning</button>
-  <button class="tab-btn" onclick="switchTab('wbs')">🗂 Work Breakdown Structure</button>
-  <button class="tab-btn" onclick="switchTab('risk')">⚠️ Risk Register</button>
+  <button class="tab-btn active" onclick="switchTab('planning', this)">📅 Planning</button>
+  <button class="tab-btn" onclick="switchTab('wbs', this)">🗂 Work Breakdown Structure</button>
+  <button class="tab-btn" onclick="switchTab('risk', this)">⚠️ Risk Register</button>
 </div>
 
 <!-- ── Content ── -->
 <div class="content">
 
   <!-- ═══════════════════════════════════════════
-       GANTT TAB
+       PLANNING TAB
   ═══════════════════════════════════════════ -->
-  <div id="tab-gantt" class="tab-panel active">
+  <div id="tab-planning" class="tab-panel active">
     <div class="sec-title">Programme Planning</div>
-    <div class="sec-sub">36-month Gantt across 5 phases. Hover over bars for details.</div>
+    <div class="sec-sub">Four views of the 36-month transformation programme. Choose a perspective below.</div>
 
-    <div class="gantt-wrapper">
-      <table class="gantt-table" id="ganttTable">
-        <thead>
-          <tr>
-            <th class="label-col">Deliverable</th>
-            <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
-            <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
-            <th>M13</th><th>M14</th><th>M15</th><th>M16</th><th>M17</th><th>M18</th>
-            <th>M19</th><th>M20</th><th>M21</th><th>M22</th><th>M23</th><th>M24</th>
-            <th>M25</th><th>M26</th><th>M27</th><th>M28</th><th>M29</th><th>M30</th>
-            <th>M31</th><th>M32</th><th>M33</th><th>M34</th><th>M35</th><th>M36</th>
-          </tr>
-        </thead>
-        <tbody id="ganttBody">
-        </tbody>
-      </table>
+    <!-- Planning sub-tabs -->
+    <div class="sub-tabs-bar">
+      <button class="sub-tab-btn active" onclick="switchSubTab('plan-short', this)">⚡ Short-Term (M0–M6)</button>
+      <button class="sub-tab-btn" onclick="switchSubTab('plan-medlong', this)">🔭 Medium &amp; Long-Term (M6–M36)</button>
+      <button class="sub-tab-btn" onclick="switchSubTab('plan-phases', this)">🎯 Per Phase</button>
+      <button class="sub-tab-btn" onclick="switchSubTab('plan-wp', this)">📦 Per Work Package</button>
     </div>
 
-    <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div>Phase 0 — Stabilisation</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#2E7D52"></div>Phase 1 — Foundation</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#C9940A"></div>Phase 2 — Core IS Deployment</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#8E44AD"></div>Phase 3 — Integration</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 — Strategic Capability</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#1F3864; border-radius:2px; transform:rotate(45deg)"></div>Milestone</div>
+    <!-- ─── SHORT TERM ─── -->
+    <div id="plan-short" class="sub-panel active">
+      <div class="plan-title">Short-Term Planning — Months 1 to 6</div>
+      <div class="plan-sub">Stabilisation &amp; Foundation phases. Priority actions to resolve the order fulfillment crisis within 6 months.</div>
+
+      <div class="gantt-wrapper">
+        <table class="gantt-table" id="ganttShort">
+          <thead>
+            <tr>
+              <th class="label-col">Deliverable</th>
+              <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+            </tr>
+          </thead>
+          <tbody id="ganttShortBody"></tbody>
+        </table>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div>Phase 0 — Stabilisation (M1–M4)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2E7D52"></div>Phase 1 — Foundation (M3–M8)</div>
+      </div>
     </div>
-  </div>
+
+    <!-- ─── MEDIUM / LONG TERM ─── -->
+    <div id="plan-medlong" class="sub-panel">
+      <div class="plan-title">Medium &amp; Long-Term Planning — Months 7 to 36</div>
+      <div class="plan-sub">Core IS Deployment, Integration &amp; Strategic Capability phases. ERP, data platform, AI and digital twin rollout.</div>
+
+      <div class="gantt-wrapper">
+        <table class="gantt-table" id="ganttMedLong">
+          <thead>
+            <tr>
+              <th class="label-col">Deliverable</th>
+              <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
+              <th>M13</th><th>M14</th><th>M15</th><th>M16</th><th>M17</th><th>M18</th>
+              <th>M19</th><th>M20</th><th>M21</th><th>M22</th><th>M23</th><th>M24</th>
+              <th>M25</th><th>M26</th><th>M27</th><th>M28</th><th>M29</th><th>M30</th>
+              <th>M31</th><th>M32</th><th>M33</th><th>M34</th><th>M35</th><th>M36</th>
+            </tr>
+          </thead>
+          <tbody id="ganttMedLongBody"></tbody>
+        </table>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#C9940A"></div>Phase 2 — Core IS Deployment (M7–M18)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8E44AD"></div>Phase 3 — Integration (M18–M26)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 — Strategic Capability (M26–M36)</div>
+      </div>
+    </div>
+
+    <!-- ─── PER PHASE ─── -->
+    <div id="plan-phases" class="sub-panel">
+      <div class="plan-title">Planning Per Phase — Full 36-Month View</div>
+      <div class="plan-sub">5 phases colour-coded. Tasks grouped and ordered by phase, showing phase transitions clearly.</div>
+
+      <div class="phase-cards">
+        <div class="phase-card" style="border-top-color:#4A90D9">
+          <div class="pc-phase">Phase 0</div>
+          <div class="pc-name">Stabilisation</div>
+          <div class="pc-range">M1 – M4</div>
+          <div class="pc-desc">Crisis resolution: PAPCAR Connect pilot, governance kickoff, catalogue freeze.</div>
+        </div>
+        <div class="phase-card" style="border-top-color:#2E7D52">
+          <div class="pc-phase">Phase 1</div>
+          <div class="pc-name">Foundation</div>
+          <div class="pc-range">M3 – M8</div>
+          <div class="pc-desc">Full SU rollout, governance team in post, ERP vendor selection launched.</div>
+        </div>
+        <div class="phase-card" style="border-top-color:#C9940A">
+          <div class="pc-phase">Phase 2</div>
+          <div class="pc-name">Core IS Deployment</div>
+          <div class="pc-range">M7 – M18</div>
+          <div class="pc-desc">ERP Phase 1, CRM, PLM, cloud migration, master data cleansing.</div>
+        </div>
+        <div class="phase-card" style="border-top-color:#8E44AD">
+          <div class="pc-phase">Phase 3</div>
+          <div class="pc-name">Integration</div>
+          <div class="pc-range">M18 – M26</div>
+          <div class="pc-desc">ERP production plants, unified data platform, legacy decommission.</div>
+        </div>
+        <div class="phase-card" style="border-top-color:#C0392B">
+          <div class="pc-phase">Phase 4</div>
+          <div class="pc-name">Strategic Capability</div>
+          <div class="pc-range">M26 – M36</div>
+          <div class="pc-desc">AI demand forecasting, digital twin prototype, performance dashboards.</div>
+        </div>
+      </div>
+
+      <div class="gantt-wrapper">
+        <table class="gantt-table" id="ganttPhase">
+          <thead>
+            <tr>
+              <th class="label-col">Deliverable</th>
+              <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+              <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
+              <th>M13</th><th>M14</th><th>M15</th><th>M16</th><th>M17</th><th>M18</th>
+              <th>M19</th><th>M20</th><th>M21</th><th>M22</th><th>M23</th><th>M24</th>
+              <th>M25</th><th>M26</th><th>M27</th><th>M28</th><th>M29</th><th>M30</th>
+              <th>M31</th><th>M32</th><th>M33</th><th>M34</th><th>M35</th><th>M36</th>
+            </tr>
+          </thead>
+          <tbody id="ganttPhaseBody"></tbody>
+        </table>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div>Phase 0 — Stabilisation</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2E7D52"></div>Phase 1 — Foundation</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C9940A"></div>Phase 2 — Core IS Deployment</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#8E44AD"></div>Phase 3 — Integration</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C0392B"></div>Phase 4 — Strategic Capability</div>
+      </div>
+    </div>
+
+    <!-- ─── PER WP ─── -->
+    <div id="plan-wp" class="sub-panel">
+      <div class="plan-title">Planning Per Work Package</div>
+      <div class="plan-sub">Full 36-month view grouped by work package. Each WP is independently colour-coded.</div>
+
+      <div class="wp-cards">
+        <div class="wp-card"><div class="wc-num">WP1</div><div class="wc-name">Consulting Engagement</div><div class="wc-range">M1–M3</div></div>
+        <div class="wp-card"><div class="wc-num">WP2</div><div class="wc-name">Governance &amp; Org Setup</div><div class="wc-range">M1–M6</div></div>
+        <div class="wp-card"><div class="wc-num">WP3</div><div class="wc-name">PAPCAR Connect</div><div class="wc-range">M1–M12</div></div>
+        <div class="wp-card"><div class="wc-num">WP4</div><div class="wc-name">Catalogue &amp; PLM</div><div class="wc-range">M1–M18</div></div>
+        <div class="wp-card"><div class="wc-num">WP5</div><div class="wc-name">ERP Deployment</div><div class="wc-range">M3–M26</div></div>
+        <div class="wp-card"><div class="wc-num">WP6</div><div class="wc-name">Data Platform</div><div class="wc-range">M12–M36</div></div>
+      </div>
+
+      <div class="gantt-wrapper">
+        <table class="gantt-table" id="ganttWP">
+          <thead>
+            <tr>
+              <th class="label-col">Deliverable</th>
+              <th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th>
+              <th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th>
+              <th>M13</th><th>M14</th><th>M15</th><th>M16</th><th>M17</th><th>M18</th>
+              <th>M19</th><th>M20</th><th>M21</th><th>M22</th><th>M23</th><th>M24</th>
+              <th>M25</th><th>M26</th><th>M27</th><th>M28</th><th>M29</th><th>M30</th>
+              <th>M31</th><th>M32</th><th>M33</th><th>M34</th><th>M35</th><th>M36</th>
+            </tr>
+          </thead>
+          <tbody id="ganttWPBody"></tbody>
+        </table>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#7C3AED"></div>WP1 — Consulting</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#1F3864"></div>WP2 — Governance</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#0369A1"></div>WP3 — PAPCAR Connect</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#C9940A"></div>WP4 — Catalogue &amp; PLM</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#B91C1C"></div>WP5 — ERP</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2E7D52"></div>WP6 — Data Platform</div>
+      </div>
+    </div>
+
+  </div><!-- /planning tab -->
 
   <!-- ═══════════════════════════════════════════
        WBS TAB
@@ -623,9 +515,9 @@
           <div class="wbs-item high"><div class="item-id">1.3</div>Short-term target + PAPCAR Connect<div class="item-owner">Alexandre + Leopold</div></div>
           <div class="wbs-item high"><div class="item-id">1.4</div>Medium/long-term IS strategy<div class="item-owner">Alexandre + Leopold</div></div>
           <div class="wbs-item high"><div class="item-id">1.5</div>Value proposition reformulation (3 segments)<div class="item-owner">Salma + Elizaveta</div></div>
-          <div class="wbs-item high"><div class="item-id">1.6</div>Transformation & change management plan<div class="item-owner">Salma</div></div>
+          <div class="wbs-item high"><div class="item-id">1.6</div>Transformation &amp; change management plan<div class="item-owner">Salma</div></div>
           <div class="wbs-item high"><div class="item-id">1.7</div>Project definition (WBS, planning, risks)<div class="item-owner">Leopold</div></div>
-          <div class="wbs-item medium"><div class="item-id">1.8</div>Oral defence & client presentation<div class="item-owner">All team</div></div>
+          <div class="wbs-item medium"><div class="item-id">1.8</div>Oral defence &amp; client presentation<div class="item-owner">All team</div></div>
         </div>
       </div>
 
@@ -633,7 +525,7 @@
       <div>
         <div class="wbs-col-header">
           <div class="wp-num">WP2</div>
-          <div class="wp-title">Governance & Org Setup</div>
+          <div class="wp-title">Governance &amp; Org Setup</div>
           <div class="wp-range">Months 1–6</div>
         </div>
         <div class="wbs-items" style="margin-top:6px">
@@ -668,7 +560,7 @@
       <div>
         <div class="wbs-col-header">
           <div class="wp-num">WP4</div>
-          <div class="wp-title">Catalogue Rationalisation & PLM</div>
+          <div class="wp-title">Catalogue Rationalisation &amp; PLM</div>
           <div class="wp-range">Months 1–18</div>
         </div>
         <div class="wbs-items" style="margin-top:6px">
@@ -705,7 +597,7 @@
       <div>
         <div class="wbs-col-header">
           <div class="wp-num">WP6</div>
-          <div class="wp-title">Data Platform & Advanced Capabilities</div>
+          <div class="wp-title">Data Platform &amp; Advanced Capabilities</div>
           <div class="wp-range">Months 12–36</div>
         </div>
         <div class="wbs-items" style="margin-top:6px">
@@ -726,144 +618,165 @@
   ═══════════════════════════════════════════ -->
   <div id="tab-risk" class="tab-panel">
     <div class="sec-title">Risk Register</div>
-    <div class="sec-sub">10 key risks · Assessed on Likelihood (1–3) × Impact (1–3). Click a risk number in the matrix to highlight it.</div>
+    <div class="sec-sub">10 key risks · Assessed on Likelihood (1–3) × Impact (1–3). Click a risk dot in the matrix to highlight it in the table.</div>
 
     <div class="risk-layout">
 
-      <!-- Matrix visual — pure SVG, no CSS grid confusion -->
+      <!-- TOP ROW: full-width matrix -->
       <div class="risk-matrix-grid">
-        <div class="risk-matrix-title">Risk Heat Map</div>
+        <div class="risk-matrix-title">Risk Heat Map — All 10 Risks</div>
 
-        <!--
-          3×3 grid. Columns = Likelihood 1,2,3. Rows (top→bottom) = Impact 3,2,1.
-          Cell size 90×80. Origin of grid: x=50, y=20.
-          Cell centres: col1 cx=95, col2 cx=185, col3 cx=275
-                        row1 cy=60, row2 cy=140, row3 cy=220
-
-          Score per cell:
-            (L1,I3)=3 med  | (L2,I3)=6 high  | (L3,I3)=9 crit
-            (L1,I2)=2 low  | (L2,I2)=4 high  | (L3,I2)=6 high
-            (L1,I1)=1 low  | (L2,I1)=2 low   | (L3,I1)=3 med
-
-          Risk placement by (L,I):
-            Risk 3  → L=1, I=3  col1 row1
-            Risk 4  → L=2, I=3  col2 row1
-            Risk 5  → L=2, I=3  col2 row1
-            Risk 6  → L=2, I=2  col2 row2
-            Risk 7  → L=2, I=2  col2 row2
-            Risk 8  → L=2, I=2  col2 row2
-            Risk 9  → L=1, I=3  col1 row1
-            Risk 10 → L=1, I=2  col1 row2
-            R1      → L=3, I=3  col3 row1
-            R2      → L=3, I=3  col3 row1
-        -->
-        <svg viewBox="0 0 340 305" width="100%" style="max-width:360px; display:block; overflow:visible;">
-
-          <!-- ── Cell backgrounds ── -->
-          <!-- Row 1 (Impact=3, y=20..100) -->
-          <rect x="50"  y="20" width="90" height="80" fill="#FEF9C3" rx="4" stroke="#e5e7eb"/><!-- L1I3 score3 med -->
-          <rect x="140" y="20" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L2I3 score6 high -->
-          <rect x="230" y="20" width="90" height="80" fill="#FECACA" rx="4" stroke="#e5e7eb"/><!-- L3I3 score9 crit -->
-          <!-- Row 2 (Impact=2, y=100..180) -->
-          <rect x="50"  y="100" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L1I2 score2 low -->
-          <rect x="140" y="100" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L2I2 score4 high -->
-          <rect x="230" y="100" width="90" height="80" fill="#FDE68A" rx="4" stroke="#e5e7eb"/><!-- L3I2 score6 high -->
-          <!-- Row 3 (Impact=1, y=180..260) -->
-          <rect x="50"  y="180" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L1I1 score1 low -->
-          <rect x="140" y="180" width="90" height="80" fill="#DCFCE7" rx="4" stroke="#e5e7eb"/><!-- L2I1 score2 low -->
-          <rect x="230" y="180" width="90" height="80" fill="#FEF9C3" rx="4" stroke="#e5e7eb"/><!-- L3I1 score3 med -->
-
-          <!-- ── Y-axis (Impact) ── -->
-          <text x="38" y="65"  text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">3</text>
-          <text x="38" y="145" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">2</text>
-          <text x="38" y="225" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">1</text>
-          <text transform="rotate(-90,12,140)" x="12" y="140" text-anchor="middle"
-                font-size="9" font-weight="700" fill="#8891A0" letter-spacing="1.2">IMPACT</text>
-
-          <!-- ── X-axis (Likelihood) ── -->
-          <text x="95"  y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">1</text>
-          <text x="185" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">2</text>
-          <text x="275" y="277" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3864">3</text>
-          <text x="185" y="295" text-anchor="middle" font-size="9" font-weight="700" fill="#8891A0" letter-spacing="1.2">LIKELIHOOD</text>
-
-          <!-- ══ DOTS ══ -->
-
-          <!-- col1 row1 (L1,I3): Risk 3 and Risk 9 — side by side within cell -->
-          <g onclick="highlightRisk(3)" style="cursor:pointer" title="Risk 3 — CIO hire delayed">
-            <circle cx="75" cy="60" r="17" fill="#1F3864" filter="url(#sh)"/>
-            <text x="75" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">3</text>
-          </g>
-          <g onclick="highlightRisk(9)" style="cursor:pointer" title="Risk 9 — Pulp supply disruption">
-            <circle cx="115" cy="60" r="17" fill="#2E7D52"/>
-            <text x="115" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">9</text>
-          </g>
-
-          <!-- col2 row1 (L2,I3): Risk 4 and Risk 5 — side by side -->
-          <g onclick="highlightRisk(4)" style="cursor:pointer" title="Risk 4 — ERP integrator failure">
-            <circle cx="165" cy="60" r="17" fill="#D97706"/>
-            <text x="165" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">4</text>
-          </g>
-          <g onclick="highlightRisk(5)" style="cursor:pointer" title="Risk 5 — IS budget insufficient">
-            <circle cx="205" cy="60" r="17" fill="#D97706"/>
-            <text x="205" y="65" text-anchor="middle" font-size="11" font-weight="800" fill="white">5</text>
-          </g>
-
-          <!-- col3 row1 (L3,I3): R1 and R2 — side by side -->
-          <g onclick="highlightRisk('R1')" style="cursor:pointer" title="R1 — Master data quality / ERP delay">
-            <circle cx="252" cy="60" r="17" fill="#B91C1C"/>
-            <text x="252" y="65" text-anchor="middle" font-size="10" font-weight="800" fill="white">R1</text>
-          </g>
-          <g onclick="highlightRisk('R2')" style="cursor:pointer" title="R2 — Sales unit resistance">
-            <circle cx="296" cy="60" r="17" fill="#B91C1C"/>
-            <text x="296" y="65" text-anchor="middle" font-size="10" font-weight="800" fill="white">R2</text>
-          </g>
-
-          <!-- col1 row2 (L1,I2): Risk 10 — centred -->
-          <g onclick="highlightRisk(10)" style="cursor:pointer" title="Risk 10 — Competitive response">
-            <circle cx="95" cy="140" r="17" fill="#6B7280"/>
-            <text x="95" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">10</text>
-          </g>
-
-          <!-- col2 row2 (L2,I2): Risks 6, 7, 8 — three dots, tight spacing -->
-          <g onclick="highlightRisk(6)" style="cursor:pointer" title="Risk 6 — PAPCAR Connect tech debt">
-            <circle cx="158" cy="140" r="15" fill="#1F3864"/>
-            <text x="158" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">6</text>
-          </g>
-          <g onclick="highlightRisk(7)" style="cursor:pointer" title="Risk 7 — Catalogue rationalisation pushback">
-            <circle cx="185" cy="140" r="15" fill="#1F3864"/>
-            <text x="185" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">7</text>
-          </g>
-          <g onclick="highlightRisk(8)" style="cursor:pointer" title="Risk 8 — Key person dependency">
-            <circle cx="212" cy="140" r="15" fill="#1F3864"/>
-            <text x="212" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="white">8</text>
-          </g>
-
-          <!-- Drop shadow filter -->
+        <!-- Large SVG matrix: viewBox 700 wide, 480 tall. Cols = L1/L2/L3, rows = I3/I2/I1. Cell = 180×120. Origin x=80, y=30 -->
+        <svg viewBox="0 0 700 510" width="100%" style="display:block; overflow:visible;">
           <defs>
-            <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.2"/>
+            <filter id="sh2" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
             </filter>
           </defs>
 
+          <!-- ── Cell backgrounds 3×3 ── -->
+          <!-- Row 1: Impact=3 (y 30..150) -->
+          <rect x="80"  y="30"  width="180" height="120" fill="#FEF9C3" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L1I3 medium -->
+          <rect x="260" y="30"  width="180" height="120" fill="#FDE68A" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L2I3 high -->
+          <rect x="440" y="30"  width="180" height="120" fill="#FECACA" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L3I3 critical -->
+
+          <!-- Row 2: Impact=2 (y 150..270) -->
+          <rect x="80"  y="150" width="180" height="120" fill="#DCFCE7" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L1I2 low -->
+          <rect x="260" y="150" width="180" height="120" fill="#FDE68A" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L2I2 high -->
+          <rect x="440" y="150" width="180" height="120" fill="#FDE68A" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L3I2 high -->
+
+          <!-- Row 3: Impact=1 (y 270..390) -->
+          <rect x="80"  y="270" width="180" height="120" fill="#DCFCE7" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L1I1 low -->
+          <rect x="260" y="270" width="180" height="120" fill="#DCFCE7" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L2I1 low -->
+          <rect x="440" y="270" width="180" height="120" fill="#FEF9C3" rx="6" stroke="#d1d5db" stroke-width="1.5"/><!-- L3I1 medium -->
+
+          <!-- ── Cell score labels (corner) ── -->
+          <text x="92" y="48" font-size="10" fill="#9CA3AF" font-weight="600">Score 3 · Medium</text>
+          <text x="272" y="48" font-size="10" fill="#9CA3AF" font-weight="600">Score 6 · High</text>
+          <text x="452" y="48" font-size="10" fill="#9CA3AF" font-weight="600">Score 9 · Critical</text>
+          <text x="92" y="168" font-size="10" fill="#9CA3AF" font-weight="600">Score 2 · Low</text>
+          <text x="272" y="168" font-size="10" fill="#9CA3AF" font-weight="600">Score 4 · High</text>
+          <text x="452" y="168" font-size="10" fill="#9CA3AF" font-weight="600">Score 6 · High</text>
+          <text x="92" y="288" font-size="10" fill="#9CA3AF" font-weight="600">Score 1 · Low</text>
+          <text x="272" y="288" font-size="10" fill="#9CA3AF" font-weight="600">Score 2 · Low</text>
+          <text x="452" y="288" font-size="10" fill="#9CA3AF" font-weight="600">Score 3 · Medium</text>
+
+          <!-- ── Y-axis (Impact) labels ── -->
+          <text x="68" y="97"  text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">3</text>
+          <text x="68" y="217" text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">2</text>
+          <text x="68" y="337" text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">1</text>
+          <text transform="rotate(-90 22 210)" x="22" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#8891A0" letter-spacing="1.5">IMPACT</text>
+
+          <!-- ── X-axis (Likelihood) labels ── -->
+          <text x="170" y="415" text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">1</text>
+          <text x="350" y="415" text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">2</text>
+          <text x="530" y="415" text-anchor="middle" font-size="16" font-weight="800" fill="#1F3864">3</text>
+          <text x="350" y="440" text-anchor="middle" font-size="11" font-weight="700" fill="#8891A0" letter-spacing="1.5">LIKELIHOOD</text>
+
+          <!-- ── Axis sub-labels ── -->
+          <text x="170" y="430" text-anchor="middle" font-size="9" fill="#9CA3AF">Low</text>
+          <text x="350" y="430" text-anchor="middle" font-size="9" fill="#9CA3AF">Medium</text>
+          <text x="530" y="430" text-anchor="middle" font-size="9" fill="#9CA3AF">High</text>
+          <text x="68" y="112" text-anchor="middle" font-size="9" fill="#9CA3AF">High</text>
+          <text x="68" y="232" text-anchor="middle" font-size="9" fill="#9CA3AF">Med</text>
+          <text x="68" y="352" text-anchor="middle" font-size="9" fill="#9CA3AF">Low</text>
+
+          <!-- ═══════════════════
+               RISK DOTS
+               Cell centre x values: L1=170, L2=350, L3=530
+               Cell centre y values: I3=90, I2=210, I1=330
+               Dot radius = 22
+          ═══════════════════ -->
+
+          <!-- L1,I3 (Score 3 medium): Risk 3 (CIO delay) + Risk 9 (pulp supply) — side by side -->
+          <g onclick="highlightRisk(3)" style="cursor:pointer">
+            <circle cx="140" cy="100" r="22" fill="#1F3864" filter="url(#sh2)"/>
+            <text x="140" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="white">3</text>
+          </g>
+          <g onclick="highlightRisk(9)" style="cursor:pointer">
+            <circle cx="200" cy="100" r="22" fill="#2E7D52" filter="url(#sh2)"/>
+            <text x="200" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="white">9</text>
+          </g>
+
+          <!-- L2,I3 (Score 6 high): Risk 4 (ERP integrator) + Risk 5 (IS budget) — side by side -->
+          <g onclick="highlightRisk(4)" style="cursor:pointer">
+            <circle cx="320" cy="100" r="22" fill="#D97706" filter="url(#sh2)"/>
+            <text x="320" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="white">4</text>
+          </g>
+          <g onclick="highlightRisk(5)" style="cursor:pointer">
+            <circle cx="380" cy="100" r="22" fill="#D97706" filter="url(#sh2)"/>
+            <text x="380" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="white">5</text>
+          </g>
+
+          <!-- L3,I3 (Score 9 critical): R1 (data quality) + R2 (SU resistance) — side by side -->
+          <g onclick="highlightRisk('R1')" style="cursor:pointer">
+            <circle cx="500" cy="100" r="22" fill="#B91C1C" filter="url(#sh2)"/>
+            <text x="500" y="105" text-anchor="middle" font-size="12" font-weight="800" fill="white">R1</text>
+          </g>
+          <g onclick="highlightRisk('R2')" style="cursor:pointer">
+            <circle cx="560" cy="100" r="22" fill="#B91C1C" filter="url(#sh2)"/>
+            <text x="560" y="105" text-anchor="middle" font-size="12" font-weight="800" fill="white">R2</text>
+          </g>
+
+          <!-- L1,I2 (Score 2 low): Risk 10 (competitive response) — centred -->
+          <g onclick="highlightRisk(10)" style="cursor:pointer">
+            <circle cx="170" cy="220" r="22" fill="#6B7280" filter="url(#sh2)"/>
+            <text x="170" y="225" text-anchor="middle" font-size="12" font-weight="800" fill="white">10</text>
+          </g>
+
+          <!-- L2,I2 (Score 4 high): Risks 6, 7, 8 — three dots spread across cell -->
+          <g onclick="highlightRisk(6)" style="cursor:pointer">
+            <circle cx="303" cy="220" r="22" fill="#1F3864" filter="url(#sh2)"/>
+            <text x="303" y="225" text-anchor="middle" font-size="13" font-weight="800" fill="white">6</text>
+          </g>
+          <g onclick="highlightRisk(7)" style="cursor:pointer">
+            <circle cx="350" cy="220" r="22" fill="#1F3864" filter="url(#sh2)"/>
+            <text x="350" y="225" text-anchor="middle" font-size="13" font-weight="800" fill="white">7</text>
+          </g>
+          <g onclick="highlightRisk(8)" style="cursor:pointer">
+            <circle cx="397" cy="220" r="22" fill="#1F3864" filter="url(#sh2)"/>
+            <text x="397" y="225" text-anchor="middle" font-size="13" font-weight="800" fill="white">8</text>
+          </g>
+
+          <!-- L3,I1 (Score 3 medium): no risk currently -->
+          <!-- L1,I1, L2,I1: empty (low zone) -->
+
+          <!-- ── Risk labels inside cells ── -->
+          <!-- L1,I3: labels -->
+          <text x="140" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">CIO delay</text>
+          <text x="200" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Pulp supply</text>
+          <!-- L2,I3 labels -->
+          <text x="320" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">ERP integrator</text>
+          <text x="380" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">IS budget</text>
+          <!-- L3,I3 labels -->
+          <text x="500" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Data quality</text>
+          <text x="560" y="134" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">SU resistance</text>
+          <!-- L1,I2 label -->
+          <text x="170" y="254" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Competitive</text>
+          <!-- L2,I2 labels -->
+          <text x="303" y="254" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Tech debt</text>
+          <text x="350" y="254" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Catalogue</text>
+          <text x="397" y="254" text-anchor="middle" font-size="8.5" fill="#374151" font-weight="600">Key person</text>
+
         </svg>
 
-        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
-          <div class="legend-item"><div class="legend-dot" style="background:#FECACA; border:1px solid #FCA5A5"></div>Critical (9)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#FDE68A; border:1px solid #FCD34D"></div>High (4–6)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#FEF9C3; border:1px solid #FDE68A"></div>Medium (3)</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#DCFCE7; border:1px solid #A7F3D0"></div>Low (1–2)</div>
+        <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap">
+          <div class="legend-item"><div class="legend-dot" style="background:#FECACA; border:1px solid #FCA5A5"></div>Critical (score 9)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FDE68A; border:1px solid #FCD34D"></div>High (score 4–6)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#FEF9C3; border:1px solid #FDE68A"></div>Medium (score 3)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#DCFCE7; border:1px solid #A7F3D0"></div>Low (score 1–2)</div>
         </div>
       </div>
 
-      <!-- Risk table -->
+      <!-- BOTTOM: full-width risk table -->
       <div class="risk-table-section">
         <table class="risk-table" id="riskTable">
           <thead>
             <tr>
-              <th>#</th>
+              <th style="width:44px">#</th>
               <th>Risk</th>
-              <th>L</th><th>I</th>
-              <th>Score</th>
+              <th style="width:36px">L</th><th style="width:36px">I</th>
+              <th style="width:110px">Score</th>
               <th>Mitigation</th>
             </tr>
           </thead>
@@ -882,14 +795,14 @@
               <td><span class="risk-badge rb-critical">9 · Critical</span></td>
               <td>Early SU manager involvement. Pilot units selected for openness. Super-user network pre-rollout.</td>
             </tr>
-            <tr data-risk="1" class="risk-row">
-              <td><span class="score-pill sp-6">3</span></td>
+            <tr data-risk="3" class="risk-row">
+              <td><span class="score-pill sp-3">3</span></td>
               <td>CIO hire delayed — all subsequent decisions lack ownership</td>
-              <td>2</td><td>3</td>
-              <td><span class="risk-badge rb-critical">6 · Critical</span></td>
+              <td>1</td><td>3</td>
+              <td><span class="risk-badge rb-medium">3 · Medium</span></td>
               <td>Executive search at programme launch. Croissant Corp provides interim IS leadership.</td>
             </tr>
-            <tr data-risk="2" class="risk-row">
+            <tr data-risk="4" class="risk-row">
               <td><span class="score-pill sp-6">4</span></td>
               <td>ERP integrator underperformance (schedule or quality failure)</td>
               <td>2</td><td>3</td>
@@ -941,8 +854,9 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
+
+    </div><!-- /risk-layout -->
+  </div><!-- /risk tab -->
 
 </div><!-- /content -->
 
@@ -950,15 +864,21 @@
   &copy; 2026 <strong>Croissant Corp</strong> · Corporate Transformation Consulting · PAPCAR IS Transformation Programme · Confidential
 </footer>
 
-<div class="tooltip" id="tooltip"></div>
-
 <script>
-// ── Tab switching ──
-function switchTab(name) {
+// ── Main tab switching ──
+function switchTab(name, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ── Planning sub-tab switching ──
+function switchSubTab(name, btn) {
+  document.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // ── Risk highlight ──
@@ -969,16 +889,23 @@ function highlightRisk(id) {
   });
   const row = document.querySelector(`[data-risk="${id}"]`);
   if (row) {
-    row.style.background = 'rgba(201,148,10,.15)';
+    row.style.background = 'rgba(201,148,10,.18)';
     row.style.outline = '2px solid #C9940A';
+    // Switch to risk tab if not active
+    const riskTab = document.getElementById('tab-risk');
+    if (!riskTab.classList.contains('active')) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      riskTab.classList.add('active');
+      document.querySelectorAll('.tab-btn')[2].classList.add('active');
+    }
     row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 }
 
-// ── Build Gantt ──
-const TOTAL_MONTHS = 36;
-
-// phase colours indexed by phase number
+// ────────────────────────────────────────────────────────
+// GANTT DATA
+// ────────────────────────────────────────────────────────
 const phaseColor = {
   0: '#4A90D9',
   1: '#2E7D52',
@@ -987,89 +914,160 @@ const phaseColor = {
   4: '#C0392B',
 };
 
-const ganttData = [
-  // Each entry: { label, level, start, end, phase, tooltip }
-  // level: 'wp'=work package header, 'task'=task row, 'milestone'=single diamond
+const wpColor = {
+  1: '#7C3AED',
+  2: '#1F3864',
+  3: '#0369A1',
+  4: '#C9940A',
+  5: '#B91C1C',
+  6: '#2E7D52',
+};
 
-  { label: 'WP2 — Governance & Org Setup', level: 'wp' },
-  { label: '2.1 CIO recruitment and onboarding', level: 'task', start: 1, end: 3, phase: 0, tip: 'CIO in post by M3' },
-  { label: '2.2 IS Steering Committee', level: 'task', start: 2, end: 4, phase: 0, tip: 'First SteerCo by M2' },
-  { label: '2.3 Programme Manager recruitment', level: 'task', start: 3, end: 5, phase: 1, tip: 'PM in post by M4' },
-  { label: '2.4–2.6 CM Lead, Architect, DGC', level: 'task', start: 3, end: 6, phase: 1, tip: 'Full governance team by M6' },
+// Full task list with phase and wp info
+const allTasks = [
+  // WP1
+  { label: 'WP1 — Consulting Engagement', level: 'wp', wp: 1 },
+  { label: '1.1 Situation analysis (7 perspectives)', level: 'task', start: 1, end: 2, phase: 0, wp: 1, tip: 'Completed M2' },
+  { label: '1.2–1.7 Proposal deliverables', level: 'task', start: 1, end: 3, phase: 0, wp: 1, tip: 'Full proposal M3' },
+  { label: '1.8 Oral defence', level: 'task', start: 3, end: 3, phase: 0, wp: 1, tip: 'Pitch M3' },
 
-  { label: 'WP3 — PAPCAR Connect Deployment', level: 'wp' },
-  { label: '3.1 Knowledge transfer to dev', level: 'task', start: 1, end: 2, phase: 0, tip: 'Internal owner by M2' },
-  { label: '3.2 Pilot: 3 sales units', level: 'task', start: 1, end: 2, phase: 0, tip: 'Pilot go-live M2' },
-  { label: '3.3 Failed-sales protocol (all SUs)', level: 'task', start: 2, end: 3, phase: 0, tip: 'All 20 SUs logging by M3' },
-  { label: '3.4 Production dashboard live', level: 'task', start: 1, end: 2, phase: 0, tip: 'Live M2' },
-  { label: '3.5 Supplier dashboard onboarded', level: 'task', start: 2, end: 3, phase: 0, tip: 'Live M3' },
-  { label: '3.6 National rollout (all 20 SUs)', level: 'task', start: 3, end: 4, phase: 1, tip: 'All units live M4' },
-  { label: '3.7 EDI integration for stationers', level: 'task', start: 9, end: 12, phase: 2, tip: 'Phase 2 extension' },
+  // WP2
+  { label: 'WP2 — Governance & Org Setup', level: 'wp', wp: 2 },
+  { label: '2.1 CIO recruitment and onboarding', level: 'task', start: 1, end: 3, phase: 0, wp: 2, tip: 'CIO in post by M3' },
+  { label: '2.2 IS Steering Committee', level: 'task', start: 2, end: 4, phase: 0, wp: 2, tip: 'First SteerCo by M2' },
+  { label: '2.3 Programme Manager recruitment', level: 'task', start: 3, end: 5, phase: 1, wp: 2, tip: 'PM in post by M4' },
+  { label: '2.4–2.6 CM Lead, Architect, DGC', level: 'task', start: 3, end: 6, phase: 1, wp: 2, tip: 'Full governance team by M6' },
 
-  { label: 'WP4 — Catalogue Rationalisation & PLM', level: 'wp' },
-  { label: '4.1 SKU introduction freeze', level: 'task', start: 1, end: 1, phase: 0, tip: 'Decision M1' },
-  { label: '4.2 ABC-XYZ rotation analysis', level: 'task', start: 2, end: 6, phase: 1, tip: 'Analysis complete M6' },
-  { label: '4.3 Slow-mover withdrawal', level: 'task', start: 6, end: 8, phase: 1, tip: 'Implemented M8' },
-  { label: '4.4 Made-to-order terms', level: 'task', start: 7, end: 8, phase: 1, tip: 'Client comms M8' },
-  { label: '4.5 PLM tool selection', level: 'task', start: 7, end: 9, phase: 2, tip: 'Selected M9' },
-  { label: '4.6 PLM deployment', level: 'task', start: 9, end: 15, phase: 2, tip: 'Live M15' },
-  { label: '4.7 SKU lifecycle governance', level: 'task', start: 15, end: 18, phase: 2, tip: 'Process embedded M18' },
+  // WP3
+  { label: 'WP3 — PAPCAR Connect Deployment', level: 'wp', wp: 3 },
+  { label: '3.1 Knowledge transfer to dev', level: 'task', start: 1, end: 2, phase: 0, wp: 3, tip: 'Internal owner by M2' },
+  { label: '3.2 Pilot: 3 sales units', level: 'task', start: 1, end: 2, phase: 0, wp: 3, tip: 'Pilot go-live M2' },
+  { label: '3.3 Failed-sales protocol (all SUs)', level: 'task', start: 2, end: 3, phase: 0, wp: 3, tip: 'All 20 SUs logging by M3' },
+  { label: '3.4 Production dashboard live', level: 'task', start: 1, end: 2, phase: 0, wp: 3, tip: 'Live M2' },
+  { label: '3.5 Supplier dashboard onboarded', level: 'task', start: 2, end: 3, phase: 0, wp: 3, tip: 'Live M3' },
+  { label: '3.6 National rollout (all 20 SUs)', level: 'task', start: 3, end: 4, phase: 1, wp: 3, tip: 'All units live M4' },
+  { label: '3.7 EDI integration for stationers', level: 'task', start: 9, end: 12, phase: 2, wp: 3, tip: 'Phase 2 extension' },
 
-  { label: 'WP5 — ERP Deployment', level: 'wp' },
-  { label: '5.1 ERP vendor RFP & selection', level: 'task', start: 3, end: 6, phase: 1, tip: 'Vendor selected M6' },
-  { label: '5.2 Integrator selection & contract', level: 'task', start: 6, end: 7, phase: 1, tip: 'Contract signed M7' },
-  { label: '5.3 Master data cleansing', level: 'task', start: 7, end: 10, phase: 2, tip: 'Data ready M10' },
-  { label: '5.4 ERP Phase 1 (20 SUs)', level: 'task', start: 10, end: 18, phase: 2, tip: 'Go-live M18' },
-  { label: '5.5 CRM (printing houses)', level: 'task', start: 9, end: 15, phase: 2, tip: 'Go-live M15' },
-  { label: '5.6 ERP Phase 2 (production plants)', level: 'task', start: 18, end: 22, phase: 3, tip: 'Go-live M22' },
-  { label: '5.7 SCM demand planning', level: 'task', start: 22, end: 24, phase: 3, tip: 'Go-live M24' },
-  { label: '5.8 Legacy ADV/WMS/MRP2 decommission', level: 'task', start: 24, end: 26, phase: 3, tip: 'Complete M26' },
+  // WP4
+  { label: 'WP4 — Catalogue Rationalisation & PLM', level: 'wp', wp: 4 },
+  { label: '4.1 SKU introduction freeze', level: 'task', start: 1, end: 1, phase: 0, wp: 4, tip: 'Decision M1' },
+  { label: '4.2 ABC-XYZ rotation analysis', level: 'task', start: 2, end: 6, phase: 1, wp: 4, tip: 'Analysis complete M6' },
+  { label: '4.3 Slow-mover withdrawal', level: 'task', start: 6, end: 8, phase: 1, wp: 4, tip: 'Implemented M8' },
+  { label: '4.4 Made-to-order terms', level: 'task', start: 7, end: 8, phase: 1, wp: 4, tip: 'Client comms M8' },
+  { label: '4.5 PLM tool selection', level: 'task', start: 7, end: 9, phase: 2, wp: 4, tip: 'Selected M9' },
+  { label: '4.6 PLM deployment', level: 'task', start: 9, end: 15, phase: 2, wp: 4, tip: 'Live M15' },
+  { label: '4.7 SKU lifecycle governance', level: 'task', start: 15, end: 18, phase: 2, wp: 4, tip: 'Process embedded M18' },
 
-  { label: 'WP6 — Data Platform & Advanced Capabilities', level: 'wp' },
-  { label: '6.1 Cloud migration (50 servers)', level: 'task', start: 12, end: 18, phase: 2, tip: 'Migration M18' },
-  { label: '6.2 Unified data platform (DWH merge)', level: 'task', start: 18, end: 24, phase: 3, tip: 'Unified platform M24' },
-  { label: '6.3 IS performance dashboard', level: 'task', start: 24, end: 26, phase: 3, tip: 'Live M26' },
-  { label: '6.4 AI demand forecasting', level: 'task', start: 26, end: 30, phase: 4, tip: 'Pilot M28, full M30' },
-  { label: '6.5 Digital twin supply chain prototype', level: 'task', start: 28, end: 30, phase: 4, tip: 'Prototype M30' },
-  { label: '6.6 B2B portal SLA + self-service', level: 'task', start: 12, end: 14, phase: 2, tip: 'Delivered M14' },
+  // WP5
+  { label: 'WP5 — ERP Deployment', level: 'wp', wp: 5 },
+  { label: '5.1 ERP vendor RFP & selection', level: 'task', start: 3, end: 6, phase: 1, wp: 5, tip: 'Vendor selected M6' },
+  { label: '5.2 Integrator selection & contract', level: 'task', start: 6, end: 7, phase: 1, wp: 5, tip: 'Contract signed M7' },
+  { label: '5.3 Master data cleansing', level: 'task', start: 7, end: 10, phase: 2, wp: 5, tip: 'Data ready M10' },
+  { label: '5.4 ERP Phase 1 (20 SUs)', level: 'task', start: 10, end: 18, phase: 2, wp: 5, tip: 'Go-live M18' },
+  { label: '5.5 CRM (printing houses)', level: 'task', start: 9, end: 15, phase: 2, wp: 5, tip: 'Go-live M15' },
+  { label: '5.6 ERP Phase 2 (production plants)', level: 'task', start: 18, end: 22, phase: 3, wp: 5, tip: 'Go-live M22' },
+  { label: '5.7 SCM demand planning', level: 'task', start: 22, end: 24, phase: 3, wp: 5, tip: 'Go-live M24' },
+  { label: '5.8 Legacy ADV/WMS/MRP2 decommission', level: 'task', start: 24, end: 26, phase: 3, wp: 5, tip: 'Complete M26' },
+
+  // WP6
+  { label: 'WP6 — Data Platform & Advanced Capabilities', level: 'wp', wp: 6 },
+  { label: '6.1 Cloud migration (50 servers)', level: 'task', start: 12, end: 18, phase: 2, wp: 6, tip: 'Migration M18' },
+  { label: '6.2 Unified data platform (DWH merge)', level: 'task', start: 18, end: 24, phase: 3, wp: 6, tip: 'Unified platform M24' },
+  { label: '6.3 IS performance dashboard', level: 'task', start: 24, end: 26, phase: 3, wp: 6, tip: 'Live M26' },
+  { label: '6.4 AI demand forecasting', level: 'task', start: 26, end: 30, phase: 4, wp: 6, tip: 'Pilot M28, full M30' },
+  { label: '6.5 Digital twin supply chain prototype', level: 'task', start: 28, end: 30, phase: 4, wp: 6, tip: 'Prototype M30' },
+  { label: '6.6 B2B portal SLA + self-service', level: 'task', start: 12, end: 14, phase: 2, wp: 6, tip: 'Delivered M14' },
 ];
 
-const tbody = document.getElementById('ganttBody');
+// ── Generic Gantt builder ──
+function buildGantt(tbodyId, tasks, startMonth, endMonth, colorFn) {
+  const tbody = document.getElementById(tbodyId);
+  const total = endMonth - startMonth + 1;
 
-ganttData.forEach(row => {
-  const tr = document.createElement('tr');
+  tasks.forEach(row => {
+    const tr = document.createElement('tr');
 
-  if (row.level === 'wp') {
-    const td = document.createElement('td');
-    td.className = 'label wp';
-    td.colSpan = TOTAL_MONTHS + 1;
-    td.textContent = row.label;
-    tr.appendChild(td);
-  } else {
-    const labelTd = document.createElement('td');
-    labelTd.className = row.level === 'task' ? 'label sub' : 'label';
-    labelTd.textContent = row.label;
-    tr.appendChild(labelTd);
-
-    for (let m = 1; m <= TOTAL_MONTHS; m++) {
+    if (row.level === 'wp') {
       const td = document.createElement('td');
-      if (m >= row.start && m <= row.end) {
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.background = phaseColor[row.phase] || '#999';
-        bar.title = row.tip || '';
-        // Round left/right ends
-        if (m === row.start) bar.style.borderRadius = '4px 0 0 4px';
-        if (m === row.end) bar.style.borderRadius = (m === row.start ? '4px' : '0 4px 4px 0');
-        if (m === row.start && m === row.end) bar.style.borderRadius = '4px';
-        td.appendChild(bar);
-      }
+      td.className = 'label wp';
+      td.colSpan = total + 1;
+      td.textContent = row.label;
       tr.appendChild(td);
-    }
-  }
+    } else if (row.level === 'phase-header') {
+      tr.className = 'phase-header-row';
+      const td = document.createElement('td');
+      td.className = 'label phase-header-row';
+      td.colSpan = total + 1;
+      td.textContent = row.label;
+      tr.appendChild(td);
+    } else {
+      const labelTd = document.createElement('td');
+      labelTd.className = 'label sub';
+      labelTd.textContent = row.label;
+      tr.appendChild(labelTd);
 
-  tbody.appendChild(tr);
+      for (let m = startMonth; m <= endMonth; m++) {
+        const td = document.createElement('td');
+        if (row.start && row.end && m >= row.start && m <= row.end) {
+          const bar = document.createElement('div');
+          bar.className = 'bar';
+          bar.style.background = colorFn(row);
+          bar.title = row.tip || '';
+          if (m === row.start) bar.style.borderRadius = '4px 0 0 4px';
+          if (m === row.end) bar.style.borderRadius = (m === row.start ? '4px' : '0 4px 4px 0');
+          if (m === row.start && m === row.end) bar.style.borderRadius = '4px';
+          td.appendChild(bar);
+        }
+        tr.appendChild(td);
+      }
+    }
+
+    tbody.appendChild(tr);
+  });
+}
+
+// ── SHORT-TERM: M1–M6, tasks that overlap [1,6] ──
+const shortTasks = allTasks.filter(r => {
+  if (r.level === 'wp') return true;
+  return r.start <= 6;
 });
+buildGantt('ganttShortBody', shortTasks, 1, 6, r => phaseColor[r.phase] || '#999');
+
+// ── MEDIUM/LONG-TERM: M7–M36, tasks that overlap [7,36] ──
+const medlongWPs = [];
+let lastWP = null;
+allTasks.forEach(r => {
+  if (r.level === 'wp') { lastWP = r; return; }
+  if (r.start > 6 || r.end > 6) {
+    if (lastWP && (medlongWPs.length === 0 || medlongWPs[medlongWPs.length - 1] !== lastWP)) {
+      medlongWPs.push(lastWP);
+    }
+    medlongWPs.push(r);
+  }
+});
+buildGantt('ganttMedLongBody', medlongWPs, 7, 36, r => phaseColor[r.phase] || '#999');
+
+// ── PER PHASE: full 36M, tasks grouped by phase with phase header rows ──
+const phaseData = [
+  { phaseNum: 0, label: 'Phase 0 — Stabilisation (M1–M4)', color: '#4A90D9' },
+  { phaseNum: 1, label: 'Phase 1 — Foundation (M3–M8)', color: '#2E7D52' },
+  { phaseNum: 2, label: 'Phase 2 — Core IS Deployment (M7–M18)', color: '#C9940A' },
+  { phaseNum: 3, label: 'Phase 3 — Integration (M18–M26)', color: '#8E44AD' },
+  { phaseNum: 4, label: 'Phase 4 — Strategic Capability (M26–M36)', color: '#C0392B' },
+];
+
+const phaseGrouped = [];
+phaseData.forEach(ph => {
+  phaseGrouped.push({ label: ph.label, level: 'phase-header', phase: ph.phaseNum });
+  allTasks.forEach(r => {
+    if (r.level === 'task' && r.phase === ph.phaseNum) phaseGrouped.push(r);
+  });
+});
+buildGantt('ganttPhaseBody', phaseGrouped, 1, 36, r => phaseColor[r.phase] || '#999');
+
+// ── PER WP: full 36M, tasks grouped by WP ──
+buildGantt('ganttWPBody', allTasks, 1, 36, r => wpColor[r.wp] || '#999');
+
 </script>
 </body>
 </html>
